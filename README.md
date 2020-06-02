@@ -1,6 +1,6 @@
 # DBProj
 
-Database Cource Project
+Database Course Project
 
 ## How to
 

@@ -5,6 +5,8 @@ from os.path import abspath, exist, split
 from pyodbc import connect
 from yaml import full_load
 
+from .password import Password
+
 
 class DB:
     def __init__(self, role):
@@ -19,7 +21,7 @@ class DB:
 
         config_path = split(abspath(__file__))[0] + '/config.yaml'
         if not exist(config_path):
-            raise RuntimeError(f'config file not found')
+            raise RuntimeError(f'config file not found at {config_path}')
 
         with open(config_path, 'r', encoding='utf8') as f:
             config = full_load(f)
@@ -37,7 +39,7 @@ class DB:
 
             self._cursor = self._conn.cursor
         except Exception:
-            print(f'cannot connect to database')
+            print('cannot connect to database')
             raise
 
     def __del__(self):
@@ -416,7 +418,7 @@ class DirectorDB(DB):
 
 
 class CastDB(DB):
-    __table = 'Cast'
+    __table = 'Film_Cast'
     __id_column = 'Cast_ID'
     __columns = ('Cast_Name', 'Cast_Sex', 'Cast_Birth', 'Cast_Nationality')
 
@@ -577,3 +579,94 @@ class CommentDB(DB):
     def __id_as_condition(self, film_id, users_id):
         return f'{self.__id_columns[0]} = {film_id} AND '\
             + f'{self.__id_columns[1]} = {users_id}'
+
+
+class UserDB(DB):
+    __table = 'Users'
+    __id_column = 'Users_ID'
+    __password_column = 'Users_Password'
+    __admin_column = 'Users_Is_Admin'
+
+    __columns = ('Users_Name',
+                 'Users_Age',
+                 'Users_Sex',
+                 'Users_Is_Admin')
+
+    def __init__(self, is_login, is_admin):
+        self.role = 'login' if is_login else \
+            'usr_admin' if is_admin else 'member'
+
+        super.__init__(self.role)
+
+    def verify_login(self, user_id, password):
+        if self.role != 'login':
+            raise RuntimeError('only login interface can verify login')
+
+        self._select(self.__table, self.__password_column,
+                     self.__id_as_condition(user_id))
+
+        hashed = self._cursor.fetchone()
+        return Password.verify(password, hashed)
+
+    def create_user(self, user_id, password, is_admin,
+                    user_name=None,
+                    user_age=None,
+                    user_sex=None):
+        if self.role != 'usr_admin':
+            raise RuntimeError('only user administrators can create new user')
+
+        hashed = Password.encrypt(password)
+        columns = (self.__id_column + self.__password_column
+                   + self.__admin_column) + self.__columns
+
+        try:
+            self._insert(self.__table, columns,
+                         (user_id,
+                          hashed,
+                          is_admin,
+                          user_name,
+                          user_age,
+                          user_sex))
+        except Exception:
+            print('failed to insert new user')
+            raise
+
+    def update_user_info(self, user_id,
+                         user_name=None,
+                         user_age=None,
+                         user_sex=None):
+        if self.role != 'member':
+            raise RuntimeError('only users can modify user info')
+
+        try:
+            self._update(self.__table, self.__columns,
+                         (user_name, user_age, user_sex),
+                         self.__id_as_condition(user_id))
+        except Exception:
+            print('failed to update user info')
+            raise
+
+    def update_admin(self, user_id, is_admin):
+        if self.role != 'usr_admin':
+            raise RuntimeError('only user administrators can modify '
+                               'user administration status')
+
+        try:
+            self._update(self.__table, (self.__admin_column, ), (is_admin, ),
+                         self.__id_as_condition(user_id))
+        except Exception:
+            print('failed to update user administration status')
+            raise
+
+    def delete_user(self, user_id):
+        if self.role != 'member':
+            raise RuntimeError('only users can delete user')
+
+        try:
+            self._delete(self.__table, self.__id_as_condition(user_id))
+        except Exception:
+            print('failed to delete user info')
+            raise
+
+    def __id_as_condition(self, user_id):
+        return f'{self.__id_column} = {user_id}'
