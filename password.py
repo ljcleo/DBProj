@@ -4,8 +4,11 @@ from hmac import HMAC
 
 
 class Password:
+    """Password encryption and validation"""
+
     @staticmethod
     def encrypt(password, salt=None, salt_len=8):
+        """Encrypt password by SHA256 with salt"""
         if salt is None:
             salt = urandom(salt_len)
         result = password
@@ -16,4 +19,5 @@ class Password:
 
     @staticmethod
     def verify(password, hashed, salt_len=8):
+        """Verify if password matches encrypted (hashed)"""
         return hashed == Password.encrypt(password, salt=hashed[:salt_len])
