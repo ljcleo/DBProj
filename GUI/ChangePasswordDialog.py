@@ -2,6 +2,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog
 
 from .ChangePasswordDialogUI import Ui_ChangePasswordDialog
+from .Hint import Hint
 
 
 class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
@@ -10,12 +11,12 @@ class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
         self.setupUi(self)
 
     def changePassword(self):
-        # oldpassword = self.OldPassword.text()
         newpassword = self.NewPassword.text()
         newpasswordagain = self.NewPasswordAgain.text()
-        # CHECK OLD PASSWORD HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if newpasswordagain != newpassword:
-            print("两次输入的密码不一致！")
+            dialog = Hint("两次输入的密码不一致！", parent=self, flags=Qt.WindowTitleHint)
+            dialog.open()
         else:
-            print("新密码：", newpassword)
+            dialog = Hint("新密码："+newpassword, parent=self, flags=Qt.WindowTitleHint)
+            dialog.open()
             self.accept()

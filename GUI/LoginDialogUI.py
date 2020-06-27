@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\LoginDialog.ui'
+# Form implementation generated from reading ui file 'LoginDialogUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -30,9 +30,6 @@ class Ui_LoginDialog(object):
         self.Cancel = QtWidgets.QPushButton(self.frame)
         self.Cancel.setGeometry(QtCore.QRect(135, 160, 90, 28))
         self.Cancel.setObjectName("Cancel")
-        self.ChangePassword = QtWidgets.QPushButton(self.frame)
-        self.ChangePassword.setGeometry(QtCore.QRect(25, 240, 200, 28))
-        self.ChangePassword.setObjectName("ChangePassword")
         self.Title = QtWidgets.QLabel(self.frame)
         self.Title.setGeometry(QtCore.QRect(70, 10, 120, 30))
         font = QtGui.QFont()
@@ -62,13 +59,11 @@ class Ui_LoginDialog(object):
         self.Login.clicked.connect(LoginDialog.login)
         self.Cancel.clicked.connect(LoginDialog.reject)
         self.Register.clicked.connect(LoginDialog.register)
-        self.ChangePassword.clicked.connect(LoginDialog.changePassword)
         QtCore.QMetaObject.connectSlotsByName(LoginDialog)
         LoginDialog.setTabOrder(self.UserName, self.Password)
         LoginDialog.setTabOrder(self.Password, self.Login)
         LoginDialog.setTabOrder(self.Login, self.Cancel)
         LoginDialog.setTabOrder(self.Cancel, self.Register)
-        LoginDialog.setTabOrder(self.Register, self.ChangePassword)
 
     def retranslateUi(self, LoginDialog):
         _translate = QtCore.QCoreApplication.translate
@@ -76,7 +71,6 @@ class Ui_LoginDialog(object):
         self.Login.setText(_translate("LoginDialog", "登录"))
         self.Register.setText(_translate("LoginDialog", "注册"))
         self.Cancel.setText(_translate("LoginDialog", "取消"))
-        self.ChangePassword.setText(_translate("LoginDialog", "更改密码"))
         self.Title.setText(_translate("LoginDialog", "XXX数据库"))
         self.UserName.setText(_translate("LoginDialog", "用户名"))
         self.Password.setText(_translate("LoginDialog", "密码"))
