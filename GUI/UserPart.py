@@ -1,8 +1,7 @@
 from PyQt5.QtCore import Qt
 
-from .UserPartUI import Ui_UserPart
-
 from .ChangePasswordDialog import ChangePasswordDialog
+from .UserPartUI import Ui_UserPart
 
 
 class UserPart(Ui_UserPart):
@@ -26,4 +25,3 @@ class UserPart(Ui_UserPart):
 
     def showUser(self):
         self.UserFrame.show()
-

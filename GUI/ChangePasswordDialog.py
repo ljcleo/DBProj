@@ -11,12 +11,12 @@ class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
         self.setupUi(self)
 
     def changePassword(self):
-        newpassword = self.NewPassword.text()
-        newpasswordagain = self.NewPasswordAgain.text()
-        if newpasswordagain != newpassword:
+        newPassword = self.NewPassword.text()
+        newPasswordAgain = self.NewPasswordAgain.text()
+        if newPasswordAgain != newPassword:
             dialog = Hint("两次输入的密码不一致！", parent=self, flags=Qt.WindowTitleHint)
             dialog.open()
         else:
-            dialog = Hint("新密码："+newpassword, parent=self, flags=Qt.WindowTitleHint)
+            dialog = Hint("新密码："+newPassword, parent=self, flags=Qt.WindowTitleHint)
             dialog.open()
             self.accept()

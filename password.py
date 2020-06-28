@@ -7,10 +7,10 @@ class Password:
     """Password encryption and validation"""
 
     @staticmethod
-    def encrypt(password, salt=None, salt_len=8):
+    def encrypt(password, salt=None, saltLen=8):
         """Encrypt password by SHA256 with salt"""
         if salt is None:
-            salt = urandom(salt_len)
+            salt = urandom(saltLen)
         result = password
 
         for i in range(10):
@@ -18,6 +18,6 @@ class Password:
         return salt + result
 
     @staticmethod
-    def verify(password, hashed, salt_len=8):
+    def verify(password, hashed, saltLen=8):
         """Verify if password matches encrypted (hashed)"""
-        return hashed == Password.encrypt(password, salt=hashed[:salt_len])
+        return hashed == Password.encrypt(password, salt=hashed[:saltLen])

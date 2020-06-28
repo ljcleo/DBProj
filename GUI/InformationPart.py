@@ -1,9 +1,8 @@
 from PyQt5.QtCore import Qt
 
-from .InformationPartUI import Ui_InformationPart
-
 from .CommentDialog import CommentDialog
 from .Hint import Hint
+from .InformationPartUI import Ui_InformationPart
 
 
 class InformationPart(Ui_InformationPart):

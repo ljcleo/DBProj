@@ -1,9 +1,8 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget
 
-from .SearchResultButtonUI import Ui_SearchResultButtonWidget
-
 from .Hint import Hint
+from .SearchResultButtonUI import Ui_SearchResultButtonWidget
 
 
 class SearchResultButtonWidget(QWidget, Ui_SearchResultButtonWidget):
