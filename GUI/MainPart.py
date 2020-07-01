@@ -5,7 +5,7 @@ from .GuestPart import GuestPart
 from .HomepagePart import HomepagePart
 from .InformationPart import InformationPart
 from .MainPartUI import Ui_MainWindow
-from .SearchPart import SearchResultPart
+from .SearchResultPart import SearchResultPart
 from .UserPart import UserPart
 
 
