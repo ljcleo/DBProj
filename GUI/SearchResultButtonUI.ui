@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SearchResultButtonWidget</class>
+ <widget class="QWidget" name="SearchResultButtonWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>120</width>
+    <height>36</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">text-align: left;</string>
+  </property>
+  <widget class="QPushButton" name="MovieButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>40</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">text-align: left</string>
+   </property>
+   <property name="text">
+    <string>查看</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ModifyButton">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>0</y>
+     <width>40</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">text-align: left</string>
+   </property>
+   <property name="text">
+    <string>修改</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DeleteButton">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>0</y>
+     <width>40</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">text-align: left</string>
+   </property>
+   <property name="text">
+    <string>删除</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>MovieButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SearchResultButtonWidget</receiver>
+   <slot>toMovie()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>39</x>
+     <y>19</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>117</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ModifyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SearchResultButtonWidget</receiver>
+   <slot>modifyMovie()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>17</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>59</x>
+     <y>17</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DeleteButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SearchResultButtonWidget</receiver>
+   <slot>deleteMovie()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>105</x>
+     <y>2</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>111</x>
+     <y>-20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>toMovie()</slot>
+  <slot>modifyMovie()</slot>
+  <slot>deleteMovie()</slot>
+ </slots>
+</ui>

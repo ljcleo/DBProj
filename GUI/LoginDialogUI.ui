@@ -73,19 +73,6 @@
      <string>取消</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="ChangePassword">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>240</y>
-      <width>200</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>更改密码</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="Title">
     <property name="geometry">
      <rect>
@@ -164,7 +151,6 @@
   <tabstop>Login</tabstop>
   <tabstop>Cancel</tabstop>
   <tabstop>Register</tabstop>
-  <tabstop>ChangePassword</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -212,22 +198,6 @@
     </hint>
     <hint type="destinationlabel">
      <x>110</x>
-     <y>467</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ChangePassword</sender>
-   <signal>clicked()</signal>
-   <receiver>LoginDialog</receiver>
-   <slot>changePassword()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>224</x>
-     <y>326</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>275</x>
      <y>467</y>
     </hint>
    </hints>

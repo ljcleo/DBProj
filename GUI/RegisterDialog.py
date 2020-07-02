@@ -2,6 +2,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog
 
 from .RegisterDialogUI import Ui_RegisterDialog
+from .Hint import Hint
 
 
 class RegisterDialog(QDialog, Ui_RegisterDialog):
@@ -15,8 +16,9 @@ class RegisterDialog(QDialog, Ui_RegisterDialog):
         passwordagain = self.PasswordAgain.text()
 
         if passwordagain != password:
-            print("两次输入的密码不一致！")
+            dialog = Hint("两次输入的密码不一致！", parent=self, flags=Qt.WindowTitleHint)
+            dialog.open()
         else:
-            print("用户名：", username)
-            print("密码：", password)
+            dialog = Hint("用户名："+username+"  密码："+password, parent=self, flags=Qt.WindowTitleHint)
+            dialog.open()
             self.accept()

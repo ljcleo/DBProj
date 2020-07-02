@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ChangePasswordDialog</class>
- <widget class="QDialog" name="ChangePasswordDialog">
+ <class>ChangeInformationDialog</class>
+ <widget class="QDialog" name="ChangeInformationDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -71,7 +71,7 @@
     <property name="geometry">
      <rect>
       <x>65</x>
-      <y>45</y>
+      <y>30</y>
       <width>120</width>
       <height>30</height>
      </rect>
@@ -86,7 +86,7 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text">
-     <string>XXX数据库</string>
+     <string>修改个人信息</string>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -95,12 +95,12 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLineEdit" name="NewPasswordAgain">
+   <widget class="QLineEdit" name="Sex">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>180</y>
-      <width>160</width>
+      <x>100</x>
+      <y>160</y>
+      <width>130</width>
       <height>30</height>
      </rect>
     </property>
@@ -110,15 +110,15 @@
      </font>
     </property>
     <property name="text">
-     <string>确认新密码</string>
+     <string>男</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="NewPassword">
+   <widget class="QLineEdit" name="Age">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>140</y>
-      <width>160</width>
+      <x>100</x>
+      <y>120</y>
+      <width>130</width>
       <height>30</height>
      </rect>
     </property>
@@ -131,15 +131,15 @@
      <bool>false</bool>
     </property>
     <property name="text">
-     <string>新密码</string>
+     <string>20</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="OldPassword">
+   <widget class="QLineEdit" name="UserName">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>100</y>
-      <width>160</width>
+      <x>100</x>
+      <y>80</y>
+      <width>130</width>
       <height>30</height>
      </rect>
     </property>
@@ -152,39 +152,107 @@
      <bool>false</bool>
     </property>
     <property name="text">
-     <string>原密码</string>
+     <string>用户名</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label1">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>80</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>用户名</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>年龄</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>160</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>性别</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
   </widget>
  </widget>
  <tabstops>
-  <tabstop>NewPassword</tabstop>
-  <tabstop>NewPasswordAgain</tabstop>
+  <tabstop>Age</tabstop>
+  <tabstop>Sex</tabstop>
   <tabstop>Modify</tabstop>
   <tabstop>Cancel</tabstop>
  </tabstops>
  <resources/>
  <connections>
   <connection>
-   <sender>Modify</sender>
-   <signal>clicked()</signal>
-   <receiver>ChangePasswordDialog</receiver>
-   <slot>changePassword()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>127</x>
-     <y>267</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>118</x>
-     <y>386</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>Cancel</sender>
    <signal>clicked()</signal>
-   <receiver>ChangePasswordDialog</receiver>
+   <receiver>ChangeInformationDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -197,8 +265,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>Modify</sender>
+   <signal>clicked()</signal>
+   <receiver>ChangeInformationDialog</receiver>
+   <slot>changeInformation()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>80</x>
+     <y>269</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>64</x>
+     <y>386</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
-  <slot>changePassword()</slot>
+  <slot>changeInformation()</slot>
  </slots>
 </ui>
