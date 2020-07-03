@@ -75,7 +75,7 @@ COMMENT_TABLE = TableDef('Comment', {'filmID': 'Film_ID',
                                      'comment': 'User_Comment'})
 
 
-class DB:
+class DBInterface:
     """Database manipulation base class"""
 
     def __init__(self, role):
@@ -126,14 +126,14 @@ class DB:
             print('failed to fetch result from cursor')
             raise
 
-    def _insert(self, table, columns, values):
+    def _insert(self, table, columns, value):
         """Insert single record to table"""
-        if len(columns) != len(values):
-            raise ValueError('columns and values do not match')
+        if len(columns) != len(value):
+            raise ValueError('columns and value do not match')
 
-        placeholder = ', '.join(['%s'] * len(values))
+        placeholder = ', '.join(['%s'] * len(value))
         sql = f'INSERT %s ({placeholder}) VALUES ({placeholder})'
-        self._cursor.execute(sql, (table, ) + columns + values)
+        self._cursor.execute(sql, (table, ) + columns + value)
 
     def _insertMany(self, table, columns, values):
         """Insert multiple records to table"""
@@ -199,7 +199,7 @@ class DB:
         self._cursor.execute(sql, params)
 
 
-class FilmDB(DB):
+class FilmInterface(DBInterface):
     """Film info management interface"""
 
     __columns = (FILM_TABLE.chineseName,
@@ -261,16 +261,16 @@ class FilmDB(DB):
             raise RuntimeError('only administrators can modify film data')
 
         try:
-            self._insert(FILM_TABLE.table, self.__columns,
-                         zip(filmChineseNames,
-                             filmOriginalNames,
-                             releaseDates,
-                             lengths,
-                             companyIDs,
-                             pictures,
-                             storylines,
-                             prizeHistories,
-                             remarks))
+            self._insertMany(FILM_TABLE.table, self.__columns,
+                             zip(filmChineseNames,
+                                 filmOriginalNames,
+                                 releaseDates,
+                                 lengths,
+                                 companyIDs,
+                                 pictures,
+                                 storylines,
+                                 prizeHistories,
+                                 remarks))
         except Exception:
             print('failed to insert new film data')
             raise
@@ -514,36 +514,100 @@ class FilmDB(DB):
         return f'{FILM_TABLE.id} = {filmID}'
 
 
-class GenreDB(DB):
-    """Genre info management interface"""
-    __columns = (GENRE_TABLE.name, )
+class SubInfoInterface(DBInterface):
+    """Sub info management base interface"""
 
-    def __init__(self, isAdmin):
+    def __init__(self, table, columns, isAdmin):
         """Initialize as guest or administrator"""
+        self.__table = table
+        self.__columns = columns
         self.role = 'admin' if isAdmin else 'guest'
         super().__init__(self.role)
 
-    def insertGenre(self, genreName=None):
-        """Insert new genre"""
+    def _insertSubInfo(self, value):
+        """Insert new sub info"""
         if self.role != 'admin':
-            raise RuntimeError('only administrators can modify genre info')
+            raise RuntimeError('only administrators can modify sub info')
 
         try:
-            self._insert(GENRE_TABLE.table, self.__columns, (genreName, ))
+            self._insert(self.__table.table, self.__columns, value)
         except Exception:
-            print('failed to insert new genre info')
+            print('failed to insert new sub info')
             raise
+
+    def _insertManySubInfo(self, values):
+        """Insert new sub info"""
+        if self.role != 'admin':
+            raise RuntimeError('only administrators can modify sub info')
+
+        try:
+            self._insertMany(self.__table.table, self.__columns, values)
+        except Exception:
+            print('failed to insert new sub info')
+            raise
+
+    def _selectSubInfo(self, infoID):
+        """Select sub info with info ID"""
+        try:
+            self._select(self.__table.table, self.__columns,
+                         self.__idAsCondition(infoID))
+            return self._cursor.rowcount
+        except Exception:
+            print('failed to select sub info')
+            raise
+
+    def _searchSubInfoIDByName(self, name):
+        """Search info ID by name"""
+        try:
+            self._select(self.__table.table, (self.__table.id, ),
+                         f'{self.__table.name} = {name}')
+            return self._cursor.rowcount
+        except Exception:
+            print('failed to search info ID')
+            raise
+
+    def _updateSubInfo(self, infoID, value):
+        """Update sub info with info ID"""
+        if self.role != 'admin':
+            raise RuntimeError('only administrators can modify sub info')
+
+        try:
+            self._update(self.__table.table, self.__columns, value,
+                         self.__idAsCondition(infoID))
+        except Exception:
+            print('failed to update sub info')
+            raise
+
+    def _deleteSubInfo(self, infoID):
+        """Delete sub info with info ID"""
+        if self.role != 'admin':
+            raise RuntimeError('only administrators can modify sub info')
+
+        try:
+            self._delete(self.__table.table, self.__idAsCondition(infoID))
+        except Exception:
+            print('failed to delete sub info')
+            raise
+
+    def __idAsCondition(self, infoID):
+        """Generate SQL condition with info ID"""
+        return f'{self.__table.id} = {infoID}'
+
+
+class GenreInterface(SubInfoInterface):
+    """Genre info management interface"""
+
+    def __init__(self, isAdmin):
+        """Initialize as guest or administrator"""
+        super().__init__(GENRE_TABLE, (GENRE_TABLE.name, ), isAdmin)
+
+    def insertGenre(self, genreName=None):
+        """Insert new genre"""
+        self._insertSubInfo((genreName, ))
 
     def insertManyGenres(self, genreNames=None):
         """Insert multiple new genres"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify genre info')
-
-        try:
-            self._insert(GENRE_TABLE.table, self.__columns, zip(genreNames))
-        except Exception:
-            print('failed to insert new genre info')
-            raise
+        self._insertManySubInfo(zip(genreNames))
 
     def selectAllGenre(self):
         """Select all genre"""
@@ -556,66 +620,31 @@ class GenreDB(DB):
 
     def selectGenre(self, genreID):
         """Select genre with genre ID"""
-        try:
-            self._select(GENRE_TABLE.table, self.__columns,
-                         self.__idAsCondition(genreID))
-            return self._cursor.rowcount
-        except Exception:
-            print('failed to select genre info')
-            raise
+        return self._selectSubInfo(genreID)
 
-    def searchGenreIDByName(self, genreName=None):
+    def searchGenreIDByName(self, genreName):
         """Search genre ID by genre name"""
-        try:
-            self._select(GENRE_TABLE.table, (GENRE_TABLE.id, ),
-                         f'{GENRE_TABLE.name} = {genreName}'
-                         if genreName is not None else None)
-            return self._cursor.rowcount
-        except Exception:
-            print('failed to search genre ID')
-            raise
+        return self._searchSubInfoIDByName(genreName)
 
     def updateGenre(self, genreID, genreName=None):
         """Update genre with genre ID"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify genre info')
-
-        try:
-            self._update(GENRE_TABLE.table, self.__columns, (genreName, ),
-                         self.__idAsCondition(genreID))
-        except Exception:
-            print('failed to update genre info')
-            raise
+        self._updateSubInfo(genreID, (genreName, ))
 
     def deleteGenre(self, genreID):
         """Delete genre with genre ID"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify genre info')
-
-        try:
-            self._delete(GENRE_TABLE.table, self.__idAsCondition(genreID))
-        except Exception:
-            print('failed to delete genre info')
-            raise
-
-    def __idAsCondition(self, genreID):
-        """Generate SQL condition with genre ID"""
-        return f'{GENRE_TABLE.id} = {genreID}'
+        self._deleteSubInfo(genreID)
 
 
-class DirectorDB(DB):
+class DirectorInterface(SubInfoInterface):
     """Director info management interface"""
-
-    __columns = (DIRECTOR_TABLE.name,
-                 DIRECTOR_TABLE.sex,
-                 DIRECTOR_TABLE.birth,
-                 DIRECTOR_TABLE.nationality,
-                 DIRECTOR_TABLE.picture)
 
     def __init__(self, isAdmin):
         """Initialize as guest or administrator"""
-        self.role = 'admin' if isAdmin else 'guest'
-        super().__init__(self.role)
+        super().__init__(DIRECTING_TABLE, (DIRECTOR_TABLE.name,
+                                           DIRECTOR_TABLE.sex,
+                                           DIRECTOR_TABLE.birth,
+                                           DIRECTOR_TABLE.nationality,
+                                           DIRECTOR_TABLE.picture), isAdmin)
 
     def insertDirector(self,
                        directorName=None,
@@ -624,19 +653,11 @@ class DirectorDB(DB):
                        directorNationality=None,
                        directorPicture=None):
         """Insert new director"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify director info')
-
-        try:
-            self._insert(DIRECTOR_TABLE.table, self.__columns,
-                         (directorName,
-                          directorSex,
-                          directorBirth,
-                          directorNationality,
-                          directorPicture))
-        except Exception:
-            print('failed to insert new director info')
-            raise
+        self._insertSubInfo((directorName,
+                             directorSex,
+                             directorBirth,
+                             directorNationality,
+                             directorPicture))
 
     def insertManyDirectors(self,
                             directorNames=None,
@@ -645,40 +666,19 @@ class DirectorDB(DB):
                             directorNationalities=None,
                             directorPictures=None):
         """Insert multiple new directors"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify director info')
-
-        try:
-            self._insert(DIRECTOR_TABLE.table, self.__columns,
-                         zip(directorNames,
-                             directorSexes,
-                             directorBirths,
-                             directorNationalities,
-                             directorPictures))
-        except Exception:
-            print('failed to insert new director info')
-            raise
+        self._insertManySubInfo(zip(directorNames,
+                                    directorSexes,
+                                    directorBirths,
+                                    directorNationalities,
+                                    directorPictures))
 
     def selectDirector(self, directorID):
         """Select director with director ID"""
-        try:
-            self._select(DIRECTOR_TABLE.table, self.__columns,
-                         self.__idAsCondition(directorID))
-            return self._cursor.rowcount
-        except Exception:
-            print('failed to select director info')
-            raise
+        return self._selectSubInfo(directorID)
 
-    def searchDirectorIDByName(self, directorName=None):
+    def searchDirectorIDByName(self, directorName):
         """Search director ID by director name"""
-        try:
-            self._select(DIRECTOR_TABLE.table, (DIRECTOR_TABLE.id, ),
-                         f'{DIRECTOR_TABLE.name} = {directorName}'
-                         if directorName is not None else None)
-            return self._cursor.rowcount
-        except Exception:
-            print('failed to search director ID')
-            raise
+        return self._searchSubInfoIDByName(directorName)
 
     def updateDirector(self, directorID,
                        directorName=None,
@@ -687,50 +687,27 @@ class DirectorDB(DB):
                        directorNationality=None,
                        directorPicture=None):
         """Update genre with genre ID"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify director info')
-
-        try:
-            self._update(DIRECTOR_TABLE.table, self.__columns,
-                         (directorName,
-                          directorSex,
-                          directorBirth,
-                          directorNationality,
-                          directorPicture),
-                         self.__idAsCondition(directorID))
-        except Exception:
-            print('failed to update director info')
-            raise
+        self._updateSubInfo(directorID, (directorName,
+                                         directorSex,
+                                         directorBirth,
+                                         directorNationality,
+                                         directorPicture))
 
     def deleteDirector(self, directorID):
         """Delete genre with genre ID"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify director info')
-
-        try:
-            self._delete(DIRECTOR_TABLE.table, self.__idAsCondition(directorID))
-        except Exception:
-            print('failed to delete director info')
-            raise
-
-    def __idAsCondition(self, directorID):
-        """Generate SQL condition with director ID"""
-        return f'{DIRECTOR_TABLE.id} = {directorID}'
+        self._deleteSubInfo(directorID)
 
 
-class CastDB(DB):
+class CastInterface(SubInfoInterface):
     """Cast info management interface"""
-
-    __columns = (CAST_TABLE.name,
-                 CAST_TABLE.sex,
-                 CAST_TABLE.birth,
-                 CAST_TABLE.nationality,
-                 CAST_TABLE.picture)
 
     def __init__(self, isAdmin):
         """Initialize as guest or administrator"""
-        self.role = 'admin' if isAdmin else 'guest'
-        super().__init__(self.role)
+        super().__init__(CAST_TABLE, (CAST_TABLE.name,
+                                      CAST_TABLE.sex,
+                                      CAST_TABLE.birth,
+                                      CAST_TABLE.nationality,
+                                      CAST_TABLE.picture), isAdmin)
 
     def insertCast(self,
                    castName=None,
@@ -739,15 +716,11 @@ class CastDB(DB):
                    castNationality=None,
                    castPicture=None):
         """Insert new cast"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify cast info')
-
-        try:
-            self._insert(CAST_TABLE.table, self.__columns,
-                         (castName, castSex, castBirth, castNationality))
-        except Exception:
-            print('failed to insert new cast info')
-            raise
+        self._insertSubInfo((castName,
+                             castSex,
+                             castBirth,
+                             castNationality,
+                             castPicture))
 
     def insertManyCasts(self,
                         castNames=None,
@@ -756,40 +729,19 @@ class CastDB(DB):
                         castNationalities=None,
                         castPictures=None):
         """Insert multiple new casts"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify cast info')
-
-        try:
-            self._insert(CAST_TABLE.table, self.__columns,
-                         zip(castNames,
-                             castSexes,
-                             castBirths,
-                             castNationalities,
-                             castPictures))
-        except Exception:
-            print('failed to insert new cast info')
-            raise
+        self._insertManySubInfo(zip(castNames,
+                                    castSexes,
+                                    castBirths,
+                                    castNationalities,
+                                    castPictures))
 
     def selectCast(self, castID):
         """Select cast with cast ID"""
-        try:
-            self._select(CAST_TABLE.table, self.__columns,
-                         self.__idAsCondition(castID))
-            return self._cursor.rowcount
-        except Exception:
-            print('failed to select cast info')
-            raise
+        return self._selectSubInfo(castID)
 
-    def searchCastIDByName(self, castName=None):
+    def searchCastIDByName(self, castName):
         """Search cast ID by cast name"""
-        try:
-            self._select(CAST_TABLE.table, (CAST_TABLE.id, ),
-                         f'{CAST_TABLE.name} = {castName}'
-                         if castName is not None else None)
-            return self._cursor.rowcount
-        except Exception:
-            print('failed to search cast ID')
-            raise
+        return self._searchSubInfoIDByName(castName)
 
     def updateCast(self, castID,
                    castName=None,
@@ -798,122 +750,52 @@ class CastDB(DB):
                    castNationality=None,
                    castPicture=None):
         """Update cast with cast ID"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify cast info')
-
-        try:
-            self._update(CAST_TABLE.table, self.__columns,
-                         (castName,
-                          castSex,
-                          castBirth,
-                          castNationality,
-                          castPicture),
-                         self.__idAsCondition(castID))
-        except Exception:
-            print('failed to update cast info')
-            raise
+        self._updateSubInfo(castID, (castName,
+                                     castSex,
+                                     castBirth,
+                                     castNationality,
+                                     castPicture))
 
     def deleteCast(self, castID):
         """Delete cast with cast ID"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify cast info')
-
-        try:
-            self._delete(CAST_TABLE.table, self.__idAsCondition(castID))
-        except Exception:
-            print('failed to delete cast info')
-            raise
-
-    def __idAsCondition(self, castID):
-        """Generate SQL condition with cast ID"""
-        return f'{CAST_TABLE.id} = {castID}'
+        self._deleteSubInfo(castID)
 
 
-class CompanyDB(DB):
+class CompanyInterface(SubInfoInterface):
     """Company info management interface"""
-    __columns = (COMPANY_TABLE.name, COMPANY_TABLE.nationality)
 
     def __init__(self, isAdmin):
         """Initialize as guest or administrator"""
-        self.role = 'admin' if isAdmin else 'guest'
-        super().__init__(self.role)
+        super().__init__(COMPANY_TABLE, (COMPANY_TABLE.name,
+                                         COMPANY_TABLE.nationality), isAdmin)
 
     def insertCompany(self, companyName=None, companyNationality=None):
         """Insert new company"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify company info')
-
-        try:
-            self._insert(COMPANY_TABLE.table, self.__columns,
-                         (companyName, companyNationality))
-        except Exception:
-            print('failed to insert new company info')
-            raise
+        self._insertSubInfo((companyName, companyNationality))
 
     def insertManyCompanies(self, companyNames=None, companyNationalities=None):
         """Insert multiple new companies"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify company info')
-
-        try:
-            self._insert(COMPANY_TABLE.table, self.__columns,
-                         zip(companyNames, companyNationalities))
-        except Exception:
-            print('failed to insert new company info')
-            raise
+        self._insertManySubInfo(zip(companyNames, companyNationalities))
 
     def selectCompany(self, companyID):
         """Select company with company ID"""
-        try:
-            self._select(COMPANY_TABLE.table, self.__columns,
-                         self.__idAsCondition(companyID))
-            return self._cursor.rowcount
-        except Exception:
-            print('failed to select company info')
-            raise
+        return self._selectSubInfo(companyID)
 
-    def searchCompanyIDByName(self, companyName=None):
+    def searchCompanyIDByName(self, companyName):
         """Search company ID by company name"""
-        try:
-            self._select(COMPANY_TABLE.table, (COMPANY_TABLE.id, ),
-                         f'{COMPANY_TABLE.name} = {companyName}'
-                         if companyName is not None else None)
-            return self._cursor.rowcount
-        except Exception:
-            print('failed to search company ID')
-            raise
+        return self._searchSubInfoIDByName(companyName)
 
     def updateCompany(self, companyID,
                       companyName=None, companyNationality=None):
         """Update company with company ID"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify company info')
-
-        try:
-            self._update(COMPANY_TABLE.table, self.__columns,
-                         (companyName, companyNationality),
-                         self.__idAsCondition(companyID))
-        except Exception:
-            print('failed to update company info')
-            raise
+        self._updateSubInfo(companyID, (companyName, companyNationality))
 
     def deleteCompany(self, companyID):
         """Delete company with company ID"""
-        if self.role != 'admin':
-            raise RuntimeError('only administrators can modify company info')
-
-        try:
-            self._delete(COMPANY_TABLE.table, self.__idAsCondition(companyID))
-        except Exception:
-            print('failed to delete company info')
-            raise
-
-    def __idAsCondition(self, companyID):
-        """Generate SQL condition with company ID"""
-        return f'{COMPANY_TABLE.id} = {companyID}'
+        self._deleteSubInfo(companyID)
 
 
-class CommentDB(DB):
+class CommentInterface(DBInterface):
     """Comment management interface"""
     __idColumns = (COMMENT_TABLE.filmID, COMMENT_TABLE.userID)
     __columns = (COMMENT_TABLE.rating, COMMENT_TABLE.comment)
@@ -1001,7 +883,7 @@ class CommentDB(DB):
             + f'{self.__idColumns[1]} = {userID}'
 
 
-class UserDB(DB):
+class UserInterface(DBInterface):
     """User info management interface"""
     __columns = (USER_TABLE.name,
                  USER_TABLE.age,
