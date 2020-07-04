@@ -8,7 +8,7 @@ from yaml import full_load as loadYAML
 from Password import Password
 
 
-class TableDef:
+class DBStructure:
     def __init__(self, table, columns):
         self.table = table
         self.columns = columns
@@ -20,59 +20,85 @@ class TableDef:
             raise AttributeError(name)
 
 
-GENRE_TABLE = TableDef('Genre', {'id': 'Genre_ID', 'name': 'Genre_Name'})
+GENRE_TABLE = DBStructure('Genre', {'id': 'Genre_ID', 'name': 'Genre_Name'})
 
-DIRECTOR_TABLE = TableDef('Director', {'id': 'Director_ID',
-                                       'name': 'Director_Name',
-                                       'sex': 'Director_Sex',
-                                       'birth': 'Director_Birth',
-                                       'nationality': 'Director_Nationality',
-                                       'picture': 'Director_Picture'})
+DIRECTOR_TABLE = DBStructure('Director', {'id': 'Director_ID',
+                                          'name': 'Director_Name',
+                                          'sex': 'Director_Sex',
+                                          'birth': 'Director_Birth',
+                                          'nationality': 'Director_Nationality',
+                                          'picture': 'Director_Picture'})
 
-CAST_TABLE = TableDef('Film_Cast', {'id': 'Cast_ID',
-                                    'name': 'Cast_Name',
-                                    'sex': 'Cast_Sex',
-                                    'birth': 'Cast_Birth',
-                                    'nationality': 'Cast_Nationality',
-                                    'picture': 'Cast_Picture'})
+CAST_TABLE = DBStructure('Film_Cast', {'id': 'Cast_ID',
+                                       'name': 'Cast_Name',
+                                       'sex': 'Cast_Sex',
+                                       'birth': 'Cast_Birth',
+                                       'nationality': 'Cast_Nationality',
+                                       'picture': 'Cast_Picture'})
 
-COMPANY_TABLE = TableDef('Company', {'id': 'Company_ID',
-                                     'name': 'Company_Name',
-                                     'nationality': 'Company_City'})
+COMPANY_TABLE = DBStructure('Company', {'id': 'Company_ID',
+                                        'name': 'Company_Name',
+                                        'nationality': 'Company_Nationality'})
 
-FILM_TABLE = TableDef('Film', {'id': 'Film_ID',
-                               'chineseName': 'Film_Chinese_Name',
-                               'originalName': 'Film_Original_Name',
-                               'releaseDate': 'Release_Date',
-                               'length': 'Length',
-                               'companyID': 'Company_ID',
-                               'picture': 'Picture',
-                               'storyline': 'Storyline',
-                               'prizeHistory': 'Prize_History',
-                               'remark': 'Remark'})
+FILM_TABLE = DBStructure('Film', {'id': 'Film_ID',
+                                  'chineseName': 'Film_Chinese_Name',
+                                  'originalName': 'Film_Original_Name',
+                                  'releaseDate': 'Release_Date',
+                                  'length': 'Length',
+                                  'companyID': 'Company_ID',
+                                  'picture': 'Picture',
+                                  'storyline': 'Storyline',
+                                  'prizeHistory': 'Prize_History',
+                                  'remark': 'Remark'})
 
-FILM_GENRE_TABLE = TableDef('Film_Genre', {'filmID': 'Film_ID',
-                                           'genreID': 'Genre_ID'})
+FILM_GENRE_TABLE = DBStructure('Film_Genre', {'filmID': 'Film_ID',
+                                              'genreID': 'Genre_ID'})
 
-DIRECTING_TABLE = TableDef('Directing', {'filmID': 'Film_ID',
-                                         'directorID': 'Director_ID',
-                                         'role': 'Director_Role'})
+DIRECTING_TABLE = DBStructure('Directing', {'filmID': 'Film_ID',
+                                            'directorID': 'Director_ID',
+                                            'role': 'Director_Role'})
 
-PLAY_TABLE = TableDef('Play', {'filmID': 'Film_ID',
-                               'castID': 'Cast_ID',
-                               'role': 'Cast_Role'})
+PLAY_TABLE = DBStructure('Play', {'filmID': 'Film_ID',
+                                  'castID': 'Cast_ID',
+                                  'role': 'Cast_Role'})
 
-USER_TABLE = TableDef('User', {'id': 'User_ID',
-                               'name': 'User_Name',
-                               'age': 'User_Age',
-                               'sex': 'User_Sex',
-                               'password': 'User_Password',
-                               'isAdmin': 'User_Is_Admin'})
+USER_TABLE = DBStructure('Users', {'id': 'Users_ID',
+                                   'name': 'Users_Name',
+                                   'age': 'Users_Age',
+                                   'sex': 'Users_Sex',
+                                   'password': 'Users_Password',
+                                   'isAdmin': 'Users_Is_Admin'})
 
-COMMENT_TABLE = TableDef('Comment', {'filmID': 'Film_ID',
-                                     'userID': 'User_ID',
-                                     'rating': 'Rating',
-                                     'comment': 'User_Comment'})
+COMMENT_TABLE = DBStructure('Comment', {'filmID': 'Film_ID',
+                                        'userID': 'Users_ID',
+                                        'rating': 'Rating',
+                                        'comment': 'Users_Comment'})
+
+FILM_VIEW = DBStructure('Film_View',
+                        {'id': 'Film_ID',
+                         'chineseName': 'Film_Chinese_Name',
+                         'originalName': 'Film_Original_Name',
+                         'genres': 'Film_Genres',
+                         'releaseDate': 'Release_Date',
+                         'picture': 'Picture',
+                         'length': 'Length',
+                         'companyName': 'Company_Name',
+                         'companyNationality': 'Company_Nationality',
+                         'directors': 'Film_Directors',
+                         'casts': 'Film_Casts',
+                         'rating': 'Rating',
+                         'ratingCount': 'Rating_Count',
+                         'storyline': 'Storyline',
+                         'prizeHistory': 'Prize_History',
+                         'remark': 'Remark'})
+
+COMMENT_VIEW = DBStructure('Comment_View', {'filmID': 'Film_ID',
+                                            'filmName': 'Film_Chinese_Name',
+                                            'userID': 'Users_ID',
+                                            'userName': 'Users_Name',
+                                            'userIsAdmin': 'Users_Is_Admin',
+                                            'rating': 'Rating',
+                                            'comment': 'Users_Comment'})
 
 
 class DBInterface:
@@ -97,17 +123,13 @@ class DBInterface:
             config = loadYAML(f)
 
         try:
-            driver = 'DRIVER={ODBC Driver 17 for SQL Server}'
+            connStr = 'Driver={ODBC Driver 17 for SQL Server};' + \
+                f'Database={config["database"]["database"]};' + \
+                f'Server={config["database"]["server"]};' + \
+                f'UID={role};PWD={password}'
 
-            self._conn = connect(autocommit=True,
-                                 driver=driver,
-                                 host=config['server'],
-                                 database=config['database'],
-                                 user=role,
-                                 password=password,
-                                 encoding='utf8')
-
-            self._cursor = self._conn.cursor
+            self._conn = connect(connStr, autocommit=True)
+            self._cursor = self._conn.cursor()
         except Exception:
             print('cannot connect to database')
             raise
@@ -131,76 +153,76 @@ class DBInterface:
         if len(columns) != len(value):
             raise ValueError('columns and value do not match')
 
-        placeholder = ', '.join(['%s'] * len(value))
-        sql = f'INSERT %s ({placeholder}) VALUES ({placeholder})'
-        self._cursor.execute(sql, (table, ) + columns + value)
+        columnStr = ', '.join(columns)
+        placeholder = ', '.join(['?'] * len(value))
+        sql = f'INSERT INTO {table} ({columnStr}) VALUES ({placeholder})'
+        self._cursor.execute(sql, value)
 
     def _insertMany(self, table, columns, values):
         """Insert multiple records to table"""
         columnLen = len(columns)
-        if any(columnLen == len(valueSet) for valueSet in values):
+        if any(columnLen != len(valueSet) for valueSet in values):
             raise ValueError('columns and (some) values do not match')
 
-        placeholder = ', '.join(['%s'] * len(values))
-        sql = f'INSERT {table} ({", ".join(columns)}) VALUES ({placeholder})'
+        columnStr = ', '.join(columns)
+        placeholder = ', '.join(['?'] * len(values))
+        sql = f'INSERT INTO {table} ({columnStr}) VALUES ({placeholder})'
         self._cursor.executemany(sql, values)
 
-    def _select(self, table, columns, condition=None, orderCondition=None):
+    def _select(self, table, columns, conditionExpression=None,
+                conditionArgument=None, orderCondition=None):
         """Select records from table"""
-        placeholder = ', '.join(['%s'] * len(columns))
-        sql = f'SELECT {placeholder} FROM %s'
-        params = (table, ) + columns
+        columnStr = ', '.join(columns)
+        sql = f'SELECT {columnStr} FROM {table}'
+        params = ()
 
-        if condition is not None:
-            sql = sql + ' WHERE %s'
-            params = params + (condition, )
+        if conditionExpression is not None and conditionArgument is not None:
+            sql = sql + ' WHERE ' + conditionExpression
+            params = conditionArgument
 
         if orderCondition is not None:
-            orderColumns = [column for column, _ in orderCondition]
-            orderDirections = [f'%s {"DESC" if reverse else "ASC"}'
-                               for _, reverse in orderCondition]
-
+            orderDirections = [f'{column} {"DESC" if reverse else "ASC"}'
+                               for column, reverse in orderCondition]
             sql = sql + ' ORDER BY ' + ', '.join(orderDirections)
-            params = params + (orderColumns, )
 
         self._cursor.execute(sql, params)
 
-    def _update(self, table, columns, values, condition=None):
+    def _update(self, table, columns, values, conditionExpression=None,
+                conditionArgument=None):
         """Update record from table"""
         if len(columns) != len(values):
             raise ValueError('columns and values do not match')
 
-        placeholder = ', '.join(["%s = %s"] * len(values))
-        sql = f'UPDATE %s SET {placeholder}'
+        columnStr = ', '.join(f'{column} = ?' for column in columns)
+        sql = f'UPDATE {table} SET {columnStr}'
+        params = values
 
-        params = (table, )
-        for pair in zip(columns, values):
-            params = params + pair
-
-        if condition is not None:
-            sql = sql + ' WHERE %s'
-            params = params + (condition, )
+        if conditionExpression is not None and conditionArgument:
+            sql = sql + ' WHERE ' + conditionExpression
+            params = params + conditionArgument
 
         self._cursor.execute(sql, params)
 
-    def _delete(self, table, condition=None):
+    def _delete(self, table, conditionExpression=None, conditionArgument=None):
         """Delete record from table"""
-        sql = 'DELETE FROM %s'
-        params = (table, )
+        sql = f'DELETE FROM {table}'
+        params = ()
 
-        if condition is not None:
-            sql = sql + ' WHERE %s'
-            params = params + (condition, )
+        if conditionExpression is not None and conditionArgument:
+            sql = sql + ' WHERE ' + conditionExpression
+            params = conditionArgument
 
         self._cursor.execute(sql, params)
 
-    def _custom(self, sql, params):
-        """Execute custom SQL statement with given parameters"""
-        self._cursor.execute(sql, params)
+    def _custom(self, sql, args):
+        """Execute custom SQL statement with given arguments"""
+        self._cursor.execute(sql, args)
 
 
 class FilmInterface(DBInterface):
     """Film info management interface"""
+
+    __idCondition = f'{FILM_TABLE.id} = ?'
 
     __columns = (FILM_TABLE.chineseName,
                  FILM_TABLE.originalName,
@@ -212,9 +234,34 @@ class FilmInterface(DBInterface):
                  FILM_TABLE.prizeHistory,
                  FILM_TABLE.remark)
 
+    __viewColumns = (FILM_VIEW.chineseName,
+                     FILM_VIEW.originalName,
+                     FILM_VIEW.genres,
+                     FILM_VIEW.releaseDate,
+                     FILM_VIEW.picture,
+                     FILM_VIEW.length,
+                     FILM_VIEW.companyName,
+                     FILM_VIEW.companyNationality,
+                     FILM_VIEW.directors,
+                     FILM_VIEW.casts,
+                     FILM_VIEW.rating,
+                     FILM_VIEW.ratingCount,
+                     FILM_VIEW.storyline,
+                     FILM_VIEW.prizeHistory,
+                     FILM_VIEW.remark)
+
+    __listColumns = (FILM_VIEW.id,
+                     FILM_VIEW.chineseName,
+                     FILM_VIEW.originalName,
+                     FILM_VIEW.picture,
+                     FILM_VIEW.companyNationality,
+                     FILM_VIEW.releaseDate,
+                     FILM_VIEW.genres,
+                     FILM_VIEW.rating)
+
     def __init__(self, isAdmin):
         """Initialize as guest or administrator"""
-        self.role = 'admin' if isAdmin else 'guest'
+        self.role = 'admin' if isAdmin else 'guest_usr'
         super().__init__(self.role)
 
     def insertFilm(self,
@@ -278,57 +325,52 @@ class FilmInterface(DBInterface):
     def selectFilm(self, filmID):
         """Select film with film ID"""
         try:
-            self._select(FILM_TABLE.table, self.__columns,
-                         self.__idAsCondition(filmID))
-            return self._cursor.rowcount
+            self._select(FILM_VIEW.table, self.__viewColumns,
+                         f'{FILM_VIEW.id} = ?', (filmID, ))
         except Exception:
             print('failed to select film with film ID')
             raise
 
-    def searchFilm(self, name, genre=None, releaseDate=None, rating=None,
+    def searchFilm(self, name, genreID=None, releaseDate=None, rating=None,
                    releaseDateOrder=None, ratingOrder=None):
         """Search film with name, genre, release date and rating"""
-        rating_table = f'SELECT {COMMENT_TABLE.filmID}, ' + \
-            f'AVG({COMMENT_TABLE.rating}) AS {COMMENT_TABLE.rating} ' + \
-            f'FROM {COMMENT_TABLE.table} GROUP BY {COMMENT_TABLE.filmID}'
+        conditionExpression = f'({FILM_VIEW.chineseName} LIKE ? OR ' + \
+            f'{FILM_VIEW.originalName} LIKE ?)'
+        conditionArgument = (f'%{name}%', f'%{name}%')
 
-        table = f'{FILM_TABLE.table} AS a ' + \
-            f'INNER JOIN ({FILM_GENRE_TABLE.table}) AS b ' + \
-            f'ON a.{FILM_TABLE.id} = b.{FILM_GENRE_TABLE.filmID} ' + \
-            f'LEFT OUTER JOIN {rating_table} AS c ' + \
-            f'ON a.{FILM_TABLE.id} = c.{COMMENT_TABLE.filmID}'
+        if genreID is not None:
+            filmList = f'SELECT {FILM_GENRE_TABLE.filmID} ' + \
+                f'FROM {FILM_GENRE_TABLE.table} ' + \
+                f'WHERE ({FILM_GENRE_TABLE.genreID} = ?)'
 
-        columns = self.__columns[:-3] + (COMMENT_TABLE.rating, )
-
-        condition = f'({FILM_TABLE.chineseName} LIKE %{name}% OR ' + \
-            f'{FILM_TABLE.originalName} LIKE %{name}%)'
-
-        if genre is not None:
-            condition = condition + f' AND {FILM_GENRE_TABLE.genreID} = {genre}'
+            conditionExpression = conditionExpression + \
+                f' AND ({FILM_VIEW.id} IN ({filmList}))'
+            conditionArgument = conditionArgument + (genreID, )
 
         if releaseDate is not None:
-            condition = condition + f' AND {FILM_TABLE.releaseDate} ' + \
-                f'BETWEEN {releaseDate[0]:%Y-%m-%d} ' + \
-                f'AND {releaseDate[1]:%Y-%m-%d}'
+            conditionExpression = conditionExpression + \
+                f' AND ({FILM_VIEW.releaseDate} BETWEEN ? AND ?)'
+            conditionArgument = conditionArgument + releaseDate
 
         if rating is not None:
-            condition = condition + f' AND {COMMENT_TABLE.rating} BETWEEN' + \
-                f'{rating[0]:.1f} AND {rating[1]:.1f}'
+            conditionExpression = conditionExpression + \
+                f' AND {FILM_VIEW.rating} BETWEEN ? AND ?'
+            conditionArgument = conditionArgument + rating
 
         orderCondition = []
 
         if releaseDateOrder is not None:
-            orderCondition.append(FILM_TABLE.releaseDate, releaseDateOrder)
+            orderCondition.append((FILM_VIEW.releaseDate, releaseDateOrder))
 
         if ratingOrder is not None:
-            orderCondition.append(COMMENT_TABLE.rating, ratingOrder)
+            orderCondition.append((FILM_VIEW.rating, ratingOrder))
 
         if len(orderCondition) == 0:
             orderCondition = None
 
         try:
-            self._select(table, columns, condition, orderCondition)
-            return self._cursor.rowcount
+            self._select(FILM_VIEW.table, self.__listColumns,
+                         conditionExpression, conditionArgument, orderCondition)
         except Exception:
             print('failed to search film')
             raise
@@ -352,7 +394,7 @@ class FilmInterface(DBInterface):
                           length,
                           companyID,
                           picture),
-                         self.__idAsCondition(filmID))
+                         self.__idCondition, (filmID, ))
         except Exception:
             print('failed to update film basic data')
             raise
@@ -364,7 +406,7 @@ class FilmInterface(DBInterface):
 
         try:
             self._update(FILM_TABLE.table, (self.__columns[-3], ),
-                         (storyline, ), self.__idAsCondition(filmID))
+                         (storyline, ), self.__idCondition, (filmID, ))
         except Exception:
             print('failed to update film storyline')
             raise
@@ -376,7 +418,7 @@ class FilmInterface(DBInterface):
 
         try:
             self._update(FILM_TABLE.table, (self.__columns[-2], ),
-                         (prizeHistory, ), self.__idAsCondition(filmID))
+                         (prizeHistory, ), self.__idCondition, (filmID, ))
         except Exception:
             print('failed to update film prize history')
             raise
@@ -388,7 +430,7 @@ class FilmInterface(DBInterface):
 
         try:
             self._update(FILM_TABLE.table, (self.__columns[-1], ),
-                         (remark, ), self.__idAsCondition(filmID))
+                         (remark, ), self.__idCondition, (filmID, ))
         except Exception:
             print('failed to update film remark')
             raise
@@ -399,7 +441,7 @@ class FilmInterface(DBInterface):
             raise RuntimeError('only administrators can modify film data')
 
         try:
-            self._delete(FILM_TABLE.table, self.__idAsCondition(filmID))
+            self._delete(FILM_TABLE.table, self.__idCondition, (filmID, ))
         except Exception:
             print('failed to delete film data')
             raise
@@ -411,9 +453,8 @@ class FilmInterface(DBInterface):
                          f'{GENRE_TABLE.table} AS b ON '
                          f'a.{FILM_GENRE_TABLE.genreID} = b.{GENRE_TABLE.id}',
                          (f'b.{GENRE_TABLE.id}', GENRE_TABLE.name),
-                         self.__idAsCondition(filmID))
+                         self.__idCondition, (filmID, ))
 
-            return self._cursor.rowcount
         except Exception:
             print('failed to select film genre')
             raise
@@ -424,7 +465,7 @@ class FilmInterface(DBInterface):
             raise RuntimeError('only administrators can modify film data')
 
         try:
-            self._delete(FILM_GENRE_TABLE.table, self.__idAsCondition(filmID))
+            self._delete(FILM_GENRE_TABLE.table, self.__idCondition, (filmID, ))
             values = [(filmID, genreID) for genreID in genreIDs]
 
             self._insertMany(FILM_GENRE_TABLE.table,
@@ -445,9 +486,8 @@ class FilmInterface(DBInterface):
                          (f'b.{DIRECTOR_TABLE.id}',
                           DIRECTOR_TABLE.name,
                           DIRECTING_TABLE.role),
-                         self.__idAsCondition(filmID))
+                         self.__idCondition, (filmID, ))
 
-            return self._cursor.rowcount
         except Exception:
             print('failed to select film directing info')
             raise
@@ -458,7 +498,7 @@ class FilmInterface(DBInterface):
             raise RuntimeError('only administrators can modify film data')
 
         try:
-            self._delete(DIRECTING_TABLE.table, self.__idAsCondition(filmID))
+            self._delete(DIRECTING_TABLE.table, self.__idCondition, (filmID, ))
 
             values = [(filmID, directorID, directorRole)
                       for directorID, directorRole
@@ -482,9 +522,8 @@ class FilmInterface(DBInterface):
                          (f'b.{CAST_TABLE.id}',
                           CAST_TABLE.name,
                           PLAY_TABLE.role),
-                         self.__idAsCondition(filmID))
+                         self.__idCondition, (filmID, ))
 
-            return self._cursor.rowcount
         except Exception:
             print('failed to select film play info')
             raise
@@ -495,7 +534,7 @@ class FilmInterface(DBInterface):
             raise RuntimeError('only administrators can modify film data')
 
         try:
-            self._delete(PLAY_TABLE.table, self.__idAsCondition(filmID))
+            self._delete(PLAY_TABLE.table, self.__idCondition, (filmID, ))
 
             values = [(filmID, castID, castRole)
                       for castID, castRole in zip(castIDs, castRoles)]
@@ -509,10 +548,6 @@ class FilmInterface(DBInterface):
             print('failed to update film play info')
             raise
 
-    def __idAsCondition(self, filmID):
-        """Generate SQL condition with film ID"""
-        return f'{FILM_TABLE.id} = {filmID}'
-
 
 class SubInfoInterface(DBInterface):
     """Sub info management base interface"""
@@ -520,8 +555,9 @@ class SubInfoInterface(DBInterface):
     def __init__(self, table, columns, isAdmin):
         """Initialize as guest or administrator"""
         self.__table = table
+        self.__idCondition = f'{table.id} = ?'
         self.__columns = columns
-        self.role = 'admin' if isAdmin else 'guest'
+        self.role = 'admin' if isAdmin else 'guest_usr'
         super().__init__(self.role)
 
     def _insertSubInfo(self, value):
@@ -549,9 +585,8 @@ class SubInfoInterface(DBInterface):
     def _selectSubInfo(self, infoID):
         """Select sub info with info ID"""
         try:
-            self._select(self.__table.table, self.__columns,
-                         self.__idAsCondition(infoID))
-            return self._cursor.rowcount
+            self._select(self.__table.table, self.__columns, self.__idCondition,
+                         (infoID, ))
         except Exception:
             print('failed to select sub info')
             raise
@@ -560,8 +595,7 @@ class SubInfoInterface(DBInterface):
         """Search info ID by name"""
         try:
             self._select(self.__table.table, (self.__table.id, ),
-                         f'{self.__table.name} = {name}')
-            return self._cursor.rowcount
+                         f'{self.__table.name} LIKE ?', (f'%{name}%', ))
         except Exception:
             print('failed to search info ID')
             raise
@@ -573,7 +607,7 @@ class SubInfoInterface(DBInterface):
 
         try:
             self._update(self.__table.table, self.__columns, value,
-                         self.__idAsCondition(infoID))
+                         self.__idCondition, (infoID, ))
         except Exception:
             print('failed to update sub info')
             raise
@@ -584,14 +618,10 @@ class SubInfoInterface(DBInterface):
             raise RuntimeError('only administrators can modify sub info')
 
         try:
-            self._delete(self.__table.table, self.__idAsCondition(infoID))
+            self._delete(self.__table.table, self.__idCondition, (infoID, ))
         except Exception:
             print('failed to delete sub info')
             raise
-
-    def __idAsCondition(self, infoID):
-        """Generate SQL condition with info ID"""
-        return f'{self.__table.id} = {infoID}'
 
 
 class GenreInterface(SubInfoInterface):
@@ -613,7 +643,6 @@ class GenreInterface(SubInfoInterface):
         """Select all genre"""
         try:
             self._select(GENRE_TABLE.table, self.__columns)
-            return self._cursor.rowcount
         except Exception:
             print('failed to select genre info')
             raise
@@ -640,11 +669,11 @@ class DirectorInterface(SubInfoInterface):
 
     def __init__(self, isAdmin):
         """Initialize as guest or administrator"""
-        super().__init__(DIRECTING_TABLE, (DIRECTOR_TABLE.name,
-                                           DIRECTOR_TABLE.sex,
-                                           DIRECTOR_TABLE.birth,
-                                           DIRECTOR_TABLE.nationality,
-                                           DIRECTOR_TABLE.picture), isAdmin)
+        super().__init__(DIRECTOR_TABLE, (DIRECTOR_TABLE.name,
+                                          DIRECTOR_TABLE.sex,
+                                          DIRECTOR_TABLE.birth,
+                                          DIRECTOR_TABLE.nationality,
+                                          DIRECTOR_TABLE.picture), isAdmin)
 
     def insertDirector(self,
                        directorName=None,
@@ -797,24 +826,27 @@ class CompanyInterface(SubInfoInterface):
 
 class CommentInterface(DBInterface):
     """Comment management interface"""
+    __idCondition = f'{COMMENT_TABLE.filmID} = ? AND {COMMENT_TABLE.userID} = ?'
+
     __idColumns = (COMMENT_TABLE.filmID, COMMENT_TABLE.userID)
     __columns = (COMMENT_TABLE.rating, COMMENT_TABLE.comment)
 
+    __filmColumns = (COMMENT_VIEW.filmID, COMMENT_VIEW.filmName)
+    __userColumns = (COMMENT_VIEW.userID, COMMENT_VIEW.userName,
+                     COMMENT_VIEW.userIsAdmin)
+    __infoColumns = (COMMENT_VIEW.rating, COMMENT_VIEW.comment)
+
     def __init__(self, isUser):
         """Initialize as guest or member"""
-        self.role = 'member' if isUser else 'guest'
-        super.__init__(self.role)
+        self.role = 'member' if isUser else 'guest_usr'
+        super().__init__(self.role)
 
     def selectCommentByFilmID(self, filmID):
         """Select comment by film ID"""
         try:
-            self._select(f'{COMMENT_TABLE.table} AS a INNER JOIN '
-                         f'{USER_TABLE.table} AS b ON'
-                         f'a.{COMMENT_TABLE.userID} = b.{USER_TABLE.id}',
-                         (f'b.{USER_TABLE.id}', USER_TABLE.name)
-                         + self.__columns,
-                         f'{COMMENT_TABLE.filmID} = {filmID}')
-            return self._cursor.rowcount
+            self._select(COMMENT_VIEW.table,
+                         self.__userColumns + self.__infoColumns,
+                         f'{COMMENT_VIEW.filmID} = ?', filmID)
         except Exception:
             print('failed to select comment by film ID')
             raise
@@ -822,26 +854,11 @@ class CommentInterface(DBInterface):
     def selectCommentByUserID(self, userID):
         """Select comment by user ID"""
         try:
-            self._select(f'{COMMENT_TABLE.table} AS a INNER JOIN '
-                         f'{FILM_TABLE.table} AS b ON'
-                         f'a.{COMMENT_TABLE.filmID} = b.{FILM_TABLE.id}',
-                         (f'b.{FILM_TABLE.id}', FILM_TABLE.chineseName)
-                         + self.__columns,
-                         f'{COMMENT_TABLE.userID} = {userID}')
-            return self._cursor.rowcount
+            self._select(COMMENT_VIEW.table,
+                         self.__filmColumns + self.__infoColumns,
+                         f'{COMMENT_VIEW.userID} = ?', userID)
         except Exception:
             print('failed to select comment by user ID')
-            raise
-
-    def selectFilmAverageRating(self, filmID):
-        """Select average rating by film ID"""
-        try:
-            self._select(COMMENT_TABLE.table,
-                         (f'AVG({COMMENT_TABLE.rating})', ),
-                         f'{COMMENT_TABLE.filmID} = {filmID}')
-            return self._cursor.rowcount
-        except Exception:
-            print('failed to select average rating by film ID')
             raise
 
     def upsertComment(self, filmID, userID, rating=None, userComment=None):
@@ -849,10 +866,9 @@ class CommentInterface(DBInterface):
         if self.role != 'member':
             raise RuntimeError('only members can modify comments')
 
-        condition = self.__idAsCondition(filmID, userID)
-
         try:
-            self._select(COMMENT_TABLE.table, self.__idColumns, condition)
+            self._select(COMMENT_TABLE.table, self.__idColumns,
+                         self.__idCondition, (filmID, userID))
 
             if self._cursor.rowcount == 0:
                 self._insert(COMMENT_TABLE.table,
@@ -860,7 +876,8 @@ class CommentInterface(DBInterface):
                              (filmID, userID, rating, userComment))
             else:
                 self._update(COMMENT_TABLE.table, self.__columns,
-                             (rating, userComment), condition)
+                             (rating, userComment), self.__idCondition,
+                             (filmID, userID))
         except Exception:
             print('failed to insert or update comment')
             raise
@@ -871,49 +888,54 @@ class CommentInterface(DBInterface):
             raise RuntimeError('only members can modify comments')
 
         try:
-            self._delete(COMMENT_TABLE.table,
-                         self.__idAsCondition(filmID, userID))
+            self._delete(COMMENT_TABLE.table, self.__idCondition,
+                         (filmID, userID))
         except Exception:
             print('failed to delete comment')
             raise
 
-    def __idAsCondition(self, filmID, userID):
-        """Generate SQL condition with film ID and user ID"""
-        return f'{self.__idColumns[0]} = {filmID} AND '\
-            + f'{self.__idColumns[1]} = {userID}'
-
 
 class UserInterface(DBInterface):
     """User info management interface"""
+    ROLE_LOGIN = 'login'
+    ROLE_GUEST = 'guest_usr'
+    ROLE_MEMBER = 'member'
+    ROLE_USR_ADMIN = 'usr_admin'
+
+    __available_roles = (ROLE_LOGIN, ROLE_GUEST, ROLE_MEMBER, ROLE_USR_ADMIN)
+    __idCondition = f'{USER_TABLE.id} = ?'
+
     __columns = (USER_TABLE.name,
                  USER_TABLE.age,
                  USER_TABLE.sex)
 
-    def __init__(self, isLogin, isAdmin):
-        """Initialize as login verifier, member or user administrator"""
-        self.role = 'login' if isLogin else 'usr_admin' if isAdmin else 'member'
-        super.__init__(self.role)
+    def __init__(self, role):
+        """Initialize as login verifier, guest, member or user administrator"""
+        if role not in self.__available_roles:
+            raise ValueError(role)
+
+        self.role = role
+        super().__init__(self.role)
 
     def verifyLogin(self, userID, password):
         """Verify login """
-        if self.role != 'login':
+        if self.role != self.ROLE_LOGIN:
             raise RuntimeError('only login interface can verify login')
 
         self._select(USER_TABLE.table, USER_TABLE.password,
-                     self.__idAsCondition(userID))
+                     self.__idCondition, userID)
+        result = self.fetchResult(1)
 
-        if self._cursor.rowcount == 0:
+        if len(result) == 0:
             return False
-
-        hashed = self.fetchResult(1)[0]
-        return Password.verify(password, hashed)
+        return Password.verify(password, result[0])
 
     def createUser(self, userID, password, userIsAdmin,
                    userName=None,
                    userAge=None,
                    userSex=None):
         """Create new user"""
-        if self.role != 'usr_admin':
+        if self.role != self.ROLE_USR_ADMIN:
             raise RuntimeError('only user administrators can create new user')
 
         hashed = Password.encrypt(password)
@@ -935,9 +957,9 @@ class UserInterface(DBInterface):
     def selectUserInfo(self, userID):
         """Select user info with user ID"""
         try:
-            self._select(USER_TABLE.table, self.__columns,
-                         self.__idAsCondition(userID))
-            return self._cursor.rowcount
+            self._select(USER_TABLE.table,
+                         self.__columns + (USER_TABLE.isAdmin, ),
+                         self.__idCondition, userID)
         except Exception:
             print('failed to select user info')
             raise
@@ -947,53 +969,49 @@ class UserInterface(DBInterface):
                        userAge=None,
                        userSex=None):
         """Update user info with user ID"""
-        if self.role != 'member':
+        if self.role != self.ROLE_MEMBER:
             raise RuntimeError('only users can modify user info')
 
         try:
             self._update(USER_TABLE.table, self.__columns,
-                         (userName, userAge, userSex),
-                         self.__idAsCondition(userID))
+                         (userName, userAge, userSex), self.__idCondition,
+                         userID)
         except Exception:
             print('failed to update user info')
             raise
 
     def updateUserPassword(self, userID, password):
         """Update user password with user ID"""
-        if self.role != 'member':
+        if self.role != self.ROLE_MEMBER:
             raise RuntimeError('only users can modify user password')
 
         try:
             self._update(USER_TABLE.table, (USER_TABLE.password, ),
-                         (password, ), self.__idAsCondition(userID))
+                         (password, ), self.__idCondition, userID)
         except Exception:
             print('failed to update user info')
             raise
 
     def updateUserAdmin(self, userID, userIsAdmin):
         """Update user administration status with user ID"""
-        if self.role != 'usr_admin':
+        if self.role != self.ROLE_USR_ADMIN:
             raise RuntimeError('only user administrators can modify '
                                'user administration status')
 
         try:
             self._update(USER_TABLE.table, (USER_TABLE.isAdmin, ),
-                         (userIsAdmin, ), self.__idAsCondition(userID))
+                         (userIsAdmin, ), self.__idCondition, userID)
         except Exception:
             print('failed to update user administration status')
             raise
 
     def deleteUser(self, userID):
         """Delete user with user ID"""
-        if self.role != 'usr_admin':
+        if self.role != self.ROLE_USR_ADMIN:
             raise RuntimeError('only user administrators can create new user')
 
         try:
-            self._delete(USER_TABLE.table, self.__idAsCondition(userID))
+            self._delete(USER_TABLE.table, self.__idCondition, userID)
         except Exception:
             print('failed to delete user info')
             raise
-
-    def __idAsCondition(self, userID):
-        """Generate SQL condition with user ID"""
-        return f'{USER_TABLE.id} = {userID}'
