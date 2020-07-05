@@ -11,10 +11,10 @@ class ChangeInformationDialog(QDialog, Ui_ChangeInformationDialog):
         self.setupUi(self)
 
     def changeInformation(self):
-        newusername = self.UserName.text()
-        newage = self.Age.text()
-        newsex = self.Sex.text()
-        print(newusername, newage, newsex)
+        newUserName = self.UserName.text()
+        newAge = self.Age.text()
+        newSex = self.Sex.text()
+        print(newUserName, newAge, newSex)
         dialog = Hint("修改成功", parent=self, flags=Qt.WindowTitleHint)
         dialog.open()
         self.accept()

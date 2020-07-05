@@ -2,7 +2,6 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMainWindow
 
 from .GuestMainWindowUI import Ui_GuestMainWindow
-
 from .LoginDialog import LoginDialog
 
 
@@ -31,4 +30,3 @@ class GuestMainWindow(QMainWindow, Ui_GuestMainWindow):
     def loginOrRegister(self):
         dialog = LoginDialog(parent=self, flags=Qt.WindowTitleHint)
         dialog.open()
-

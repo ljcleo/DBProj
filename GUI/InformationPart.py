@@ -14,7 +14,8 @@ class InformationPart(Ui_InformationPart):
     def setupInformation(self, InformationPart):
         self.retranslateUi = super().retranslateUi
         super().setupUi(InformationPart)
-        self.showInformationImage('https://img3.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg')
+        self.showInformationImage(
+            'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg')
 
     def addComment(self):
         if self.login == 0:
@@ -46,10 +47,10 @@ class InformationPart(Ui_InformationPart):
         res = requests.get(url)
         image = QImage.fromData(res.content)
 
-        Picture = QLabel(self.InformationFrame)
-        Picture.setPixmap(QPixmap.fromImage(image))
-        Picture.setGeometry(40, 40, 180, 254)
-        Picture.setScaledContents(True)
+        picture = QLabel(self.InformationFrame)
+        picture.setPixmap(QPixmap.fromImage(image))
+        picture.setGeometry(40, 40, 180, 254)
+        picture.setScaledContents(True)
 
     def showAllDirector(self):
         dialog = AllDirectorDialog(parent=self, flags=Qt.WindowTitleHint)

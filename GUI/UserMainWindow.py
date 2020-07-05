@@ -1,11 +1,10 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMainWindow
 
+from .ChangePasswordDialog import ChangePasswordDialog
+from .GuestMainWindow import GuestMainWindow
 from .UserMainWindowUI import Ui_UserMainWindow
 
-from .LoginDialog import LoginDialog
-from .GuestMainWindow import GuestMainWindow
-from .ChangePasswordDialog import ChangePasswordDialog
 
 class UserMainWindow(QMainWindow, Ui_UserMainWindow):
     def __init__(self, parent=None, flags=Qt.WindowFlags()):
@@ -38,8 +37,6 @@ class UserMainWindow(QMainWindow, Ui_UserMainWindow):
         pass
 
     def logout(self):
-        mainwindow = GuestMainWindow(flags=Qt.WindowTitleHint)
-        mainwindow.show()
+        mainWindow = GuestMainWindow(flags=Qt.WindowTitleHint)
+        mainWindow.show()
         self.close()
-
-

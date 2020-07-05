@@ -13,9 +13,9 @@ class RegisterDialog(QDialog, Ui_RegisterDialog):
     def register(self):
         username = self.UserName.text()
         password = self.Password.text()
-        passwordagain = self.PasswordAgain.text()
+        passwordAgain = self.PasswordAgain.text()
 
-        if passwordagain != password:
+        if passwordAgain != password:
             dialog = Hint("两次输入的密码不一致！", parent=self, flags=Qt.WindowTitleHint)
             dialog.open()
         else:
