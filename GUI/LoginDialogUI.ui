@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>500</height>
+    <width>320</width>
+    <height>320</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>75</x>
-     <y>75</y>
-     <width>250</width>
-     <height>350</height>
+     <x>20</x>
+     <y>20</y>
+     <width>280</width>
+     <height>280</height>
     </rect>
    </property>
    <property name="contextMenuPolicy">
@@ -34,10 +34,10 @@
    <widget class="QPushButton" name="Login">
     <property name="geometry">
      <rect>
-      <x>25</x>
-      <y>160</y>
-      <width>90</width>
-      <height>28</height>
+      <x>30</x>
+      <y>190</y>
+      <width>100</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -50,10 +50,10 @@
    <widget class="QPushButton" name="Register">
     <property name="geometry">
      <rect>
-      <x>25</x>
-      <y>200</y>
-      <width>200</width>
-      <height>28</height>
+      <x>30</x>
+      <y>230</y>
+      <width>220</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -63,10 +63,10 @@
    <widget class="QPushButton" name="Cancel">
     <property name="geometry">
      <rect>
-      <x>135</x>
-      <y>160</y>
-      <width>90</width>
-      <height>28</height>
+      <x>150</x>
+      <y>190</y>
+      <width>100</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -76,8 +76,8 @@
    <widget class="QLabel" name="Title">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>10</y>
+      <x>80</x>
+      <y>20</y>
       <width>120</width>
       <height>30</height>
      </rect>
@@ -85,14 +85,16 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>12</pointsize>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="layoutDirection">
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text">
-     <string>XXX数据库</string>
+     <string>用户登录</string>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -104,8 +106,8 @@
    <widget class="QLineEdit" name="UserName">
     <property name="geometry">
      <rect>
-      <x>45</x>
-      <y>60</y>
+      <x>100</x>
+      <y>80</y>
       <width>160</width>
       <height>30</height>
      </rect>
@@ -117,16 +119,13 @@
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
-    </property>
-    <property name="text">
-     <string>用户名</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="Password">
     <property name="geometry">
      <rect>
-      <x>45</x>
-      <y>100</y>
+      <x>100</x>
+      <y>130</y>
       <width>160</width>
       <height>30</height>
      </rect>
@@ -139,8 +138,64 @@
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="UserIDLabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>80</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>12</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>用户名</string>
+    </property>
+    <property name="buddy">
+     <cstring>UserName</cstring>
+    </property>
+   </widget>
+   <widget class="QLabel" name="PasswordLabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>130</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>12</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>密码</string>
+    </property>
+    <property name="buddy">
+     <cstring>Password</cstring>
     </property>
    </widget>
   </widget>

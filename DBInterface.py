@@ -5,7 +5,11 @@ from os.path import abspath, exists, split
 from pyodbc import connect
 from yaml import full_load as loadYAML
 
-from Password import Password
+from DBProj.Password import Password
+
+
+def getColumn(row, columnName):
+    return row.__getattribute__(columnName)
 
 
 class DBStructure:
@@ -846,7 +850,7 @@ class CommentInterface(DBInterface):
         try:
             self._select(COMMENT_VIEW.table,
                          self.__userColumns + self.__infoColumns,
-                         f'{COMMENT_VIEW.filmID} = ?', filmID)
+                         f'{COMMENT_VIEW.filmID} = ?', (filmID, ))
         except Exception:
             print('failed to select comment by film ID')
             raise
@@ -856,7 +860,7 @@ class CommentInterface(DBInterface):
         try:
             self._select(COMMENT_VIEW.table,
                          self.__filmColumns + self.__infoColumns,
-                         f'{COMMENT_VIEW.userID} = ?', userID)
+                         f'{COMMENT_VIEW.userID} = ?', (userID, ))
         except Exception:
             print('failed to select comment by user ID')
             raise
@@ -922,16 +926,17 @@ class UserInterface(DBInterface):
         if self.role != self.ROLE_LOGIN:
             raise RuntimeError('only login interface can verify login')
 
-        self._select(USER_TABLE.table, USER_TABLE.password,
-                     self.__idCondition, userID)
+        self._select(USER_TABLE.table, (USER_TABLE.password, ),
+                     self.__idCondition, (userID, ))
         result = self.fetchResult(1)
 
         if len(result) == 0:
             return False
-        return Password.verify(password, result[0])
+        return Password.verify(password,
+                               getColumn(result[0], USER_TABLE.password))
 
-    def createUser(self, userID, password, userIsAdmin,
-                   userName=None,
+    def createUser(self, userID, password, userName,
+                   userIsAdmin=False,
                    userAge=None,
                    userSex=None):
         """Create new user"""
@@ -943,7 +948,7 @@ class UserInterface(DBInterface):
             + self.__columns
 
         try:
-            self._insert(self.__table, columns,
+            self._insert(USER_TABLE.table, columns,
                          (userID,
                           hashed,
                           userIsAdmin,
@@ -959,13 +964,12 @@ class UserInterface(DBInterface):
         try:
             self._select(USER_TABLE.table,
                          self.__columns + (USER_TABLE.isAdmin, ),
-                         self.__idCondition, userID)
+                         self.__idCondition, (userID, ))
         except Exception:
             print('failed to select user info')
             raise
 
-    def updateUserInfo(self, userID,
-                       userName=None,
+    def updateUserInfo(self, userID, userName,
                        userAge=None,
                        userSex=None):
         """Update user info with user ID"""
@@ -975,7 +979,7 @@ class UserInterface(DBInterface):
         try:
             self._update(USER_TABLE.table, self.__columns,
                          (userName, userAge, userSex), self.__idCondition,
-                         userID)
+                         (userID, ))
         except Exception:
             print('failed to update user info')
             raise
@@ -987,9 +991,10 @@ class UserInterface(DBInterface):
 
         try:
             self._update(USER_TABLE.table, (USER_TABLE.password, ),
-                         (password, ), self.__idCondition, userID)
+                         (Password.encrypt(password), ), self.__idCondition,
+                         (userID, ))
         except Exception:
-            print('failed to update user info')
+            print('failed to update user password')
             raise
 
     def updateUserAdmin(self, userID, userIsAdmin):
@@ -1011,7 +1016,7 @@ class UserInterface(DBInterface):
             raise RuntimeError('only user administrators can create new user')
 
         try:
-            self._delete(USER_TABLE.table, self.__idCondition, userID)
+            self._delete(USER_TABLE.table, self.__idCondition, (userID, ))
         except Exception:
             print('failed to delete user info')
             raise

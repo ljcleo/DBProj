@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog
 
-from .ChangePasswordDialog import ChangePasswordDialog
+from ..DBInterface import UserInterface
 from .Hint import Hint
 from .LoginDialogUI import Ui_LoginDialog
 from .RegisterDialog import RegisterDialog
@@ -14,16 +14,25 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.setupUi(self)
 
     def login(self):
-        self.last.login = 1
+        userID = self.UserName.text()
+        password = self.Password.text()
+
+        if userID == '' or password == '':
+            Hint('用户名与密码不能为空！', parent=self, flags=Qt.WindowTitleHint).open()
+            return
+
+        loginVerifier = UserInterface(UserInterface.ROLE_LOGIN)
+
+        if not loginVerifier.verifyLogin(userID, password):
+            Hint('用户名或密码错误！', parent=self, flags=Qt.WindowTitleHint).open()
+            return
+
+        self.last.login = userID
         self.last.refresh()
-        dialog = Hint("登录成功", parent=self, flags=Qt.WindowTitleHint)
+        dialog = Hint("登录成功", parent=self.parent(), flags=Qt.WindowTitleHint)
         dialog.open()
-        self.close()
+        self.accept()
 
     def register(self):
         dialog = RegisterDialog(parent=self, flags=Qt.WindowTitleHint)
-        dialog.open()
-
-    def changePassword(self):
-        dialog = ChangePasswordDialog(parent=self, flags=Qt.WindowTitleHint)
         dialog.open()

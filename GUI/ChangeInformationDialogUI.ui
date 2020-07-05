@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>300</width>
-    <height>400</height>
+    <width>320</width>
+    <height>340</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>25</x>
-     <y>25</y>
-     <width>250</width>
-     <height>350</height>
+     <x>20</x>
+     <y>20</y>
+     <width>280</width>
+     <height>300</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -31,10 +31,10 @@
    <widget class="QPushButton" name="Modify">
     <property name="geometry">
      <rect>
-      <x>25</x>
-      <y>230</y>
-      <width>90</width>
-      <height>28</height>
+      <x>30</x>
+      <y>250</y>
+      <width>100</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="font">
@@ -52,10 +52,10 @@
    <widget class="QPushButton" name="Cancel">
     <property name="geometry">
      <rect>
-      <x>135</x>
-      <y>230</y>
-      <width>90</width>
-      <height>28</height>
+      <x>150</x>
+      <y>250</y>
+      <width>100</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="font">
@@ -71,15 +71,17 @@
     <property name="geometry">
      <rect>
       <x>65</x>
-      <y>30</y>
-      <width>120</width>
+      <y>20</y>
+      <width>160</width>
       <height>30</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>12</pointsize>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="layoutDirection">
@@ -95,51 +97,12 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLineEdit" name="Sex">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>160</y>
-      <width>130</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-     </font>
-    </property>
-    <property name="text">
-     <string>男</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="Age">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>120</y>
-      <width>130</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-     </font>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string>20</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="UserName">
     <property name="geometry">
      <rect>
       <x>100</x>
       <y>80</y>
-      <width>130</width>
+      <width>160</width>
       <height>30</height>
      </rect>
     </property>
@@ -151,11 +114,8 @@
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
-    <property name="text">
-     <string>用户名</string>
-    </property>
    </widget>
-   <widget class="QLabel" name="Label1">
+   <widget class="QLabel" name="UserNameLabel">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -167,14 +127,14 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text">
-     <string>用户名</string>
+     <string>昵称</string>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -182,12 +142,15 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>UserName</cstring>
+    </property>
    </widget>
-   <widget class="QLabel" name="Label2">
+   <widget class="QLabel" name="AgeLabel">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>120</y>
+      <y>130</y>
       <width>70</width>
       <height>30</height>
      </rect>
@@ -195,7 +158,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -210,12 +173,15 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>Age</cstring>
+    </property>
    </widget>
-   <widget class="QLabel" name="Label3">
+   <widget class="QLabel" name="SexLabel">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>160</y>
+      <y>180</y>
       <width>70</width>
       <height>30</height>
      </rect>
@@ -223,7 +189,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -238,10 +204,62 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>Sex</cstring>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="Age">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>130</y>
+      <width>160</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>宋体</family>
+     </font>
+    </property>
+    <property name="maximum">
+     <number>150</number>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="Sex">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>180</y>
+      <width>160</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>宋体</family>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>保密</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>男</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>女</string>
+     </property>
+    </item>
    </widget>
   </widget>
  </widget>
  <tabstops>
+  <tabstop>UserName</tabstop>
   <tabstop>Age</tabstop>
   <tabstop>Sex</tabstop>
   <tabstop>Modify</tabstop>

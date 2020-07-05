@@ -13,7 +13,7 @@ class MainWindow(QDialog, Ui_MainWindow, HomepagePart, InformationPart, SearchRe
                  GuestPart):
     def __init__(self, parent=None, flags=Qt.WindowFlags()):
         super().__init__(parent=parent, flags=flags)
-        self.login = 0
+        self.login = None
         self.setupGuest(self)
         self.setupUser(self)
         self.setupSearchResult(self)
@@ -26,7 +26,7 @@ class MainWindow(QDialog, Ui_MainWindow, HomepagePart, InformationPart, SearchRe
 
     def refresh(self):
         self.refreshSearchButton()
-        if self.login == 0:
+        if self.login is None:
             self.hideUser()
             self.showGuest()
         else:

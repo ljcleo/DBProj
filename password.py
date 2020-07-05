@@ -11,7 +11,7 @@ class Password:
         """Encrypt password by SHA256 with salt"""
         if salt is None:
             salt = urandom(saltLen)
-        result = password
+        result = bytes(password, 'utf8')
 
         for i in range(10):
             result = HMAC(result, salt, sha256).digest()

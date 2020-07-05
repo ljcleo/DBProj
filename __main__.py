@@ -3,7 +3,7 @@ import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 
-from GUI.MainPart import MainWindow
+from DBProj.GUI.MainPart import MainWindow
 
 
 if __name__ == '__main__':
