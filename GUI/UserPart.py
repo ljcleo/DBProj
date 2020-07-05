@@ -1,5 +1,6 @@
 from PyQt5.QtCore import Qt
 
+from .ChangeInformationDialog import ChangeInformationDialog
 from .ChangePasswordDialog import ChangePasswordDialog
 from .UserPartUI import Ui_UserPart
 
@@ -14,7 +15,8 @@ class UserPart(Ui_UserPart):
         dialog.open()
 
     def modifyInformation(self):
-        print("暂不支持修改信息")
+        dialog = ChangeInformationDialog(parent=self, flags=Qt.WindowTitleHint)
+        dialog.open()
 
     def logout(self):
         self.login = 0

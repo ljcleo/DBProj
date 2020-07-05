@@ -25,6 +25,7 @@ class MainWindow(QDialog, Ui_MainWindow, HomepagePart, InformationPart, SearchRe
         self.setupUi(self)
 
     def refresh(self):
+        self.refreshSearchButton()
         if self.login == 0:
             self.hideUser()
             self.showGuest()
