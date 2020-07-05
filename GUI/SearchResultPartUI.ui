@@ -194,7 +194,7 @@
     </column>
     <column>
      <property name="text">
-      <string>主演</string>
+      <string>分类</string>
      </property>
      <property name="font">
       <font>
@@ -242,7 +242,7 @@
     </item>
     <item row="0" column="3">
      <property name="text">
-      <string>佚名</string>
+      <string>类别</string>
      </property>
     </item>
     <item row="0" column="4">

@@ -65,24 +65,25 @@ class HomepagePart(Ui_HomepagePart):
         self.showSearchResult()
 
     def showRecommendationImage(self, url1, url2, url3):
+
         # Get the pictures from the Internet then show them in GUI
         res = requests.get(url1)
         image = QImage.fromData(res.content)
-        picture = QLabel(self.RecommendationFrame)
-        picture.setPixmap(QPixmap.fromImage(image))
-        picture.setGeometry(20, 80, 180, 254)
-        picture.setScaledContents(True)
+        Picture1 = QLabel(self.RecommendationFrame)
+        Picture1.setPixmap(QPixmap.fromImage(image))
+        Picture1.setGeometry(20, 80, 180, 254)
+        Picture1.setScaledContents(True)
 
         res = requests.get(url2)
         image = QImage.fromData(res.content)
-        picture = QLabel(self.RecommendationFrame)
-        picture.setPixmap(QPixmap.fromImage(image))
-        picture.setGeometry(250, 80, 180, 254)
-        picture.setScaledContents(True)
+        Picture2 = QLabel(self.RecommendationFrame)
+        Picture2.setPixmap(QPixmap.fromImage(image))
+        Picture2.setGeometry(250, 80, 180, 254)
+        Picture2.setScaledContents(True)
 
         res = requests.get(url3)
         image = QImage.fromData(res.content)
-        picture = QLabel(self.RecommendationFrame)
-        picture.setPixmap(QPixmap.fromImage(image))
-        picture.setGeometry(480, 80, 180, 254)
-        picture.setScaledContents(True)
+        Picture2 = QLabel(self.RecommendationFrame)
+        Picture2.setPixmap(QPixmap.fromImage(image))
+        Picture2.setGeometry(480, 80, 180, 254)
+        Picture2.setScaledContents(True)

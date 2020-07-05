@@ -1,21 +1,23 @@
 import requests
-from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QLabel
 
-from .AllCastDialog import AllCastDialog
-from .AllDirectorDialog import AllDirectorDialog
+from .InformationPartUI import Ui_InformationPart
+
 from .CommentDialog import CommentDialog
 from .Hint import Hint
-from .InformationPartUI import Ui_InformationPart
+from .AllCastDialog import AllCastDialog
+from .AllDirectorDialog import AllDirectorDialog
+from . ModifyMovieDialog import ModifyMovieDialog
 
 
 class InformationPart(Ui_InformationPart):
     def setupInformation(self, InformationPart):
         self.retranslateUi = super().retranslateUi
         super().setupUi(InformationPart)
-        self.showInformationImage(
-            'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg')
+        self.CommentFrame.hide()
+        self.showInformationImage('https://img3.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg')
 
     def addComment(self):
         if self.login == 0:
@@ -29,13 +31,14 @@ class InformationPart(Ui_InformationPart):
         self.InformationFrame.hide()
         self.HLineMovie.hide()
         self.CommentFrame.hide()
+        self.MoreInformationFrame.hide()
         self.AddComment.setAutoDefault(False)
         self.AddComment.setDefault(False)
 
     def showInformation(self):
         self.InformationFrame.show()
         self.HLineMovie.show()
-        self.CommentFrame.show()
+        self.MoreInformationFrame.show()
         self.AddComment.setAutoDefault(True)
         self.AddComment.setDefault(True)
 
@@ -47,10 +50,10 @@ class InformationPart(Ui_InformationPart):
         res = requests.get(url)
         image = QImage.fromData(res.content)
 
-        picture = QLabel(self.InformationFrame)
-        picture.setPixmap(QPixmap.fromImage(image))
-        picture.setGeometry(40, 40, 180, 254)
-        picture.setScaledContents(True)
+        Picture = QLabel(self.InformationFrame)
+        Picture.setPixmap(QPixmap.fromImage(image))
+        Picture.setGeometry(40, 40, 180, 254)
+        Picture.setScaledContents(True)
 
     def showAllDirector(self):
         dialog = AllDirectorDialog(parent=self, flags=Qt.WindowTitleHint)
@@ -59,3 +62,15 @@ class InformationPart(Ui_InformationPart):
     def showAllCast(self):
         dialog = AllCastDialog(parent=self, flags=Qt.WindowTitleHint)
         dialog.open()
+
+    def modifyMovie(self):
+        dialog = ModifyMovieDialog(parent=self, flags=Qt.WindowTitleHint)
+        dialog.open()
+
+    def toComment(self):
+        self.CommentFrame.show()
+        self.MoreInformationFrame.hide()
+
+    def toStoryline(self):
+        self.CommentFrame.hide()
+        self.MoreInformationFrame.show()

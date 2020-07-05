@@ -11,4 +11,4 @@ class Hint(QDialog, Ui_Hint):
         self.label.setText(text)
         self.Timer = QTimer()
         self.Timer.start(1000)
-        self.Timer.timeout.connect(self.accept)
+        self.Timer.timeout.connect(self.close)

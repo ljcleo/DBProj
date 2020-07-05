@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ModifyMoreDialog</class>
+ <widget class="QDialog" name="ModifyMoreDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>修改信息</string>
+  </property>
+  <widget class="QTableWidget" name="DirectorTable">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>30</y>
+     <width>281</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="rowCount">
+    <number>12</number>
+   </property>
+   <attribute name="horizontalHeaderVisible">
+    <bool>true</bool>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row/>
+   <column>
+    <property name="text">
+     <string>姓名</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>执导/编剧</string>
+    </property>
+   </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string>导演1</string>
+    </property>
+   </item>
+   <item row="0" column="1">
+    <property name="text">
+     <string>执导</string>
+    </property>
+   </item>
+   <item row="1" column="0">
+    <property name="text">
+     <string>导演2</string>
+    </property>
+   </item>
+   <item row="1" column="1">
+    <property name="text">
+     <string>执导</string>
+    </property>
+   </item>
+   <item row="2" column="0">
+    <property name="text">
+     <string>导演3</string>
+    </property>
+   </item>
+   <item row="2" column="1">
+    <property name="text">
+     <string>执导</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QTableWidget" name="CastTable">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>281</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="rowCount">
+    <number>12</number>
+   </property>
+   <attribute name="horizontalHeaderVisible">
+    <bool>true</bool>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>新建行</string>
+    </property>
+   </row>
+   <row/>
+   <column>
+    <property name="text">
+     <string>姓名</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>角色</string>
+    </property>
+   </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string>演员1</string>
+    </property>
+   </item>
+   <item row="0" column="1">
+    <property name="text">
+     <string>角色1</string>
+    </property>
+   </item>
+   <item row="1" column="0">
+    <property name="text">
+     <string>演员2</string>
+    </property>
+   </item>
+   <item row="1" column="1">
+    <property name="text">
+     <string>角色2</string>
+    </property>
+   </item>
+   <item row="2" column="0">
+    <property name="text">
+     <string>演员3</string>
+    </property>
+   </item>
+   <item row="2" column="1">
+    <property name="text">
+     <string>角色3</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QTableWidget" name="GenreTable">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>270</y>
+     <width>581</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="rowCount">
+    <number>1</number>
+   </property>
+   <attribute name="horizontalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>true</bool>
+   </attribute>
+   <row>
+    <property name="text">
+     <string>分类</string>
+    </property>
+   </row>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>新建列</string>
+    </property>
+   </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string>类别1</string>
+    </property>
+   </item>
+   <item row="0" column="1">
+    <property name="text">
+     <string>类别2</string>
+    </property>
+   </item>
+   <item row="0" column="2">
+    <property name="text">
+     <string>类别3</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="Modify">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>390</y>
+     <width>90</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>修改</string>
+   </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Cancel">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>390</y>
+     <width>90</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>取消</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>Modify</sender>
+   <signal>clicked()</signal>
+   <receiver>ModifyMoreDialog</receiver>
+   <slot>modify()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>193</x>
+     <y>410</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>192</x>
+     <y>454</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>ModifyMoreDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>455</x>
+     <y>393</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>447</x>
+     <y>468</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>modify()</slot>
+ </slots>
+</ui>

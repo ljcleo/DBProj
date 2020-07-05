@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ChangeInformationDialogUI.ui'
+# Form implementation generated from reading ui file 'ModifyMovieDialogUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.0
 #
@@ -10,11 +10,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_ChangeInformationDialog(object):
-    def setupUi(self, ChangeInformationDialog):
-        ChangeInformationDialog.setObjectName("ChangeInformationDialog")
-        ChangeInformationDialog.resize(300, 400)
-        self.frame = QtWidgets.QFrame(ChangeInformationDialog)
+class Ui_ModifyMovieDialog(object):
+    def setupUi(self, ModifyMovieDialog):
+        ModifyMovieDialog.setObjectName("ModifyMovieDialog")
+        ModifyMovieDialog.resize(300, 400)
+        self.frame = QtWidgets.QFrame(ModifyMovieDialog)
         self.frame.setGeometry(QtCore.QRect(25, 25, 250, 350))
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -42,26 +42,19 @@ class Ui_ChangeInformationDialog(object):
         self.Title.setTextFormat(QtCore.Qt.AutoText)
         self.Title.setAlignment(QtCore.Qt.AlignCenter)
         self.Title.setObjectName("Title")
-        self.Sex = QtWidgets.QLineEdit(self.frame)
-        self.Sex.setGeometry(QtCore.QRect(100, 160, 130, 30))
+        self.ProductionCompany = QtWidgets.QLineEdit(self.frame)
+        self.ProductionCompany.setGeometry(QtCore.QRect(100, 160, 130, 30))
         font = QtGui.QFont()
         font.setFamily("宋体")
-        self.Sex.setFont(font)
-        self.Sex.setObjectName("Sex")
-        self.Age = QtWidgets.QLineEdit(self.frame)
-        self.Age.setGeometry(QtCore.QRect(100, 120, 130, 30))
+        self.ProductionCompany.setFont(font)
+        self.ProductionCompany.setObjectName("ProductionCompany")
+        self.MovieName = QtWidgets.QLineEdit(self.frame)
+        self.MovieName.setGeometry(QtCore.QRect(100, 80, 130, 30))
         font = QtGui.QFont()
         font.setFamily("宋体")
-        self.Age.setFont(font)
-        self.Age.setAutoFillBackground(False)
-        self.Age.setObjectName("Age")
-        self.UserName = QtWidgets.QLineEdit(self.frame)
-        self.UserName.setGeometry(QtCore.QRect(100, 80, 130, 30))
-        font = QtGui.QFont()
-        font.setFamily("宋体")
-        self.UserName.setFont(font)
-        self.UserName.setAutoFillBackground(False)
-        self.UserName.setObjectName("UserName")
+        self.MovieName.setFont(font)
+        self.MovieName.setAutoFillBackground(False)
+        self.MovieName.setObjectName("MovieName")
         self.Label1 = QtWidgets.QLabel(self.frame)
         self.Label1.setGeometry(QtCore.QRect(20, 80, 70, 30))
         font = QtGui.QFont()
@@ -92,24 +85,33 @@ class Ui_ChangeInformationDialog(object):
         self.Label3.setTextFormat(QtCore.Qt.AutoText)
         self.Label3.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.Label3.setObjectName("Label3")
+        self.ReleaseDate = QtWidgets.QDateEdit(self.frame)
+        self.ReleaseDate.setGeometry(QtCore.QRect(100, 120, 130, 30))
+        self.ReleaseDate.setObjectName("ReleaseDate")
+        self.More = QtWidgets.QPushButton(self.frame)
+        self.More.setGeometry(QtCore.QRect(25, 270, 200, 28))
+        font = QtGui.QFont()
+        font.setFamily("宋体")
+        self.More.setFont(font)
+        self.More.setObjectName("More")
 
-        self.retranslateUi(ChangeInformationDialog)
-        self.Cancel.clicked.connect(ChangeInformationDialog.reject)
-        self.Modify.clicked.connect(ChangeInformationDialog.changeInformation)
-        QtCore.QMetaObject.connectSlotsByName(ChangeInformationDialog)
-        ChangeInformationDialog.setTabOrder(self.Age, self.Sex)
-        ChangeInformationDialog.setTabOrder(self.Sex, self.Modify)
-        ChangeInformationDialog.setTabOrder(self.Modify, self.Cancel)
+        self.retranslateUi(ModifyMovieDialog)
+        self.Cancel.clicked.connect(ModifyMovieDialog.reject)
+        self.Modify.clicked.connect(ModifyMovieDialog.modifyMovie)
+        self.More.clicked.connect(ModifyMovieDialog.modifyMore)
+        QtCore.QMetaObject.connectSlotsByName(ModifyMovieDialog)
+        ModifyMovieDialog.setTabOrder(self.ProductionCompany, self.Modify)
+        ModifyMovieDialog.setTabOrder(self.Modify, self.Cancel)
 
-    def retranslateUi(self, ChangeInformationDialog):
+    def retranslateUi(self, ModifyMovieDialog):
         _translate = QtCore.QCoreApplication.translate
-        ChangeInformationDialog.setWindowTitle(_translate("ChangeInformationDialog", "ChangePassword"))
-        self.Modify.setText(_translate("ChangeInformationDialog", "修改"))
-        self.Cancel.setText(_translate("ChangeInformationDialog", "取消"))
-        self.Title.setText(_translate("ChangeInformationDialog", "修改个人信息"))
-        self.Sex.setText(_translate("ChangeInformationDialog", "男"))
-        self.Age.setText(_translate("ChangeInformationDialog", "20"))
-        self.UserName.setText(_translate("ChangeInformationDialog", "用户名"))
-        self.Label1.setText(_translate("ChangeInformationDialog", "用户名"))
-        self.Label2.setText(_translate("ChangeInformationDialog", "年龄"))
-        self.Label3.setText(_translate("ChangeInformationDialog", "性别"))
+        ModifyMovieDialog.setWindowTitle(_translate("ModifyMovieDialog", "修改电影信息"))
+        self.Modify.setText(_translate("ModifyMovieDialog", "修改"))
+        self.Cancel.setText(_translate("ModifyMovieDialog", "取消"))
+        self.Title.setText(_translate("ModifyMovieDialog", "修改电影信息"))
+        self.ProductionCompany.setText(_translate("ModifyMovieDialog", "迪士尼"))
+        self.MovieName.setText(_translate("ModifyMovieDialog", "疯狂动物城"))
+        self.Label1.setText(_translate("ModifyMovieDialog", "电影名称"))
+        self.Label2.setText(_translate("ModifyMovieDialog", "上映日期"))
+        self.Label3.setText(_translate("ModifyMovieDialog", "制作公司"))
+        self.More.setText(_translate("ModifyMovieDialog", "更多"))

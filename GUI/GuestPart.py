@@ -1,6 +1,7 @@
 from PyQt5.QtCore import Qt
 
 from .GuestPartUI import Ui_GuestPart
+
 from .LoginDialog import LoginDialog
 
 
@@ -18,3 +19,5 @@ class GuestPart(Ui_GuestPart):
 
     def showGuest(self):
         self.GuestFrame.show()
+
+
