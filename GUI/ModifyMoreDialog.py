@@ -1,8 +1,8 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog
 
-from .ModifyMoreDialogUI import Ui_ModifyMoreDialog
 from .Hint import Hint
+from .ModifyMoreDialogUI import Ui_ModifyMoreDialog
 
 
 class ModifyMoreDialog(QDialog, Ui_ModifyMoreDialog):

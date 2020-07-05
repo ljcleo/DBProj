@@ -1,10 +1,9 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog
 
-from .ModifyMovieDialogUI import Ui_ModifyMovieDialog
-
 from .Hint import Hint
 from .ModifyMoreDialog import ModifyMoreDialog
+from .ModifyMovieDialogUI import Ui_ModifyMovieDialog
 
 
 class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
@@ -13,10 +12,10 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
         self.setupUi(self)
 
     def modifyMovie(self):
-        newmoviename = self.MovieName.text()
-        newdate = self.ReleaseDate.text()
-        newproduction = self.ProductionCompany.text()
-        print(newmoviename, newdate, newproduction)
+        newMovieName = self.MovieName.text()
+        newDate = self.ReleaseDate.text()
+        newProduction = self.ProductionCompany.text()
+        print(newMovieName, newDate, newProduction)
         dialog = Hint("修改成功", parent=self, flags=Qt.WindowTitleHint)
         dialog.open()
         self.accept()

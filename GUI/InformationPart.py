@@ -1,15 +1,14 @@
 import requests
-from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtWidgets import QLabel
 
-from .InformationPartUI import Ui_InformationPart
-
-from .CommentDialog import CommentDialog
-from .Hint import Hint
 from .AllCastDialog import AllCastDialog
 from .AllDirectorDialog import AllDirectorDialog
-from . ModifyMovieDialog import ModifyMovieDialog
+from .CommentDialog import CommentDialog
+from .Hint import Hint
+from .InformationPartUI import Ui_InformationPart
+from .ModifyMovieDialog import ModifyMovieDialog
 
 
 class InformationPart(Ui_InformationPart):
@@ -17,7 +16,8 @@ class InformationPart(Ui_InformationPart):
         self.retranslateUi = super().retranslateUi
         super().setupUi(InformationPart)
         self.CommentFrame.hide()
-        self.showInformationImage('https://img3.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg')
+        self.showInformationImage(
+            'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg')
 
     def addComment(self):
         if self.login == 0:

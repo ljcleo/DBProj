@@ -1,10 +1,10 @@
-from PyQt5.QtCore import Qt, QTimer
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog
 
 from .ChangePasswordDialog import ChangePasswordDialog
+from .Hint import Hint
 from .LoginDialogUI import Ui_LoginDialog
 from .RegisterDialog import RegisterDialog
-from .Hint import Hint
 
 
 class LoginDialog(QDialog, Ui_LoginDialog):
@@ -14,7 +14,7 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.setupUi(self)
 
     def login(self):
-        self.last.login=1
+        self.last.login = 1
         self.last.refresh()
         dialog = Hint("登录成功", parent=self, flags=Qt.WindowTitleHint)
         dialog.open()
