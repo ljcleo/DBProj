@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'GuestPartUI.ui'
+# Form implementation generated from reading ui file 'DBProj\GUI\GuestPartUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -20,10 +20,10 @@ class Ui_GuestPart(object):
         self.GuestFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.GuestFrame.setObjectName("GuestFrame")
         self.GuestLabel = QtWidgets.QLabel(self.GuestFrame)
-        self.GuestLabel.setGeometry(QtCore.QRect(-5, 0, 130, 40))
+        self.GuestLabel.setGeometry(QtCore.QRect(0, 30, 120, 40))
         font = QtGui.QFont()
-        font.setFamily("宋体")
-        font.setPointSize(14)
+        font.setFamily("等线")
+        font.setPointSize(18)
         self.GuestLabel.setFont(font)
         self.GuestLabel.setScaledContents(False)
         self.GuestLabel.setAlignment(QtCore.Qt.AlignCenter)

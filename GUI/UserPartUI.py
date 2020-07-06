@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'UserPartUI.ui'
+# Form implementation generated from reading ui file 'DBProj\GUI\UserPartUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -33,24 +33,25 @@ class Ui_UserPart(object):
         self.ModifyInformation.setAutoDefault(False)
         self.ModifyInformation.setDefault(False)
         self.ModifyInformation.setObjectName("ModifyInformation")
-        self.UserLabel = QtWidgets.QLabel(self.UserFrame)
-        self.UserLabel.setGeometry(QtCore.QRect(0, 0, 130, 40))
+        self.UserWelcomeLabel = QtWidgets.QLabel(self.UserFrame)
+        self.UserWelcomeLabel.setGeometry(QtCore.QRect(0, 0, 121, 40))
         font = QtGui.QFont()
-        font.setFamily("宋体")
-        font.setPointSize(14)
-        self.UserLabel.setFont(font)
-        self.UserLabel.setScaledContents(False)
-        self.UserLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.UserLabel.setObjectName("UserLabel")
-        self.GuestLabel_2 = QtWidgets.QLabel(self.UserFrame)
-        self.GuestLabel_2.setGeometry(QtCore.QRect(-10, 50, 130, 40))
+        font.setFamily("等线")
+        font.setPointSize(18)
+        self.UserWelcomeLabel.setFont(font)
+        self.UserWelcomeLabel.setScaledContents(False)
+        self.UserWelcomeLabel.setObjectName("UserWelcomeLabel")
+        self.UserNameLabel = QtWidgets.QLabel(self.UserFrame)
+        self.UserNameLabel.setGeometry(QtCore.QRect(-1, 40, 121, 40))
         font = QtGui.QFont()
-        font.setFamily("宋体")
-        font.setPointSize(14)
-        self.GuestLabel_2.setFont(font)
-        self.GuestLabel_2.setScaledContents(False)
-        self.GuestLabel_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.GuestLabel_2.setObjectName("GuestLabel_2")
+        font.setFamily("等线")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.UserNameLabel.setFont(font)
+        self.UserNameLabel.setScaledContents(False)
+        self.UserNameLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.UserNameLabel.setObjectName("UserNameLabel")
         self.ChangePassword = QtWidgets.QPushButton(self.UserFrame)
         self.ChangePassword.setGeometry(QtCore.QRect(0, 200, 120, 30))
         self.ChangePassword.setAutoDefault(False)
@@ -70,6 +71,6 @@ class Ui_UserPart(object):
         self.Logout.setText(_translate("UserPart", "退出登录"))
         self.UserQuit.setText(_translate("UserPart", "退出系统"))
         self.ModifyInformation.setText(_translate("UserPart", "修改个人信息"))
-        self.UserLabel.setText(_translate("UserPart", "你好！"))
-        self.GuestLabel_2.setText(_translate("UserPart", "XXX"))
+        self.UserWelcomeLabel.setText(_translate("UserPart", "你好，"))
+        self.UserNameLabel.setText(_translate("UserPart", "XXX"))
         self.ChangePassword.setText(_translate("UserPart", "修改密码"))

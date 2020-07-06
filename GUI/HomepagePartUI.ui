@@ -32,10 +32,10 @@
   <widget class="QFrame" name="RecommendationFrame">
    <property name="geometry">
     <rect>
-     <x>265</x>
-     <y>215</y>
-     <width>680</width>
-     <height>400</height>
+     <x>260</x>
+     <y>210</y>
+     <width>691</width>
+     <height>411</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -148,8 +148,8 @@
     </property>
     <property name="font">
      <font>
-      <family>宋体</family>
-      <pointsize>16</pointsize>
+      <family>等线</family>
+      <pointsize>18</pointsize>
      </font>
     </property>
     <property name="text">
@@ -161,7 +161,7 @@
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>65</y>
+     <y>60</y>
      <width>570</width>
      <height>80</height>
     </rect>
@@ -175,8 +175,8 @@
    <widget class="QLineEdit" name="SearchInput">
     <property name="geometry">
      <rect>
-      <x>35</x>
-      <y>24</y>
+      <x>30</x>
+      <y>20</y>
       <width>425</width>
       <height>30</height>
      </rect>
@@ -187,17 +187,17 @@
       <pointsize>10</pointsize>
      </font>
     </property>
-    <property name="text">
+    <property name="placeholderText">
      <string>请输入您想搜索的影片</string>
     </property>
    </widget>
    <widget class="QPushButton" name="Search">
     <property name="geometry">
      <rect>
-      <x>459</x>
-      <y>23</y>
+      <x>470</x>
+      <y>20</y>
       <width>75</width>
-      <height>32</height>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">

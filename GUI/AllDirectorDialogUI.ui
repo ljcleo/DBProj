@@ -31,86 +31,11 @@
    <attribute name="verticalHeaderVisible">
     <bool>false</bool>
    </attribute>
-   <row>
+   <column>
     <property name="text">
-     <string>1</string>
+     <string/>
     </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
+   </column>
    <column>
     <property name="text">
      <string>姓名</string>
@@ -126,16 +51,6 @@
      <string>豆瓣链接</string>
     </property>
    </column>
-   <item row="11" column="0">
-    <property name="text">
-     <string>A</string>
-    </property>
-   </item>
-   <item row="12" column="0">
-    <property name="text">
-     <string>B</string>
-    </property>
-   </item>
   </widget>
   <widget class="QPushButton" name="ReturnButton">
    <property name="geometry">
@@ -169,5 +84,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>tableWidget</sender>
+   <signal>cellClicked(int,int)</signal>
+   <receiver>AllDirectorDialog</receiver>
+   <slot>visitAltAtCell(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>418</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>596</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>visitAltAtCell(int,int)</slot>
+ </slots>
 </ui>

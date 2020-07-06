@@ -82,44 +82,43 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="UserLabel">
+   <widget class="QLabel" name="UserWelcomeLabel">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>130</width>
+      <width>121</width>
       <height>40</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>宋体</family>
-      <pointsize>14</pointsize>
+      <family>等线</family>
+      <pointsize>18</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>你好！</string>
+     <string>你好，</string>
     </property>
     <property name="scaledContents">
      <bool>false</bool>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
    </widget>
-   <widget class="QLabel" name="GuestLabel_2">
+   <widget class="QLabel" name="UserNameLabel">
     <property name="geometry">
      <rect>
-      <x>-10</x>
-      <y>50</y>
-      <width>130</width>
+      <x>-1</x>
+      <y>40</y>
+      <width>121</width>
       <height>40</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>宋体</family>
-      <pointsize>14</pointsize>
+      <family>等线</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
@@ -129,7 +128,7 @@
      <bool>false</bool>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="ChangePassword">

@@ -25,92 +25,14 @@
    <property name="editTriggers">
     <set>QAbstractItemView::NoEditTriggers</set>
    </property>
-   <attribute name="horizontalHeaderVisible">
-    <bool>true</bool>
-   </attribute>
    <attribute name="verticalHeaderVisible">
     <bool>false</bool>
    </attribute>
-   <row>
+   <column>
     <property name="text">
-     <string>1</string>
+     <string/>
     </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>新建行</string>
-    </property>
-   </row>
+   </column>
    <column>
     <property name="text">
      <string>姓名</string>
@@ -126,16 +48,6 @@
      <string>豆瓣链接</string>
     </property>
    </column>
-   <item row="11" column="0">
-    <property name="text">
-     <string>A</string>
-    </property>
-   </item>
-   <item row="12" column="0">
-    <property name="text">
-     <string>B</string>
-    </property>
-   </item>
   </widget>
   <widget class="QPushButton" name="ReturnButton">
    <property name="geometry">
@@ -169,5 +81,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>tableWidget</sender>
+   <signal>cellClicked(int,int)</signal>
+   <receiver>AllCastDialog</receiver>
+   <slot>visitAltAtCell(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>435</x>
+     <y>236</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>415</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>visitAltAtCell(int,int)</slot>
+ </slots>
 </ui>

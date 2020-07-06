@@ -33,7 +33,7 @@ class UserPart(Ui_UserPart):
 
     def updateUserName(self):
         if self.login is None:
-            self.GuestLabel_2.setText('无名氏')
+            self.UserNameLabel.setText('无名氏')
             self.loginAdmin = False
         else:
             userNameLoader = UserInterface(UserInterface.ROLE_MEMBER)
@@ -48,4 +48,4 @@ class UserPart(Ui_UserPart):
 
             if self.loginAdmin:
                 userName = '管理员 ' + userName
-            self.GuestLabel_2.setText(userName)
+            self.UserNameLabel.setText(userName)

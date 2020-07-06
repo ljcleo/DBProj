@@ -59,13 +59,10 @@ class HomepagePart(Ui_HomepagePart):
         self.hideHomepage()
 
     def search(self):
-        text = self.SearchInput.text()
-        print(text)
         self.hideRecommendation()
-        self.showSearchResult()
+        self.showSearchResult(self.SearchInput.text())
 
     def showRecommendationImage(self, url1, url2, url3):
-
         # Get the pictures from the Internet then show them in GUI
         res = requests.get(url1)
         image = QImage.fromData(res.content)

@@ -28,21 +28,17 @@ GENRE_TABLE = DBStructure('Genre', {'id': 'Genre_ID', 'name': 'Genre_Name'})
 
 DIRECTOR_TABLE = DBStructure('Director', {'id': 'Director_ID',
                                           'name': 'Director_Name',
-                                          'sex': 'Director_Sex',
-                                          'birth': 'Director_Birth',
-                                          'nationality': 'Director_Nationality',
-                                          'picture': 'Director_Picture'})
+                                          'avatar': 'Director_Avatars',
+                                          'alt': 'Director_Alt'})
 
 CAST_TABLE = DBStructure('Film_Cast', {'id': 'Cast_ID',
                                        'name': 'Cast_Name',
-                                       'sex': 'Cast_Sex',
-                                       'birth': 'Cast_Birth',
-                                       'nationality': 'Cast_Nationality',
-                                       'picture': 'Cast_Picture'})
+                                       'avatar': 'Cast_Avatar',
+                                       'alt': 'Cast_Alt'})
 
 COMPANY_TABLE = DBStructure('Company', {'id': 'Company_ID',
                                         'name': 'Company_Name',
-                                        'nationality': 'Company_Nationality'})
+                                        'nationality': 'Company_City'})
 
 FILM_TABLE = DBStructure('Film', {'id': 'Film_ID',
                                   'chineseName': 'Film_Chinese_Name',
@@ -87,7 +83,7 @@ FILM_VIEW = DBStructure('Film_View',
                          'picture': 'Picture',
                          'length': 'Length',
                          'companyName': 'Company_Name',
-                         'companyNationality': 'Company_Nationality',
+                         'companyNationality': 'Company_City',
                          'directors': 'Film_Directors',
                          'casts': 'Film_Casts',
                          'rating': 'Rating',
@@ -489,7 +485,9 @@ class FilmInterface(DBInterface):
                          f'b.{DIRECTOR_TABLE.id}',
                          (f'b.{DIRECTOR_TABLE.id}',
                           DIRECTOR_TABLE.name,
-                          DIRECTING_TABLE.role),
+                          DIRECTOR_TABLE.avatar,
+                          DIRECTING_TABLE.role,
+                          DIRECTOR_TABLE.alt),
                          self.__idCondition, (filmID, ))
 
         except Exception:
@@ -510,7 +508,7 @@ class FilmInterface(DBInterface):
 
             self._insertMany(DIRECTING_TABLE.table,
                              (DIRECTING_TABLE.filmID,
-                              DIRECTING_TABLE.castID,
+                              DIRECTING_TABLE.directorID,
                               DIRECTING_TABLE.role),
                              values)
         except Exception:
@@ -525,7 +523,9 @@ class FilmInterface(DBInterface):
                          f'a.{PLAY_TABLE.castID} = b.{CAST_TABLE.id}',
                          (f'b.{CAST_TABLE.id}',
                           CAST_TABLE.name,
-                          PLAY_TABLE.role),
+                          CAST_TABLE.avatar,
+                          PLAY_TABLE.role,
+                          CAST_TABLE.alt),
                          self.__idCondition, (filmID, ))
 
         except Exception:
@@ -674,36 +674,22 @@ class DirectorInterface(SubInfoInterface):
     def __init__(self, isAdmin):
         """Initialize as guest or administrator"""
         super().__init__(DIRECTOR_TABLE, (DIRECTOR_TABLE.name,
-                                          DIRECTOR_TABLE.sex,
-                                          DIRECTOR_TABLE.birth,
-                                          DIRECTOR_TABLE.nationality,
-                                          DIRECTOR_TABLE.picture), isAdmin)
+                                          DIRECTOR_TABLE.avatar,
+                                          DIRECTOR_TABLE.alt), isAdmin)
 
     def insertDirector(self,
                        directorName=None,
-                       directorSex=None,
-                       directorBirth=None,
-                       directorNationality=None,
-                       directorPicture=None):
+                       directorAvatar=None,
+                       directorAlt=None):
         """Insert new director"""
-        self._insertSubInfo((directorName,
-                             directorSex,
-                             directorBirth,
-                             directorNationality,
-                             directorPicture))
+        self._insertSubInfo((directorName, directorAvatar, directorAlt))
 
     def insertManyDirectors(self,
                             directorNames=None,
-                            directorSexes=None,
-                            directorBirths=None,
-                            directorNationalities=None,
-                            directorPictures=None):
+                            directorAvatars=None,
+                            directorAlts=None):
         """Insert multiple new directors"""
-        self._insertManySubInfo(zip(directorNames,
-                                    directorSexes,
-                                    directorBirths,
-                                    directorNationalities,
-                                    directorPictures))
+        self._insertManySubInfo(zip(directorNames, directorAvatars, directorAlts))
 
     def selectDirector(self, directorID):
         """Select director with director ID"""
@@ -715,16 +701,12 @@ class DirectorInterface(SubInfoInterface):
 
     def updateDirector(self, directorID,
                        directorName=None,
-                       directorSex=None,
-                       directorBirth=None,
-                       directorNationality=None,
-                       directorPicture=None):
+                       directorAvatar=None,
+                       directorAlt=None):
         """Update genre with genre ID"""
         self._updateSubInfo(directorID, (directorName,
-                                         directorSex,
-                                         directorBirth,
-                                         directorNationality,
-                                         directorPicture))
+                                         directorAvatar,
+                                         directorAlt))
 
     def deleteDirector(self, directorID):
         """Delete genre with genre ID"""
@@ -737,36 +719,16 @@ class CastInterface(SubInfoInterface):
     def __init__(self, isAdmin):
         """Initialize as guest or administrator"""
         super().__init__(CAST_TABLE, (CAST_TABLE.name,
-                                      CAST_TABLE.sex,
-                                      CAST_TABLE.birth,
-                                      CAST_TABLE.nationality,
-                                      CAST_TABLE.picture), isAdmin)
+                                      CAST_TABLE.avatar,
+                                      CAST_TABLE.alt), isAdmin)
 
-    def insertCast(self,
-                   castName=None,
-                   castSex=None,
-                   castBirth=None,
-                   castNationality=None,
-                   castPicture=None):
+    def insertCast(self, castName=None, castAvatar=None, castAlt=None):
         """Insert new cast"""
-        self._insertSubInfo((castName,
-                             castSex,
-                             castBirth,
-                             castNationality,
-                             castPicture))
+        self._insertSubInfo((castName, castAvatar, castAlt))
 
-    def insertManyCasts(self,
-                        castNames=None,
-                        castSexes=None,
-                        castBirths=None,
-                        castNationalities=None,
-                        castPictures=None):
+    def insertManyCasts(self, castNames=None, castAvatars=None, castAlts=None):
         """Insert multiple new casts"""
-        self._insertManySubInfo(zip(castNames,
-                                    castSexes,
-                                    castBirths,
-                                    castNationalities,
-                                    castPictures))
+        self._insertManySubInfo(zip(castNames, castAvatars, castAlts))
 
     def selectCast(self, castID):
         """Select cast with cast ID"""
@@ -776,18 +738,9 @@ class CastInterface(SubInfoInterface):
         """Search cast ID by cast name"""
         return self._searchSubInfoIDByName(castName)
 
-    def updateCast(self, castID,
-                   castName=None,
-                   castSex=None,
-                   castBirth=None,
-                   castNationality=None,
-                   castPicture=None):
+    def updateCast(self, castID, castName=None, castAvatar=None, castAlt=None):
         """Update cast with cast ID"""
-        self._updateSubInfo(castID, (castName,
-                                     castSex,
-                                     castBirth,
-                                     castNationality,
-                                     castPicture))
+        self._updateSubInfo(castID, (castName, castAvatar, castAlt))
 
     def deleteCast(self, castID):
         """Delete cast with cast ID"""

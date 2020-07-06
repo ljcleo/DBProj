@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'HomepagePartUI.ui'
+# Form implementation generated from reading ui file 'DBProj\GUI\HomepagePartUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -20,7 +20,7 @@ class Ui_HomepagePart(object):
         self.HLineSearch.setFrameShape(QtWidgets.QFrame.HLine)
         self.HLineSearch.setObjectName("HLineSearch")
         self.RecommendationFrame = QtWidgets.QFrame(HomepagePart)
-        self.RecommendationFrame.setGeometry(QtCore.QRect(265, 215, 680, 400))
+        self.RecommendationFrame.setGeometry(QtCore.QRect(260, 210, 691, 411))
         self.RecommendationFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.RecommendationFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.RecommendationFrame.setObjectName("RecommendationFrame")
@@ -60,24 +60,24 @@ class Ui_HomepagePart(object):
         self.RecommendationLabel = QtWidgets.QLabel(self.RecommendationFrame)
         self.RecommendationLabel.setGeometry(QtCore.QRect(20, 20, 120, 30))
         font = QtGui.QFont()
-        font.setFamily("宋体")
-        font.setPointSize(16)
+        font.setFamily("等线")
+        font.setPointSize(18)
         self.RecommendationLabel.setFont(font)
         self.RecommendationLabel.setObjectName("RecommendationLabel")
         self.SearchFrame = QtWidgets.QFrame(HomepagePart)
-        self.SearchFrame.setGeometry(QtCore.QRect(320, 65, 570, 80))
+        self.SearchFrame.setGeometry(QtCore.QRect(320, 60, 570, 80))
         self.SearchFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.SearchFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.SearchFrame.setObjectName("SearchFrame")
         self.SearchInput = QtWidgets.QLineEdit(self.SearchFrame)
-        self.SearchInput.setGeometry(QtCore.QRect(35, 24, 425, 30))
+        self.SearchInput.setGeometry(QtCore.QRect(30, 20, 425, 30))
         font = QtGui.QFont()
         font.setFamily("宋体")
         font.setPointSize(10)
         self.SearchInput.setFont(font)
         self.SearchInput.setObjectName("SearchInput")
         self.Search = QtWidgets.QPushButton(self.SearchFrame)
-        self.Search.setGeometry(QtCore.QRect(459, 23, 75, 32))
+        self.Search.setGeometry(QtCore.QRect(470, 20, 75, 30))
         self.Search.setAutoDefault(True)
         self.Search.setDefault(True)
         self.Search.setObjectName("Search")
@@ -96,6 +96,6 @@ class Ui_HomepagePart(object):
         self.RecommendationTitle2.setText(_translate("HomepagePart", "疯狂动物城"))
         self.RecommendationTitle3.setText(_translate("HomepagePart", "疯狂动物城"))
         self.RecommendationLabel.setText(_translate("HomepagePart", "今日推荐"))
-        self.SearchInput.setText(_translate("HomepagePart", "请输入您想搜索的影片"))
+        self.SearchInput.setPlaceholderText(_translate("HomepagePart", "请输入您想搜索的影片"))
         self.Search.setText(_translate("HomepagePart", "搜索"))
         self.Search.setShortcut(_translate("HomepagePart", "Return"))
