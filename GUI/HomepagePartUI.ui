@@ -55,8 +55,8 @@
     </property>
     <property name="font">
      <font>
-      <family>宋体</family>
-      <pointsize>10</pointsize>
+      <family>等线</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="cursor">
@@ -86,8 +86,8 @@
     </property>
     <property name="font">
      <font>
-      <family>宋体</family>
-      <pointsize>10</pointsize>
+      <family>等线</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="cursor">
@@ -117,8 +117,8 @@
     </property>
     <property name="font">
      <font>
-      <family>宋体</family>
-      <pointsize>10</pointsize>
+      <family>等线</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="cursor">
@@ -154,6 +154,45 @@
     </property>
     <property name="text">
      <string>今日推荐</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="RecommendationPicture1">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>80</y>
+      <width>180</width>
+      <height>254</height>
+     </rect>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="RecommendationPicture2">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>80</y>
+      <width>180</width>
+      <height>254</height>
+     </rect>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="RecommendationPicture3">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>80</y>
+      <width>180</width>
+      <height>254</height>
+     </rect>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

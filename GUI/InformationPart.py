@@ -48,12 +48,18 @@ class InformationPart(Ui_InformationPart):
         self.showHomepage()
 
     def showAllDirector(self):
-        dialog = AllDirectorDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint)
-        dialog.open()
+        if self.Director.text() == '--':
+            Hint('暂无导演信息！', parent=self, flags=Qt.WindowTitleHint).open()
+        else:
+            dialog = AllDirectorDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint)
+            dialog.open()
 
     def showAllCast(self):
-        dialog = AllCastDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint)
-        dialog.open()
+        if self.Cast.text() == '--':
+            Hint('暂无演员信息！', parent=self, flags=Qt.WindowTitleHint).open()
+        else:
+            dialog = AllCastDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint)
+            dialog.open()
 
     def modifyMovie(self):
         dialog = ModifyMovieDialog(parent=self, flags=Qt.WindowTitleHint)
@@ -101,9 +107,9 @@ class InformationPart(Ui_InformationPart):
         self.Company.setText(('--' if companyName is None else companyName) +
                              ('--' if companyNationality is None else f'（{companyNationality}）'))
         self.Director.setText('--' if directors is None else
-                              directors if len(directors) < 15 else directors[:15] + '……')
+                              directors if len(directors) < 18 else directors[:15] + '……')
         self.Cast.setText('--' if casts is None else
-                          casts if len(casts) < 15 else casts[:15] + '……')
+                          casts if len(casts) < 18 else casts[:15] + '……')
         self.Rating.setText('--/10' if rating is None else f'{rating:.1f}/10')
 
         self.Storyline.setText('无' if storyline is None else storyline)
