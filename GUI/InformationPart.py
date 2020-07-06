@@ -96,7 +96,7 @@ class InformationPart(Ui_InformationPart):
         self.ChineseName.setText('--' if chineseName is None else chineseName)
         self.OriginalName.setText('--' if originalName is None else originalName)
         self.Genre.setText('--' if genres is None else genres)
-        self.ReleaseDate.setText('--' if releaseDate is None else f'{releaseDate:%Y-%m-%d}')
+        self.ReleaseDate.setText('--' if releaseDate is None else f'{releaseDate}')
         self.Length.setText('--' if length is None else f'{length:d} 分钟')
         self.Company.setText(('--' if companyName is None else companyName) +
                              ('--' if companyNationality is None else f'（{companyNationality}）'))

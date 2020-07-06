@@ -43,8 +43,7 @@ class SearchResultPart(Ui_SearchResultPart):
             self.tableWidget.setItem(
                 index, 1, QTableWidgetItem('--' if nationality is None else nationality))
             self.tableWidget.setItem(
-                index, 2, QTableWidgetItem('--' if releaseDate is None else
-                                           f'{releaseDate:%Y-%m-%d}'))
+                index, 2, QTableWidgetItem('--' if releaseDate is None else f'{releaseDate}'))
             self.tableWidget.setItem(
                 index, 3, QTableWidgetItem('--' if genres is None else genres))
             self.tableWidget.setItem(

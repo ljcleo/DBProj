@@ -47,15 +47,15 @@ class HomepagePart(Ui_HomepagePart):
         self.RecommendationFrame.show()
 
     def movie1(self):
-        self.showInformation()
+        self.showInformation(1)
         self.hideHomepage()
 
     def movie2(self):
-        self.showInformation()
+        self.showInformation(1)
         self.hideHomepage()
 
     def movie3(self):
-        self.showInformation()
+        self.showInformation(1)
         self.hideHomepage()
 
     def search(self):
