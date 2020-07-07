@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SearchSettingDialog</class>
+ <widget class="QDialog" name="SearchSettingDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>360</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>搜索条件设置</string>
+  </property>
+  <widget class="QLabel" name="Label1">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>110</y>
+     <width>70</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="text">
+    <string>电影评分</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Title">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>50</y>
+     <width>120</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="text">
+    <string>搜索条件设置</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="RateLow">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>110</y>
+     <width>110</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="decimals">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <double>10.000000000000000</double>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Label2">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>110</y>
+     <width>70</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="text">
+    <string>到</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="RateHigh">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>110</y>
+     <width>110</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="decimals">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <double>10.000000000000000</double>
+   </property>
+   <property name="value">
+    <double>10.000000000000000</double>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Label3">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>170</y>
+     <width>70</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="text">
+    <string>上映时间</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Label4">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>170</y>
+     <width>70</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="text">
+    <string>到</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QDateEdit" name="DateLow">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>170</y>
+     <width>110</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="dateTime">
+    <datetime>
+     <hour>0</hour>
+     <minute>0</minute>
+     <second>0</second>
+     <year>1900</year>
+     <month>1</month>
+     <day>1</day>
+    </datetime>
+   </property>
+   <property name="minimumDateTime">
+    <datetime>
+     <hour>0</hour>
+     <minute>0</minute>
+     <second>0</second>
+     <year>1900</year>
+     <month>1</month>
+     <day>1</day>
+    </datetime>
+   </property>
+   <property name="maximumDate">
+    <date>
+     <year>2025</year>
+     <month>12</month>
+     <day>31</day>
+    </date>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Label5">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>230</y>
+     <width>70</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="text">
+    <string>分类</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="Genre2">
+   <property name="geometry">
+    <rect>
+     <x>255</x>
+     <y>230</y>
+     <width>80</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>不限</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>爱情</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>传记</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>动画</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>动作</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>短片</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>儿童</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>犯罪</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>歌舞</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>古装</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>鬼怪</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>黑色电影</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>荒诞</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>家庭</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>惊悚</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>剧情</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>科幻</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>恐怖</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>历史</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>冒险</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>奇幻</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>情色</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>同性</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>脱口秀</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>武侠</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>舞台艺术</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>西部</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>喜剧</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>戏曲</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>悬疑</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>音乐</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>运动</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>灾难</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>战争</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>真人秀</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QDateEdit" name="DateHigh">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>170</y>
+     <width>110</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="dateTime">
+    <datetime>
+     <hour>0</hour>
+     <minute>0</minute>
+     <second>0</second>
+     <year>2025</year>
+     <month>12</month>
+     <day>31</day>
+    </datetime>
+   </property>
+   <property name="minimumDateTime">
+    <datetime>
+     <hour>0</hour>
+     <minute>0</minute>
+     <second>0</second>
+     <year>1900</year>
+     <month>1</month>
+     <day>1</day>
+    </datetime>
+   </property>
+   <property name="maximumDate">
+    <date>
+     <year>2025</year>
+     <month>12</month>
+     <day>31</day>
+    </date>
+   </property>
+   <property name="minimumDate">
+    <date>
+     <year>1900</year>
+     <month>1</month>
+     <day>1</day>
+    </date>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Cancel">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>280</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>取消</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Confirm">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>280</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>确认</string>
+   </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>SearchSettingDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>310</x>
+     <y>293</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>306</x>
+     <y>333</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Confirm</sender>
+   <signal>clicked()</signal>
+   <receiver>SearchSettingDialog</receiver>
+   <slot>setSearch()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>204</x>
+     <y>296</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>202</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>setSearch()</slot>
+ </slots>
+</ui>

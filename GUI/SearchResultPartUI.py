@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'DBProj\GUI\SearchResultPartUI.ui'
+# Form implementation generated from reading ui file 'SearchResultPartUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -61,27 +61,40 @@ class Ui_SearchResultPart(object):
         item.setFont(font)
         self.tableWidget.setHorizontalHeaderItem(5, item)
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(True)
-        self.horizontalLayoutWidget = QtWidgets.QWidget(self.SearchResultFrame)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(10, 0, 681, 31))
-        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.DefaultSort = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.AddMovie = QtWidgets.QPushButton(self.SearchResultFrame)
+        self.AddMovie.setGeometry(QtCore.QRect(582, 5, 107, 28))
+        self.AddMovie.setObjectName("AddMovie")
+        self.SetSearch = QtWidgets.QPushButton(self.SearchResultFrame)
+        self.SetSearch.setGeometry(QtCore.QRect(10, 5, 107, 28))
+        self.SetSearch.setObjectName("SetSearch")
+        self.DefaultSort = QtWidgets.QPushButton(self.SearchResultFrame)
+        self.DefaultSort.setGeometry(QtCore.QRect(124, 5, 108, 28))
         self.DefaultSort.setObjectName("DefaultSort")
-        self.horizontalLayout.addWidget(self.DefaultSort)
-        self.DateSort = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        self.DateSort.setObjectName("DateSort")
-        self.horizontalLayout.addWidget(self.DateSort)
-        self.RateSort = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        self.RateSort.setObjectName("RateSort")
-        self.horizontalLayout.addWidget(self.RateSort)
-        self.ReturnRecommendation = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.DateSortDesc = QtWidgets.QPushButton(self.SearchResultFrame)
+        self.DateSortDesc.setGeometry(QtCore.QRect(239, 5, 107, 28))
+        self.DateSortDesc.setObjectName("DateSortDesc")
+        self.ReturnRecommendation = QtWidgets.QPushButton(self.SearchResultFrame)
+        self.ReturnRecommendation.setGeometry(QtCore.QRect(467, 5, 108, 28))
         self.ReturnRecommendation.setObjectName("ReturnRecommendation")
-        self.horizontalLayout.addWidget(self.ReturnRecommendation)
+        self.RateSortDesc = QtWidgets.QPushButton(self.SearchResultFrame)
+        self.RateSortDesc.setGeometry(QtCore.QRect(353, 5, 107, 28))
+        self.RateSortDesc.setObjectName("RateSortDesc")
+        self.RateSortAsc = QtWidgets.QPushButton(self.SearchResultFrame)
+        self.RateSortAsc.setGeometry(QtCore.QRect(353, 5, 107, 28))
+        self.RateSortAsc.setObjectName("RateSortAsc")
+        self.DateSortAsc = QtWidgets.QPushButton(self.SearchResultFrame)
+        self.DateSortAsc.setGeometry(QtCore.QRect(239, 5, 107, 28))
+        self.DateSortAsc.setObjectName("DateSortAsc")
 
         self.retranslateUi(SearchResultPart)
+        self.SetSearch.clicked.connect(SearchResultPart.setSearch)
+        self.DefaultSort.clicked.connect(SearchResultPart.sortDefault)
+        self.DateSortDesc.clicked.connect(SearchResultPart.sortByDateDesc)
+        self.RateSortDesc.clicked.connect(SearchResultPart.sortByRateDesc)
         self.ReturnRecommendation.clicked.connect(SearchResultPart.returnRecommendation)
+        self.AddMovie.clicked.connect(SearchResultPart.addMovie)
+        self.DateSortAsc.clicked.connect(SearchResultPart.sortByDateAsc)
+        self.RateSortAsc.clicked.connect(SearchResultPart.sortByRateAsc)
         QtCore.QMetaObject.connectSlotsByName(SearchResultPart)
 
     def retranslateUi(self, SearchResultPart):
@@ -99,7 +112,11 @@ class Ui_SearchResultPart(object):
         item.setText(_translate("SearchResultPart", "评分"))
         item = self.tableWidget.horizontalHeaderItem(5)
         item.setText(_translate("SearchResultPart", "操作"))
+        self.AddMovie.setText(_translate("SearchResultPart", "添加电影"))
+        self.SetSearch.setText(_translate("SearchResultPart", "高级搜索"))
         self.DefaultSort.setText(_translate("SearchResultPart", "默认排序"))
-        self.DateSort.setText(_translate("SearchResultPart", "按上映时间排序和筛选"))
-        self.RateSort.setText(_translate("SearchResultPart", "按评分排序和筛选"))
+        self.DateSortDesc.setText(_translate("SearchResultPart", "上映时间降序"))
         self.ReturnRecommendation.setText(_translate("SearchResultPart", "返回首页"))
+        self.RateSortDesc.setText(_translate("SearchResultPart", "评分降序"))
+        self.RateSortAsc.setText(_translate("SearchResultPart", "评分升序"))
+        self.DateSortAsc.setText(_translate("SearchResultPart", "上映时间升序"))

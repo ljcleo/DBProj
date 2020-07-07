@@ -2,15 +2,20 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
 
 from ..DBInterface import FILM_VIEW, FilmInterface, getColumn
+from .AddMovieDialog import AddMovieDialog
+from .Hint import Hint
 from .ModifyMovieDialog import ModifyMovieDialog
 from .SearchResultButton import SearchResultButtonWidget
 from .SearchResultPartUI import Ui_SearchResultPart
+from .SearchSettingDialog import SearchSettingDialog
 
 
 class SearchResultPart(Ui_SearchResultPart):
     def setupSearchResult(self, SearchResultPart):
         self.retranslateUi = super().retranslateUi
         super().setupUi(SearchResultPart)
+        self.RateSortAsc.hide()
+        self.DateSortAsc.hide()
 
         # set the width of columns
         self.tableWidget.setColumnWidth(0, 150)  # title
@@ -20,16 +25,31 @@ class SearchResultPart(Ui_SearchResultPart):
         self.tableWidget.setColumnWidth(4, 50)  # rate
         self.tableWidget.setColumnWidth(5, 120)  # operations
 
+        # initialize search settings
+        self.genreID = None
+        self.releaseDate = None
+        self.rating = None
+        self.releaseDateOrder = None
+        self.ratingOrder = None
+
     def hideSearchResult(self):
         self.SearchResultFrame.hide()
 
-    def showSearchResult(self, searchText):
+    def showSearchResult(self, searchText, genreID=None, releaseDate=None, rating=None,
+                         releaseDateOrder=None, ratingOrder=None):
+
+        genreID = self.genreID if genreID is None else genreID
+        releaseDate = self.releaseDate if releaseDate is None else releaseDate
+        rating = self.rating if rating is None else rating
+        releaseDateOrder = self.releaseDateOrder if releaseDateOrder is None else releaseDate
+        ratingOrder = self.ratingOrder if ratingOrder is None else ratingOrder
+
         self.tableWidget.clearContents()
         self.search = searchText
-
         searchEngine = FilmInterface(False)
-        searchEngine.searchFilm(self.search)
-        result = searchEngine.fetchResult(100)
+        searchEngine.searchFilm(self.search, genreID=genreID, releaseDate=releaseDate, rating=rating,
+                                releaseDateOrder=releaseDateOrder, ratingOrder=ratingOrder)
+        result = searchEngine.fetchResult(20)
         self.tableWidget.setRowCount(len(result))
 
         for index, row in enumerate(result):
@@ -45,7 +65,8 @@ class SearchResultPart(Ui_SearchResultPart):
             self.tableWidget.setItem(
                 index, 1, QTableWidgetItem('--' if nationality is None else nationality))
             self.tableWidget.setItem(
-                index, 2, QTableWidgetItem('--' if releaseDate is None else f'{releaseDate}'))
+                index, 2, QTableWidgetItem('--' if releaseDate is None else
+                                           releaseDate))
             self.tableWidget.setItem(
                 index, 3, QTableWidgetItem('--' if genres is None else genres))
             self.tableWidget.setItem(
@@ -84,25 +105,46 @@ class SearchResultPart(Ui_SearchResultPart):
 
     def generateDeleteMovie(self, filmID):
         def deleteMovie():
-            if not self.loginAdmin:
-                QMessageBox.critical(self, '删除电影', '您没有删除电影的权限！')
-                return
-
-            result = QMessageBox.warning(self, '删除电影', '删除操作不可恢复，是否继续？',
-                                         QMessageBox.Yes | QMessageBox.No)
-
-            if result == QMessageBox.Yes:
-                filmDeleter = FilmInterface(True)
-                filmDeleter.deleteFilm(filmID)
-
-                filmDeleter.selectFilm(filmID)
-                result = filmDeleter.fetchResult()
-
-                if len(result) == 0:
-                    QMessageBox.information(self, '删除电影', '电影删除成功！')
-                else:
-                    QMessageBox.information(self, '删除电影', '电影删除失败？！')
-
-                self.showSearchResult(self.search)
+            Hint("您还未登录 无法删除", parent=self, flags=Qt.WindowTitleHint).open()
 
         return deleteMovie
+
+    def setSearch(self):
+        dialog = SearchSettingDialog(parent=self, flags=Qt.WindowTitleHint)
+        dialog.open()
+        # print(self.searchSetting)
+
+    def sortDefault(self):
+        self.showSearchResult(self.SearchInput.text())
+
+    def sortByDateAsc(self):
+        self.releaseDateOrder = False
+        self.ratingOrder = None
+        self.showSearchResult(self.SearchInput.text())
+        self.DateSortAsc.hide()
+        self.DateSortDesc.show()
+
+    def sortByDateDesc(self):
+        self.releaseDateOrder = True
+        self.ratingOrder = None
+        self.showSearchResult(self.SearchInput.text())
+        self.DateSortAsc.show()
+        self.DateSortDesc.hide()
+
+    def sortByRateAsc(self):
+        self.releaseDateOrder = None
+        self.ratingOrder = False
+        self.showSearchResult(self.SearchInput.text())
+        self.RateSortAsc.hide()
+        self.RateSortDesc.show()
+
+    def sortByRateDesc(self):
+        self.releaseDateOrder = None
+        self.ratingOrder = True
+        self.showSearchResult(self.SearchInput.text())
+        self.RateSortAsc.show()
+        self.RateSortDesc.hide()
+
+    def addMovie(self):
+        dialog = AddMovieDialog(parent=self, flags=Qt.WindowTitleHint)
+        dialog.open()
