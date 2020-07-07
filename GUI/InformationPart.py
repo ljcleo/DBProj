@@ -1,6 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QImage, QPixmap
 from requests import get as getURL
+from requests.exceptions import RequestException
 
 from ..DBInterface import FILM_VIEW, FilmInterface, getColumn
 from .AllCastDialog import AllCastDialog
@@ -118,9 +119,14 @@ class InformationPart(Ui_InformationPart):
         self.__showInformationImage(picture)
 
     def __showInformationImage(self, url=None):
+        self.Picture.clear()
+
         if url is not None:
-            res = getURL(url)
-            image = QImage.fromData(res.content)
-            self.Picture.setPixmap(QPixmap.fromImage(image))
+            try:
+                res = getURL(url)
+                image = QImage.fromData(res.content)
+                self.Picture.setPixmap(QPixmap.fromImage(image))
+            except RequestException:
+                self.Picture.setText('海报加载失败')
         else:
-            self.Picture.setPixmap('')
+            self.Picture.setText('暂无海报')

@@ -68,7 +68,7 @@
      <rect>
       <x>250</x>
       <y>80</y>
-      <width>240</width>
+      <width>320</width>
       <height>30</height>
      </rect>
     </property>
@@ -111,7 +111,7 @@
      <rect>
       <x>250</x>
       <y>40</y>
-      <width>240</width>
+      <width>320</width>
       <height>30</height>
      </rect>
     </property>
@@ -532,8 +532,17 @@
       <height>254</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="scaledContents">
      <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

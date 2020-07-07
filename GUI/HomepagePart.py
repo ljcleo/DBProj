@@ -2,6 +2,7 @@ from random import randint
 
 from PyQt5.QtGui import QImage, QPixmap
 from requests import get as getURL
+from requests.exceptions import RequestException
 
 from ..DBInterface import FILM_TABLE, FilmInterface, getColumn
 from .HomepagePartUI import Ui_HomepagePart
@@ -81,10 +82,17 @@ class HomepagePart(Ui_HomepagePart):
             name = getColumn(result[0], FILM_TABLE.chineseName)
             url = getColumn(result[0], FILM_TABLE.picture)
             titles[i].setText(name)
+            pictures[i].clear()
 
-            res = getURL(url)
-            image = QImage.fromData(res.content)
-            pictures[i].setPixmap(QPixmap.fromImage(image))
+            if url is not None:
+                try:
+                    res = getURL(url)
+                    image = QImage.fromData(res.content)
+                    pictures[i].setPixmap(QPixmap.fromImage(image))
+                except RequestException:
+                    pictures[i].setText('海报加载失败')
+            else:
+                pictures[i].setText('暂无海报')
 
     def __generateRecommendation(self):
         # This is not a good recommendation algorithm. Expecting a better one from Julao.
