@@ -6,25 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>360</height>
+    <width>540</width>
+    <height>270</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>评论</string>
   </property>
-  <widget class="QLabel" name="RateLabel">
+  <widget class="QLabel" name="RatingLabel">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>71</y>
-     <width>411</width>
-     <height>41</height>
+     <x>30</x>
+     <y>30</y>
+     <width>200</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>宋体</family>
+     <family>等线</family>
      <pointsize>12</pointsize>
     </font>
    </property>
@@ -35,10 +35,10 @@
   <widget class="QPushButton" name="OKButton">
    <property name="geometry">
     <rect>
-     <x>155</x>
-     <y>281</y>
+     <x>320</x>
+     <y>30</y>
      <width>90</width>
-     <height>28</height>
+     <height>30</height>
     </rect>
    </property>
    <property name="text">
@@ -51,10 +51,10 @@
   <widget class="QPushButton" name="CancelButton">
    <property name="geometry">
     <rect>
-     <x>395</x>
-     <y>281</y>
+     <x>420</x>
+     <y>30</y>
      <width>90</width>
-     <height>28</height>
+     <height>30</height>
     </rect>
    </property>
    <property name="text">
@@ -64,23 +64,23 @@
   <widget class="QPlainTextEdit" name="CommentText">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>130</y>
-     <width>461</width>
-     <height>131</height>
+     <x>30</x>
+     <y>80</y>
+     <width>480</width>
+     <height>160</height>
     </rect>
    </property>
-   <property name="plainText">
+   <property name="placeholderText">
     <string>请输入您的评论</string>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="doubleSpinBox">
+  <widget class="QDoubleSpinBox" name="Rating">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>80</y>
-     <width>70</width>
-     <height>25</height>
+     <x>230</x>
+     <y>30</y>
+     <width>80</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="decimals">
@@ -89,8 +89,8 @@
    <property name="maximum">
     <double>10.000000000000000</double>
    </property>
-   <property name="value">
-    <double>10.000000000000000</double>
+   <property name="singleStep">
+    <double>0.100000000000000</double>
    </property>
   </widget>
  </widget>

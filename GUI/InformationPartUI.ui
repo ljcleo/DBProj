@@ -68,7 +68,7 @@
      <rect>
       <x>250</x>
       <y>80</y>
-      <width>240</width>
+      <width>320</width>
       <height>30</height>
      </rect>
     </property>
@@ -111,7 +111,7 @@
      <rect>
       <x>250</x>
       <y>40</y>
-      <width>240</width>
+      <width>320</width>
       <height>30</height>
      </rect>
     </property>
@@ -176,9 +176,9 @@
    <widget class="QLabel" name="Rating">
     <property name="geometry">
      <rect>
-      <x>579</x>
+      <x>590</x>
       <y>80</y>
-      <width>91</width>
+      <width>80</width>
       <height>30</height>
      </rect>
     </property>
@@ -197,6 +197,15 @@
        <colorrole role="Text">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="NoBrush">
+         <color alpha="128">
           <red>0</red>
           <green>0</green>
           <blue>0</blue>
@@ -223,6 +232,15 @@
          </color>
         </brush>
        </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="NoBrush">
+         <color alpha="128">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
       </inactive>
       <disabled>
        <colorrole role="WindowText">
@@ -240,6 +258,15 @@
           <red>120</red>
           <green>120</green>
           <blue>120</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="NoBrush">
+         <color alpha="128">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
          </color>
         </brush>
        </colorrole>
@@ -505,8 +532,17 @@
       <height>254</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="scaledContents">
      <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
@@ -549,14 +585,14 @@
    <widget class="QPushButton" name="AddComment">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>10</y>
-      <width>90</width>
+      <x>540</x>
+      <y>0</y>
+      <width>120</width>
       <height>28</height>
      </rect>
     </property>
     <property name="text">
-     <string>添加评论</string>
+     <string>添加/修改评论</string>
     </property>
     <property name="autoDefault">
      <bool>true</bool>

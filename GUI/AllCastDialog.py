@@ -1,7 +1,8 @@
-from PyQt5.QtCore import Qt, QSize, QUrl
+from PyQt5.QtCore import QSize, Qt, QUrl
 from PyQt5.QtGui import QDesktopServices, QIcon, QImage, QPixmap
 from PyQt5.QtWidgets import QDialog, QHeaderView, QTableWidgetItem
 from requests import get as getURL
+from requests.exceptions import RequestException
 
 from ..DBInterface import CAST_TABLE, PLAY_TABLE, FilmInterface, getColumn
 from .AllCastDialogUI import Ui_AllCastDialog
@@ -26,11 +27,16 @@ class AllCastDialog(QDialog, Ui_AllCastDialog):
             alt = getColumn(row, CAST_TABLE.alt)
 
             if avatar is not None:
-                avatarResponse = getURL(avatar)
-                self.tableWidget.setItem(
-                    index, 0, QTableWidgetItem(
-                        QIcon(QPixmap.fromImage(QImage.fromData(avatarResponse.content))), ''))
+                try:
+                    avatarResponse = getURL(avatar)
+                    avatarImage = QImage.fromData(avatarResponse.content)
+                    avatarItem = QTableWidgetItem(QIcon(QPixmap.fromImage(avatarImage)), '')
+                except RequestException:
+                    avatarItem = QTableWidgetItem('海报加载失败')
+            else:
+                avatarItem = QTableWidgetItem('暂无海报')
 
+            self.tableWidget.setItem(index, 0, avatarItem)
             self.tableWidget.setItem(index, 1, QTableWidgetItem('--' if name is None else name))
             self.tableWidget.setItem(index, 2, QTableWidgetItem('--' if role is None else role))
 

@@ -1,32 +1,33 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtWidgets import QTableWidgetItem
 from requests import get as getURL
+from requests.exceptions import RequestException
 
-from ..DBInterface import FILM_VIEW, FilmInterface, getColumn, CommentInterface
+from ..DBInterface import COMMENT_VIEW, FILM_VIEW, CommentInterface, FilmInterface, getColumn
 from .AllCastDialog import AllCastDialog
 from .AllDirectorDialog import AllDirectorDialog
 from .CommentDialog import CommentDialog
+from .CommentWidget import CommentWidget
 from .Hint import Hint
 from .InformationPartUI import Ui_InformationPart
 from .ModifyMovieDialog import ModifyMovieDialog
-from .CommentWidget import CommentWidget
 
 
 class InformationPart(Ui_InformationPart):
     def setupInformation(self, InformationPart):
         self.retranslateUi = super().retranslateUi
         super().setupUi(InformationPart)
+
         self.CommentFrame.hide()
-
         self.CommentTable.setColumnWidth(0, 630)
-
 
     def addComment(self):
         if self.login is None:
             dialog = Hint("您还未登录，无法评论！", parent=self, flags=Qt.WindowTitleHint)
             dialog.open()
         else:
-            dialog = CommentDialog(parent=self, flags=Qt.WindowTitleHint)
+            dialog = CommentDialog(self.filmID, self.login, parent=self, flags=Qt.WindowTitleHint)
             dialog.open()
 
     def hideInformation(self):
@@ -39,7 +40,7 @@ class InformationPart(Ui_InformationPart):
 
     def showInformation(self, filmID):
         self.filmID = filmID
-        self.__makeContents()
+        self.makeContents()
 
         self.InformationFrame.show()
         self.HLineMovie.show()
@@ -52,25 +53,29 @@ class InformationPart(Ui_InformationPart):
         self.showHomepage()
 
     def showAllDirector(self):
-        dialog = AllDirectorDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint)
-        dialog.open()
+        if self.Director.text() == '--':
+            Hint('暂无导演信息！', parent=self, flags=Qt.WindowTitleHint).open()
+        else:
+            dialog = AllDirectorDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint)
+            dialog.open()
 
     def showAllCast(self):
-        dialog = AllCastDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint)
-        dialog.open()
+        if self.Cast.text() == '--':
+            Hint('暂无演员信息！', parent=self, flags=Qt.WindowTitleHint).open()
+        else:
+            dialog = AllCastDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint)
+            dialog.open()
 
     def modifyMovie(self):
-        if self.login is None:
-            Hint("您还未登录，无法修改！", parent=self, flags=Qt.WindowTitleHint).open()
+        if not self.loginAdmin:
+            Hint("您没有修改电影的权限！", parent=self, flags=Qt.WindowTitleHint).open()
             return
-        #if self.loginAdmin == False:
-        #    Hint("您不是管理员，无法修改！", parent=self, flags=Qt.WindowTitleHint).open()
-        #    return
+
         dialog = ModifyMovieDialog(parent=self, flags=Qt.WindowTitleHint)
         dialog.open()
 
     def toComment(self):
-        self.__makeComments()
+        self.makeComments()
         self.CommentFrame.show()
         self.MoreInformationFrame.hide()
 
@@ -78,24 +83,39 @@ class InformationPart(Ui_InformationPart):
         self.CommentFrame.hide()
         self.MoreInformationFrame.show()
 
-    def __makeComments(self):
+    def makeComments(self):
         if self.filmID is None:
-            raise RuntimeError('cannot display null information')
+            raise RuntimeError('cannot display comment for nothing')
 
         commentFetcher = CommentInterface(False)
         commentFetcher.selectCommentByFilmID(self.filmID)
         result = commentFetcher.fetchResult()
 
-        self.CommentTable.setRowCount(len(result))
-        for i in range(len(result)):
-            self.CommentTable.setRowHeight(i, 130)
-            comment = CommentWidget()
-            comment.NameLabel.setText(result[i][1])
-            comment.RateLabel.setText('评分：{:.1f}'.format(float(result[i][3])))
-            comment.CommentText.setText(result[i][4] if result[i][4] is not None else '该用户未评论')
-            self.CommentTable.setCellWidget(i, 0, comment)
+        if len(result) == 0:
+            self.CommentTable.setRowCount(1)
+            self.CommentTable.setItem(0, 0, QTableWidgetItem('还没有评论，快来抢沙发吧！'))
+        else:
+            self.CommentTable.setRowCount(len(result))
 
-    def __makeContents(self):
+            for index, row in enumerate(result):
+                # userID = getColumn(row, COMMENT_VIEW.userID)
+                userName = getColumn(row, COMMENT_VIEW.userName)
+                userIsAdmin = getColumn(row, COMMENT_VIEW.userIsAdmin)
+                rating = getColumn(row, COMMENT_VIEW.rating)
+                comment = getColumn(row, COMMENT_VIEW.comment)
+
+                if userIsAdmin:
+                    userName = '管理员 ' + userName
+
+                widget = CommentWidget()
+                widget.NameLabel.setText(userName)
+                widget.RateLabel.setText(f'评分：{rating:.1f}')
+                widget.CommentText.setText(comment if comment is not None else '（该用户未评论）')
+
+                self.CommentTable.setCellWidget(index, 0, widget)
+                self.CommentTable.setRowHeight(index, 130)
+
+    def makeContents(self):
         if self.filmID is None:
             raise RuntimeError('cannot display null information')
 
@@ -124,14 +144,14 @@ class InformationPart(Ui_InformationPart):
         self.ChineseName.setText('--' if chineseName is None else chineseName)
         self.OriginalName.setText('--' if originalName is None else originalName)
         self.Genre.setText('--' if genres is None else genres)
-        self.ReleaseDate.setText('--' if releaseDate is None else releaseDate)
+        self.ReleaseDate.setText('--' if releaseDate is None else f'{releaseDate}')
         self.Length.setText('--' if length is None else f'{length:d} 分钟')
         self.Company.setText(('--' if companyName is None else companyName) +
                              ('--' if companyNationality is None else f'（{companyNationality}）'))
         self.Director.setText('--' if directors is None else
-                              directors if len(directors) < 15 else directors[:15] + '……')
+                              directors if len(directors) < 18 else directors[:15] + '……')
         self.Cast.setText('--' if casts is None else
-                          casts if len(casts) < 15 else casts[:15] + '……')
+                          casts if len(casts) < 18 else casts[:15] + '……')
         self.Rating.setText('--/10' if rating is None else f'{rating:.1f}/10')
 
         self.Storyline.setText('无' if storyline is None else storyline)
@@ -140,9 +160,14 @@ class InformationPart(Ui_InformationPart):
         self.__showInformationImage(picture)
 
     def __showInformationImage(self, url=None):
+        self.Picture.clear()
+
         if url is not None:
-            res = getURL(url)
-            image = QImage.fromData(res.content)
-            self.Picture.setPixmap(QPixmap.fromImage(image))
+            try:
+                res = getURL(url)
+                image = QImage.fromData(res.content)
+                self.Picture.setPixmap(QPixmap.fromImage(image))
+            except RequestException:
+                self.Picture.setText('海报加载失败')
         else:
-            self.Picture.setPixmap('')
+            self.Picture.setText('暂无海报')

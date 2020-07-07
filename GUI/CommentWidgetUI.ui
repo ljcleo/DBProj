@@ -18,13 +18,13 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>80</width>
-     <height>25</height>
+     <width>480</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Andale Mono</family>
+     <family>等线</family>
      <pointsize>12</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -37,15 +37,15 @@
   <widget class="QLabel" name="RateLabel">
    <property name="geometry">
     <rect>
-     <x>480</x>
+     <x>500</x>
      <y>10</y>
-     <width>110</width>
-     <height>25</height>
+     <width>80</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Andale Mono</family>
+     <family>等线</family>
      <pointsize>12</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -61,7 +61,7 @@
      <x>10</x>
      <y>40</y>
      <width>580</width>
-     <height>71</height>
+     <height>80</height>
     </rect>
    </property>
    <property name="palette">

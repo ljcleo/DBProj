@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'CommentWidgetUI.ui'
+# Form implementation generated from reading ui file '.\DBProj\GUI\CommentWidgetUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -15,25 +15,25 @@ class Ui_CommentWidget(object):
         CommentWidget.setObjectName("CommentWidget")
         CommentWidget.resize(630, 130)
         self.NameLabel = QtWidgets.QLabel(CommentWidget)
-        self.NameLabel.setGeometry(QtCore.QRect(10, 10, 80, 25))
+        self.NameLabel.setGeometry(QtCore.QRect(10, 10, 480, 30))
         font = QtGui.QFont()
-        font.setFamily("Andale Mono")
+        font.setFamily("等线")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
         self.NameLabel.setFont(font)
         self.NameLabel.setObjectName("NameLabel")
         self.RateLabel = QtWidgets.QLabel(CommentWidget)
-        self.RateLabel.setGeometry(QtCore.QRect(480, 10, 110, 25))
+        self.RateLabel.setGeometry(QtCore.QRect(500, 10, 80, 30))
         font = QtGui.QFont()
-        font.setFamily("Andale Mono")
+        font.setFamily("等线")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
         self.RateLabel.setFont(font)
         self.RateLabel.setObjectName("RateLabel")
         self.CommentText = QtWidgets.QTextBrowser(CommentWidget)
-        self.CommentText.setGeometry(QtCore.QRect(10, 40, 580, 71))
+        self.CommentText.setGeometry(QtCore.QRect(10, 40, 580, 80))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(38, 107, 255, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)

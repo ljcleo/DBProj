@@ -798,6 +798,15 @@ class CommentInterface(DBInterface):
         self.role = 'member' if isUser else 'guest_usr'
         super().__init__(self.role)
 
+    def selectComment(self, filmID, userID):
+        """select comment by film ID and user ID"""
+        try:
+            self._select(COMMENT_TABLE.table, self.__infoColumns, self.__idCondition,
+                         (filmID, userID))
+        except Exception:
+            print('failed to select comment by film ID')
+            raise
+
     def selectCommentByFilmID(self, filmID):
         """Select comment by film ID"""
         try:
