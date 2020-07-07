@@ -56,7 +56,7 @@
     </column>
     <column>
      <property name="text">
-      <string>国家</string>
+      <string>国家/地区</string>
      </property>
      <property name="font">
       <font>

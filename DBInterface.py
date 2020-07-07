@@ -600,10 +600,11 @@ class SubInfoInterface(DBInterface):
             print('failed to select sub info')
             raise
 
-    def _searchSubInfoIDByName(self, name):
+    def _searchSubInfo(self, name):
         """Search info ID by name"""
         try:
-            self._select(self.__table.table, (self.__table.id, ),
+            self._select(self.__table.table,
+                         (self.__table.id, ) + self.__columns,
                          f'{self.__table.name} LIKE ?', (f'%{name}%', ))
         except Exception:
             print('failed to search info ID')
@@ -651,18 +652,18 @@ class GenreInterface(SubInfoInterface):
     def selectAllGenre(self):
         """Select all genre"""
         try:
-            self._select(GENRE_TABLE.table, self.__columns)
+            self._select(GENRE_TABLE.table, (GENRE_TABLE.id, GENRE_TABLE.name))
         except Exception:
             print('failed to select genre info')
             raise
 
     def selectGenre(self, genreID):
         """Select genre with genre ID"""
-        return self._selectSubInfo(genreID)
+        self._selectSubInfo(genreID)
 
-    def searchGenreIDByName(self, genreName):
+    def searchGenre(self, genreName):
         """Search genre ID by genre name"""
-        return self._searchSubInfoIDByName(genreName)
+        self._searchSubInfo(genreName)
 
     def updateGenre(self, genreID, genreName=None):
         """Update genre with genre ID"""
@@ -698,11 +699,11 @@ class DirectorInterface(SubInfoInterface):
 
     def selectDirector(self, directorID):
         """Select director with director ID"""
-        return self._selectSubInfo(directorID)
+        self._selectSubInfo(directorID)
 
-    def searchDirectorIDByName(self, directorName):
+    def searchDirector(self, directorName):
         """Search director ID by director name"""
-        return self._searchSubInfoIDByName(directorName)
+        self._searchSubInfo(directorName)
 
     def updateDirector(self, directorID,
                        directorName=None,
@@ -737,11 +738,11 @@ class CastInterface(SubInfoInterface):
 
     def selectCast(self, castID):
         """Select cast with cast ID"""
-        return self._selectSubInfo(castID)
+        self._selectSubInfo(castID)
 
-    def searchCastIDByName(self, castName):
+    def searchCast(self, castName):
         """Search cast ID by cast name"""
-        return self._searchSubInfoIDByName(castName)
+        self._searchSubInfo(castName)
 
     def updateCast(self, castID, castName=None, castAvatar=None, castAlt=None):
         """Update cast with cast ID"""
@@ -770,11 +771,11 @@ class CompanyInterface(SubInfoInterface):
 
     def selectCompany(self, companyID):
         """Select company with company ID"""
-        return self._selectSubInfo(companyID)
+        self._selectSubInfo(companyID)
 
-    def searchCompanyIDByName(self, companyName):
+    def searchCompany(self, companyName):
         """Search company ID by company name"""
-        return self._searchSubInfoIDByName(companyName)
+        self._searchSubInfo(companyName)
 
     def updateCompany(self, companyID,
                       companyName=None, companyNationality=None):

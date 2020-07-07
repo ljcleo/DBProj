@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'SearchResultPartUI.ui'
+# Form implementation generated from reading ui file 'DBProj\GUI\SearchResultPartUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -103,7 +103,7 @@ class Ui_SearchResultPart(object):
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("SearchResultPart", "片名"))
         item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("SearchResultPart", "国家"))
+        item.setText(_translate("SearchResultPart", "国家/地区"))
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("SearchResultPart", "上映时间"))
         item = self.tableWidget.horizontalHeaderItem(3)

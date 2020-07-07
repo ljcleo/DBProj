@@ -87,6 +87,9 @@ class HomepagePart(Ui_HomepagePart):
             if url is not None:
                 try:
                     res = getURL(url, timeout=20)
+                    if res.status_code != 200:
+                        raise RequestException()
+
                     image = QImage.fromData(res.content)
                     pictures[i].setPixmap(QPixmap.fromImage(image))
                 except RequestException:
@@ -95,13 +98,11 @@ class HomepagePart(Ui_HomepagePart):
                 pictures[i].setText('暂无海报')
 
     def __generateRecommendation(self):
-        if self.login is None:
-            print('Not Found')
-            return (randint(1, 10000), randint(1, 10000), randint(1, 10000))
-        else:
-            file_path = 'recommendation.txt'
-            with open(file_path, 'r') as f:
-                for i in f.readlines():
-                    if self.login == i.split(',')[0]:
-                        print('Found')
-                        return i.strip().split(',')[1:]
+        # if self.login is None:
+        return (randint(1, 10000), randint(1, 10000), randint(1, 10000))
+        # else:
+        #     file_path = 'recommendation.txt'
+        #     with open(file_path, 'r') as f:
+        #         for i in f.readlines():
+        #             if self.login == i.split(',')[0]:
+        #                 return i.strip().split(',')[1:]

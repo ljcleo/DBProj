@@ -167,6 +167,9 @@ class InformationPart(Ui_InformationPart):
         if url is not None:
             try:
                 res = getURL(url, timeout=20)
+                if res.status_code != 200:
+                    raise RequestException()
+
                 image = QImage.fromData(res.content)
                 self.Picture.setPixmap(QPixmap.fromImage(image))
             except RequestException:

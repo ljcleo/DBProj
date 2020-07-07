@@ -1,9 +1,13 @@
 from PyQt5.QtCore import Qt, QDate
-from PyQt5.QtWidgets import QDialog, QTableWidgetItem
+from PyQt5.QtWidgets import QDialog, QMessageBox, QTableWidgetItem
 
 from ..DBInterface import (DIRECTING_TABLE, DIRECTOR_TABLE, CAST_TABLE,
                            FILM_VIEW, GENRE_TABLE, PLAY_TABLE,
                            CompanyInterface, FilmInterface, getColumn)
+from .FilmCastDialog import FilmCastDialog
+from .FilmCompanyDialog import FilmCompanyDialog
+from .FilmDirectorDialog import FilmDirectorDialog
+from .FilmGenreDialog import FilmGenreDialog
 from .Hint import Hint
 from .ModifyMovieDialogUI import Ui_ModifyMovieDialog
 
@@ -114,6 +118,10 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
             self.CastTable.setItem(index, 1, QTableWidgetItem(castRole))
 
     def modifyMovie(self):
+        if self.companyID is None:
+            Hint('制作公司不能为空！', parent=self.parent(), flags=Qt.WindowTitleHint)
+            return
+
         chineseName = self.MovieName.text()
         if chineseName == '':
             chineseName = None
@@ -173,3 +181,172 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
     def toPreviousPage(self):
         self.FirstPageFrame.show()
         self.SecondPageFrame.hide()
+
+    def modifyCompany(self):
+        def action(companyID, name):
+            if companyID is None:
+                raise RuntimeError('cannot ignore company column')
+
+            self.companyID = companyID
+            self.ProductionCompany.setText(name)
+
+        FilmCompanyDialog(action, self.companyID, parent=self, flags=Qt.WindowTitleHint).open()
+
+    def addGenre(self):
+        def action(genreID, name):
+            if genreID is None:
+                raise RuntimeError('cannot insert null genre')
+
+            self.genres.append(genreID)
+            self.GenreTable.setRowCount(len(self.genres))
+            self.GenreTable.setItem(len(self.genres) - 1, 0, QTableWidgetItem(name))
+
+        FilmGenreDialog(action, others=tuple(self.genres), parent=self,
+                        flags=Qt.WindowTitleHint).open()
+
+    def modifyGenre(self):
+        selected = self.GenreTable.selectedItems()
+
+        if len(selected) == 0:
+            QMessageBox.information(self, '修改分类', '请先选择一个分类再修改！')
+            return
+
+        row = self.GenreTable.row(selected[0])
+
+        def action(genreID, name):
+            if genreID is None:
+                raise RuntimeError('cannot modify into null genre')
+
+            self.genres[row] = genreID
+            self.GenreTable.setItem(row, 0, QTableWidgetItem(name))
+
+        others = self.genres.copy()
+        del others[row]
+
+        FilmGenreDialog(action, genreID=self.genres[row], others=tuple(others), parent=self,
+                        flags=Qt.WindowTitleHint).open()
+
+    def deleteGenre(self):
+        selected = self.GenreTable.selectedItems()
+
+        if len(selected) == 0:
+            QMessageBox.information(self, '删除分类', '请先选择一个分类再删除！')
+            return
+
+        row = self.GenreTable.row(selected[0])
+        result = QMessageBox.warning(self, '删除分类', '删除操作不可恢复，是否继续？',
+                                     QMessageBox.Yes | QMessageBox.No)
+
+        if result == QMessageBox.Yes:
+            del self.genres[row]
+            self.GenreTable.removeRow(row)
+
+    def addDirector(self):
+        def action(directorID, name, role):
+            if directorID is None:
+                raise RuntimeError('cannot insert null director')
+
+            self.directors.append(directorID)
+            self.DirectorTable.setRowCount(len(self.directors))
+            self.DirectorTable.setItem(len(self.directors) - 1, 0, QTableWidgetItem(name))
+            self.DirectorTable.setItem(len(self.directors) - 1, 1, QTableWidgetItem(role))
+
+        FilmDirectorDialog(action, others=tuple(self.directors), parent=self,
+                           flags=Qt.WindowTitleHint).open()
+
+    def modifyDirector(self):
+        selected = self.DirectorTable.selectedItems()
+
+        if len(selected) == 0:
+            QMessageBox.information(self, '修改导演', '请先选择一个导演再修改！')
+            return
+
+        row = self.DirectorTable.row(selected[0])
+
+        def action(directorID, name, role):
+            if directorID is None:
+                raise RuntimeError('cannot modify into null director')
+
+            self.directors[row] = directorID
+            self.DirectorTable.setItem(row, 0, QTableWidgetItem(name))
+            self.DirectorTable.setItem(row, 1, QTableWidgetItem(role))
+
+        role = self.DirectorTable.item(row, 1).text()
+        if role == '--':
+            role = None
+
+        others = self.directors.copy()
+        del others[row]
+
+        FilmDirectorDialog(action, directorID=self.directors[row], role=role, others=tuple(others),
+                           parent=self, flags=Qt.WindowTitleHint).open()
+
+    def deleteDirector(self):
+        selected = self.DirectorTable.selectedItems()
+
+        if len(selected) == 0:
+            QMessageBox.information(self, '删除导演', '请先选择一个导演再删除！')
+            return
+
+        row = self.DirectorTable.row(selected[0])
+        result = QMessageBox.warning(self, '删除导演', '删除操作不可恢复，是否继续？',
+                                     QMessageBox.Yes | QMessageBox.No)
+
+        if result == QMessageBox.Yes:
+            del self.directors[row]
+            self.DirectorTable.removeRow(row)
+
+    def addCast(self):
+        def action(castID, name, role):
+            if castID is None:
+                raise RuntimeError('cannot insert null cast')
+
+            self.casts.append(castID)
+            self.CastTable.setRowCount(len(self.casts))
+            self.CastTable.setItem(len(self.casts) - 1, 0, QTableWidgetItem(name))
+            self.CastTable.setItem(len(self.casts) - 1, 1, QTableWidgetItem(role))
+
+        FilmCastDialog(action, others=tuple(self.casts), parent=self,
+                       flags=Qt.WindowTitleHint).open()
+
+    def modifyCast(self):
+        selected = self.CastTable.selectedItems()
+
+        if len(selected) == 0:
+            QMessageBox.information(self, '修改演员', '请先选择一个演员再修改！')
+            return
+
+        row = self.CastTable.row(selected[0])
+
+        def action(castID, name, role):
+            if castID is None:
+                raise RuntimeError('cannot modify into null cast')
+
+            self.casts[row] = castID
+            self.CastTable.setItem(row, 0, QTableWidgetItem(name))
+            self.CastTable.setItem(row, 1, QTableWidgetItem(role))
+
+        role = self.CastTable.item(row, 1).text()
+        if role == '--':
+            role = None
+
+        others = self.casts.copy()
+        del others[row]
+
+        FilmCastDialog(action, castID=self.casts[row], role=role, others=tuple(others), parent=self,
+                       flags=Qt.WindowTitleHint).open()
+
+    def deleteCast(self):
+        selected = self.CastTable.selectedItems()
+
+        if len(selected) == 0:
+            QMessageBox.information(self, '删除演员', '请先选择一个演员再删除！')
+            return
+
+        row = self.CastTable.row(selected[0])
+        result = QMessageBox.warning(self, '删除演员', '删除操作不可恢复，是否继续？',
+                                     QMessageBox.Yes | QMessageBox.No)
+
+        if result == QMessageBox.Yes:
+            del self.casts[row]
+            self.CastTable.removeRow(row)

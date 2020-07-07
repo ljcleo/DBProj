@@ -2,8 +2,6 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
 
 from ..DBInterface import FILM_VIEW, FilmInterface, getColumn
-from .AddMovieDialog import AddMovieDialog
-from .Hint import Hint
 from .ModifyMovieDialog import ModifyMovieDialog
 from .SearchResultButton import SearchResultButtonWidget
 from .SearchResultPartUI import Ui_SearchResultPart
@@ -46,8 +44,9 @@ class SearchResultPart(Ui_SearchResultPart):
         self.tableWidget.clearContents()
         self.search = searchText
         searchEngine = FilmInterface(False)
-        searchEngine.searchFilm(self.search, genreID=genreID, releaseDate=releaseDate, rating=rating,
-                                releaseDateOrder=releaseDateOrder, ratingOrder=ratingOrder)
+        searchEngine.searchFilm(self.search, genreID=genreID, releaseDate=releaseDate,
+                                rating=rating, releaseDateOrder=releaseDateOrder,
+                                ratingOrder=ratingOrder)
         result = searchEngine.fetchResult(20)
         self.tableWidget.setRowCount(len(result))
 
@@ -64,8 +63,7 @@ class SearchResultPart(Ui_SearchResultPart):
             self.tableWidget.setItem(
                 index, 1, QTableWidgetItem('--' if nationality is None else nationality))
             self.tableWidget.setItem(
-                index, 2, QTableWidgetItem('--' if releaseDate is None else
-                                           releaseDate))
+                index, 2, QTableWidgetItem('--' if releaseDate is None else f'{releaseDate}'))
             self.tableWidget.setItem(
                 index, 3, QTableWidgetItem('--' if genres is None else genres))
             self.tableWidget.setItem(
@@ -104,7 +102,26 @@ class SearchResultPart(Ui_SearchResultPart):
 
     def generateDeleteMovie(self, filmID):
         def deleteMovie():
-            Hint("您还未登录 无法删除", parent=self, flags=Qt.WindowTitleHint).open()
+            if not self.loginAdmin:
+                QMessageBox.critical(self, '删除电影', '您没有删除电影的权限！')
+                return
+
+            result = QMessageBox.warning(self, '删除电影', '删除操作不可恢复，是否继续？',
+                                         QMessageBox.Yes | QMessageBox.No)
+
+            if result == QMessageBox.Yes:
+                filmDeleter = FilmInterface(True)
+                filmDeleter.deleteFilm(filmID)
+
+                filmDeleter.selectFilm(filmID)
+                result = filmDeleter.fetchResult()
+
+                if len(result) == 0:
+                    QMessageBox.information(self, '删除电影', '电影删除成功！')
+                else:
+                    QMessageBox.information(self, '删除电影', '电影删除失败？！')
+
+                self.showSearchResult(self.search)
 
         return deleteMovie
 
@@ -145,5 +162,5 @@ class SearchResultPart(Ui_SearchResultPart):
         self.RateSortDesc.hide()
 
     def addMovie(self):
-        dialog = AddMovieDialog(parent=self, flags=Qt.WindowTitleHint)
+        dialog = ModifyMovieDialog(parent=self, flags=Qt.WindowTitleHint)
         dialog.open()

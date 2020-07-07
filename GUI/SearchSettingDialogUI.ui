@@ -6,26 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
-    <height>360</height>
+    <width>360</width>
+    <height>240</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>搜索条件设置</string>
   </property>
-  <widget class="QLabel" name="Label1">
+  <widget class="QLabel" name="RatingLabel">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>110</y>
+     <x>20</x>
+     <y>80</y>
      <width>70</width>
-     <height>22</height>
+     <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>等线</family>
-     <pointsize>10</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="layoutDirection">
@@ -40,20 +40,25 @@
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
+   <property name="buddy">
+    <cstring>RatingLow</cstring>
+   </property>
   </widget>
   <widget class="QLabel" name="Title">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>50</y>
-     <width>120</width>
+     <x>100</x>
+     <y>30</y>
+     <width>160</width>
      <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>等线</family>
-     <pointsize>12</pointsize>
+     <pointsize>18</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="layoutDirection">
@@ -69,13 +74,13 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="RateLow">
+  <widget class="QDoubleSpinBox" name="RatingLow">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>110</y>
-     <width>110</width>
-     <height>22</height>
+     <x>100</x>
+     <y>80</y>
+     <width>100</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="decimals">
@@ -85,19 +90,19 @@
     <double>10.000000000000000</double>
    </property>
   </widget>
-  <widget class="QLabel" name="Label2">
+  <widget class="QLabel" name="RatingMidLabel">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>110</y>
-     <width>70</width>
-     <height>22</height>
+     <x>210</x>
+     <y>80</y>
+     <width>20</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>等线</family>
-     <pointsize>10</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="layoutDirection">
@@ -110,16 +115,19 @@
     <enum>Qt::AutoText</enum>
    </property>
    <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="buddy">
+    <cstring>RatingHigh</cstring>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="RateHigh">
+  <widget class="QDoubleSpinBox" name="RatingHigh">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>110</y>
-     <width>110</width>
-     <height>22</height>
+     <x>240</x>
+     <y>80</y>
+     <width>100</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="decimals">
@@ -132,19 +140,19 @@
     <double>10.000000000000000</double>
    </property>
   </widget>
-  <widget class="QLabel" name="Label3">
+  <widget class="QLabel" name="DateLabel">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>170</y>
+     <x>20</x>
+     <y>130</y>
      <width>70</width>
-     <height>22</height>
+     <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>等线</family>
-     <pointsize>10</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="layoutDirection">
@@ -159,20 +167,23 @@
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
+   <property name="buddy">
+    <cstring>DateLow</cstring>
+   </property>
   </widget>
-  <widget class="QLabel" name="Label4">
+  <widget class="QLabel" name="DateMidLabel">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>170</y>
-     <width>70</width>
-     <height>22</height>
+     <x>210</x>
+     <y>130</y>
+     <width>20</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>等线</family>
-     <pointsize>10</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="layoutDirection">
@@ -185,16 +196,19 @@
     <enum>Qt::AutoText</enum>
    </property>
    <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="buddy">
+    <cstring>DateHigh</cstring>
    </property>
   </widget>
   <widget class="QDateEdit" name="DateLow">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>170</y>
-     <width>110</width>
-     <height>22</height>
+     <x>100</x>
+     <y>130</y>
+     <width>100</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="dateTime">
@@ -224,20 +238,23 @@
      <day>31</day>
     </date>
    </property>
+   <property name="calendarPopup">
+    <bool>true</bool>
+   </property>
   </widget>
-  <widget class="QLabel" name="Label5">
+  <widget class="QLabel" name="GenreLabel">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>230</y>
-     <width>70</width>
-     <height>22</height>
+     <x>20</x>
+     <y>180</y>
+     <width>40</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>等线</family>
-     <pointsize>10</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="layoutDirection">
@@ -252,199 +269,27 @@
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
+   <property name="buddy">
+    <cstring>Genre</cstring>
+   </property>
   </widget>
-  <widget class="QComboBox" name="Genre2">
+  <widget class="QComboBox" name="Genre">
    <property name="geometry">
     <rect>
-     <x>255</x>
-     <y>230</y>
-     <width>80</width>
-     <height>22</height>
+     <x>70</x>
+     <y>180</y>
+     <width>100</width>
+     <height>30</height>
     </rect>
    </property>
-   <item>
-    <property name="text">
-     <string>不限</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>爱情</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>传记</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>动画</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>动作</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>短片</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>儿童</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>犯罪</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>歌舞</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>古装</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>鬼怪</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>黑色电影</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>荒诞</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>家庭</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>惊悚</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>剧情</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>科幻</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>恐怖</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>历史</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>冒险</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>奇幻</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>情色</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>同性</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>脱口秀</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>武侠</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>舞台艺术</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>西部</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>喜剧</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>戏曲</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>悬疑</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>音乐</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>运动</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>灾难</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>战争</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>真人秀</string>
-    </property>
-   </item>
   </widget>
   <widget class="QDateEdit" name="DateHigh">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>170</y>
-     <width>110</width>
-     <height>22</height>
+     <x>240</x>
+     <y>130</y>
+     <width>100</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="dateTime">
@@ -481,13 +326,16 @@
      <day>1</day>
     </date>
    </property>
+   <property name="calendarPopup">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="Cancel">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>280</y>
-     <width>100</width>
+     <x>270</x>
+     <y>180</y>
+     <width>70</width>
      <height>30</height>
     </rect>
    </property>
@@ -503,9 +351,9 @@
   <widget class="QPushButton" name="Confirm">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>280</y>
-     <width>100</width>
+     <x>190</x>
+     <y>180</y>
+     <width>70</width>
      <height>30</height>
     </rect>
    </property>
@@ -522,6 +370,15 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>RatingLow</tabstop>
+  <tabstop>RatingHigh</tabstop>
+  <tabstop>DateLow</tabstop>
+  <tabstop>DateHigh</tabstop>
+  <tabstop>Genre</tabstop>
+  <tabstop>Confirm</tabstop>
+  <tabstop>Cancel</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -531,12 +388,12 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>310</x>
-     <y>293</y>
+     <x>320</x>
+     <y>193</y>
     </hint>
     <hint type="destinationlabel">
      <x>306</x>
-     <y>333</y>
+     <y>239</y>
     </hint>
    </hints>
   </connection>
@@ -547,12 +404,12 @@
    <slot>setSearch()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>204</x>
-     <y>296</y>
+     <x>254</x>
+     <y>196</y>
     </hint>
     <hint type="destinationlabel">
      <x>202</x>
-     <y>317</y>
+     <y>239</y>
     </hint>
    </hints>
   </connection>
