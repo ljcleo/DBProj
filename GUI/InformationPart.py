@@ -86,7 +86,7 @@ class InformationPart(Ui_InformationPart):
     def makeComments(self):
         if self.filmID is None:
             raise RuntimeError('cannot display comment for nothing')
-
+        self.CommentTable.clear()
         commentFetcher = CommentInterface(False)
         commentFetcher.selectCommentByFilmID(self.filmID)
         result = commentFetcher.fetchResult()

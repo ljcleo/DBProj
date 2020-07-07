@@ -95,5 +95,13 @@ class HomepagePart(Ui_HomepagePart):
                 pictures[i].setText('暂无海报')
 
     def __generateRecommendation(self):
-        # This is not a good recommendation algorithm. Expecting a better one from Julao.
-        return (randint(1, 10000), randint(1, 10000), randint(1, 10000))
+        if self.login is None:
+            print('Not Found')
+            return (randint(1, 10000), randint(1, 10000), randint(1, 10000))
+        else:
+            file_path = 'recommendation.txt'
+            with open(file_path, 'r') as f:
+                for i in f.readlines():
+                    if self.login == i.split(',')[0]:
+                        print('Found')
+                        return i.strip().split(',')[1:]

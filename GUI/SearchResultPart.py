@@ -5,7 +5,6 @@ from ..DBInterface import FILM_VIEW, FilmInterface, getColumn
 from .SearchResultButton import SearchResultButtonWidget
 from .SearchResultPartUI import Ui_SearchResultPart
 from .Hint import Hint
-from .AddMovieDialog import AddMovieDialog
 from .SearchSettingDialog import SearchSettingDialog
 
 
@@ -140,5 +139,4 @@ class SearchResultPart(Ui_SearchResultPart):
         self.RateSortDesc.hide()
 
     def addMovie(self):
-        dialog = AddMovieDialog(parent=self, flags=Qt.WindowTitleHint)
-        dialog.open()
+        pass
