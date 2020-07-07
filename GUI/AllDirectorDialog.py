@@ -29,7 +29,7 @@ class AllDirectorDialog(QDialog, Ui_AllDirectorDialog):
 
             if avatar is not None:
                 try:
-                    avatarResponse = getURL(avatar)
+                    avatarResponse = getURL(avatar, timeout=20)
                     avatarImage = QImage.fromData(avatarResponse.content)
                     avatarItem = QTableWidgetItem(QIcon(QPixmap.fromImage(avatarImage)), '')
                 except RequestException:

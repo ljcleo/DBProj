@@ -1,6 +1,8 @@
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
 
 from ..DBInterface import FILM_VIEW, FilmInterface, getColumn
+from .ModifyMovieDialog import ModifyMovieDialog
 from .SearchResultButton import SearchResultButtonWidget
 from .SearchResultPartUI import Ui_SearchResultPart
 
@@ -70,7 +72,13 @@ class SearchResultPart(Ui_SearchResultPart):
 
     def generateModifyMovie(self, filmID):
         def modifyMovie():
-            pass
+            if not self.loginAdmin:
+                QMessageBox.critical(self, '修改电影信息', '您没有修改电影信息的权限！')
+                return
+
+            dialog = ModifyMovieDialog(filmID, lambda: self.showSearchResult(self.search),
+                                       parent=self, flags=Qt.WindowTitleHint)
+            dialog.open()
 
         return modifyMovie
 

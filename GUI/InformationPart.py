@@ -68,10 +68,11 @@ class InformationPart(Ui_InformationPart):
 
     def modifyMovie(self):
         if not self.loginAdmin:
-            Hint("您没有修改电影的权限！", parent=self, flags=Qt.WindowTitleHint).open()
+            Hint("您没有修改电影信息的权限！", parent=self, flags=Qt.WindowTitleHint).open()
             return
 
-        dialog = ModifyMovieDialog(parent=self, flags=Qt.WindowTitleHint)
+        dialog = ModifyMovieDialog(self.filmID, self.makeContents, parent=self,
+                                   flags=Qt.WindowTitleHint)
         dialog.open()
 
     def toComment(self):
@@ -84,6 +85,7 @@ class InformationPart(Ui_InformationPart):
         self.MoreInformationFrame.show()
 
     def makeComments(self):
+        self.CommentTable.clearContents()
         if self.filmID is None:
             raise RuntimeError('cannot display comment for nothing')
 
@@ -164,7 +166,7 @@ class InformationPart(Ui_InformationPart):
 
         if url is not None:
             try:
-                res = getURL(url)
+                res = getURL(url, timeout=20)
                 image = QImage.fromData(res.content)
                 self.Picture.setPixmap(QPixmap.fromImage(image))
             except RequestException:

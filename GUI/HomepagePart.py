@@ -86,7 +86,7 @@ class HomepagePart(Ui_HomepagePart):
 
             if url is not None:
                 try:
-                    res = getURL(url)
+                    res = getURL(url, timeout=20)
                     image = QImage.fromData(res.content)
                     pictures[i].setPixmap(QPixmap.fromImage(image))
                 except RequestException:

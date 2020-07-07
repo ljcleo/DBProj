@@ -1,11 +1,11 @@
-from dotenv import load_dotenv as loadEnv
 from os import getenv
 from os.path import abspath, exists, split
 
-from pyodbc import connect
+from dotenv import load_dotenv as loadEnv
 from yaml import full_load as loadYAML
 
 from DBProj.Password import Password
+from pyodbc import connect
 
 
 def getColumn(row, columnName):
@@ -82,6 +82,7 @@ FILM_VIEW = DBStructure('Film_View',
                          'releaseDate': 'Release_Date',
                          'picture': 'Picture',
                          'length': 'Length',
+                         'companyID': 'Company_ID',
                          'companyName': 'Company_Name',
                          'companyNationality': 'Company_City',
                          'directors': 'Film_Directors',
@@ -154,7 +155,7 @@ class DBInterface:
             raise ValueError('columns and value do not match')
 
         columnStr = ', '.join(columns)
-        placeholder = ', '.join(['?'] * len(value))
+        placeholder = ', '.join(['?'] * len(columns))
         sql = f'INSERT INTO {table} ({columnStr}) VALUES ({placeholder})'
         self._cursor.execute(sql, value)
 
@@ -165,7 +166,7 @@ class DBInterface:
             raise ValueError('columns and (some) values do not match')
 
         columnStr = ', '.join(columns)
-        placeholder = ', '.join(['?'] * len(values))
+        placeholder = ', '.join(['?'] * len(columns))
         sql = f'INSERT INTO {table} ({columnStr}) VALUES ({placeholder})'
         self._cursor.executemany(sql, values)
 
@@ -240,6 +241,7 @@ class FilmInterface(DBInterface):
                      FILM_VIEW.releaseDate,
                      FILM_VIEW.picture,
                      FILM_VIEW.length,
+                     FILM_VIEW.companyID,
                      FILM_VIEW.companyName,
                      FILM_VIEW.companyNationality,
                      FILM_VIEW.directors,
@@ -468,10 +470,11 @@ class FilmInterface(DBInterface):
             self._delete(FILM_GENRE_TABLE.table, self.__idCondition, (filmID, ))
             values = [(filmID, genreID) for genreID in genreIDs]
 
-            self._insertMany(FILM_GENRE_TABLE.table,
-                             (FILM_GENRE_TABLE.filmID,
-                              FILM_GENRE_TABLE.genreID),
-                             values)
+            if len(values) > 0:
+                self._insertMany(FILM_GENRE_TABLE.table,
+                                 (FILM_GENRE_TABLE.filmID,
+                                  FILM_GENRE_TABLE.genreID),
+                                 values)
         except Exception:
             print('failed to update film genre')
             raise
@@ -506,11 +509,12 @@ class FilmInterface(DBInterface):
                       for directorID, directorRole
                       in zip(directorIDs, directorRoles)]
 
-            self._insertMany(DIRECTING_TABLE.table,
-                             (DIRECTING_TABLE.filmID,
-                              DIRECTING_TABLE.directorID,
-                              DIRECTING_TABLE.role),
-                             values)
+            if len(values) > 0:
+                self._insertMany(DIRECTING_TABLE.table,
+                                 (DIRECTING_TABLE.filmID,
+                                  DIRECTING_TABLE.directorID,
+                                  DIRECTING_TABLE.role),
+                                 values)
         except Exception:
             print('failed to update film directing info')
             raise
@@ -543,11 +547,12 @@ class FilmInterface(DBInterface):
             values = [(filmID, castID, castRole)
                       for castID, castRole in zip(castIDs, castRoles)]
 
-            self._insertMany(PLAY_TABLE.table,
-                             (PLAY_TABLE.filmID,
-                              PLAY_TABLE.castID,
-                              PLAY_TABLE.role),
-                             values)
+            if len(values) > 0:
+                self._insertMany(PLAY_TABLE.table,
+                                 (PLAY_TABLE.filmID,
+                                  PLAY_TABLE.castID,
+                                  PLAY_TABLE.role),
+                                 values)
         except Exception:
             print('failed to update film play info')
             raise

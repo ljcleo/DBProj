@@ -16,10 +16,10 @@
   <widget class="QFrame" name="FirstPageFrame">
    <property name="geometry">
     <rect>
-     <x>25</x>
-     <y>25</y>
-     <width>741</width>
-     <height>541</height>
+     <x>20</x>
+     <y>20</y>
+     <width>760</width>
+     <height>560</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -31,9 +31,9 @@
    <widget class="QLineEdit" name="ProductionCompany">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>540</x>
       <y>80</y>
-      <width>130</width>
+      <width>160</width>
       <height>30</height>
      </rect>
     </property>
@@ -42,16 +42,19 @@
       <family>宋体</family>
      </font>
     </property>
-    <property name="text">
-     <string>迪士尼</string>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="placeholderText">
+     <string>电影制作公司</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="MovieName">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>100</x>
       <y>80</y>
-      <width>130</width>
+      <width>320</width>
       <height>30</height>
      </rect>
     </property>
@@ -63,14 +66,14 @@
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
-    <property name="text">
-     <string>疯狂动物城</string>
+    <property name="placeholderText">
+     <string>电影中文名称</string>
     </property>
    </widget>
-   <widget class="QLabel" name="Label1">
+   <widget class="QLabel" name="MovieNameLabel">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>20</x>
       <y>80</y>
       <width>70</width>
       <height>30</height>
@@ -79,7 +82,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -94,11 +97,14 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>MovieName</cstring>
+    </property>
    </widget>
-   <widget class="QLabel" name="Label2">
+   <widget class="QLabel" name="ReleaseDateLabel">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>460</x>
       <y>160</y>
       <width>70</width>
       <height>30</height>
@@ -107,7 +113,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -122,11 +128,14 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>ReleaseDate</cstring>
+    </property>
    </widget>
-   <widget class="QLabel" name="Label3">
+   <widget class="QLabel" name="ProductionCompanyLabel">
     <property name="geometry">
      <rect>
-      <x>400</x>
+      <x>460</x>
       <y>80</y>
       <width>70</width>
       <height>30</height>
@@ -135,7 +144,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -150,91 +159,44 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>ProductionCompany</cstring>
+    </property>
    </widget>
    <widget class="QDateEdit" name="ReleaseDate">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>540</x>
       <y>160</y>
-      <width>130</width>
+      <width>200</width>
       <height>30</height>
      </rect>
+    </property>
+    <property name="displayFormat">
+     <string>yyyy-MM-dd</string>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QTableWidget" name="CastTable">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>440</x>
       <y>240</y>
-      <width>271</width>
-      <height>221</height>
+      <width>300</width>
+      <height>240</height>
      </rect>
     </property>
-    <property name="rowCount">
-     <number>12</number>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
     </property>
-    <attribute name="horizontalHeaderVisible">
-     <bool>false</bool>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
     </attribute>
     <attribute name="verticalHeaderVisible">
      <bool>false</bool>
     </attribute>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row/>
     <column>
      <property name="text">
       <string>姓名</string>
@@ -245,111 +207,25 @@
       <string>角色</string>
      </property>
     </column>
-    <item row="0" column="0">
-     <property name="text">
-      <string>演员1</string>
-     </property>
-    </item>
-    <item row="0" column="1">
-     <property name="text">
-      <string>角色1</string>
-     </property>
-    </item>
-    <item row="1" column="0">
-     <property name="text">
-      <string>演员2</string>
-     </property>
-    </item>
-    <item row="1" column="1">
-     <property name="text">
-      <string>角色2</string>
-     </property>
-    </item>
-    <item row="2" column="0">
-     <property name="text">
-      <string>演员3</string>
-     </property>
-    </item>
-    <item row="2" column="1">
-     <property name="text">
-      <string>角色3</string>
-     </property>
-    </item>
    </widget>
    <widget class="QTableWidget" name="DirectorTable">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>160</x>
       <y>240</y>
-      <width>211</width>
-      <height>221</height>
+      <width>240</width>
+      <height>240</height>
      </rect>
     </property>
-    <property name="rowCount">
-     <number>12</number>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
     </property>
-    <attribute name="horizontalHeaderVisible">
-     <bool>false</bool>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
     </attribute>
     <attribute name="verticalHeaderVisible">
      <bool>false</bool>
     </attribute>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row/>
     <column>
      <property name="text">
       <string>姓名</string>
@@ -360,41 +236,11 @@
       <string>执导/编剧</string>
      </property>
     </column>
-    <item row="0" column="0">
-     <property name="text">
-      <string>导演1</string>
-     </property>
-    </item>
-    <item row="0" column="1">
-     <property name="text">
-      <string>执导</string>
-     </property>
-    </item>
-    <item row="1" column="0">
-     <property name="text">
-      <string>导演2</string>
-     </property>
-    </item>
-    <item row="1" column="1">
-     <property name="text">
-      <string>执导</string>
-     </property>
-    </item>
-    <item row="2" column="0">
-     <property name="text">
-      <string>导演3</string>
-     </property>
-    </item>
-    <item row="2" column="1">
-     <property name="text">
-      <string>执导</string>
-     </property>
-    </item>
    </widget>
-   <widget class="QLabel" name="Label4">
+   <widget class="QLabel" name="DirectorLabel">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>160</x>
       <y>210</y>
       <width>70</width>
       <height>30</height>
@@ -403,7 +249,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -415,14 +261,14 @@
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    <property name="buddy">
+     <cstring>DirectorTable</cstring>
     </property>
    </widget>
-   <widget class="QLabel" name="Label5">
+   <widget class="QLabel" name="CastLabel">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>440</x>
       <y>210</y>
       <width>70</width>
       <height>30</height>
@@ -431,7 +277,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -443,14 +289,14 @@
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    <property name="buddy">
+     <cstring>CastTable</cstring>
     </property>
    </widget>
-   <widget class="QLabel" name="Label6">
+   <widget class="QLabel" name="GenreLabel">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>20</x>
       <y>210</y>
       <width>70</width>
       <height>30</height>
@@ -459,7 +305,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -471,90 +317,40 @@
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
+    <property name="buddy">
+     <cstring>GenreTable</cstring>
     </property>
    </widget>
    <widget class="QTableWidget" name="GenreTable">
     <property name="geometry">
      <rect>
-      <x>580</x>
+      <x>20</x>
       <y>240</y>
-      <width>121</width>
-      <height>221</height>
+      <width>100</width>
+      <height>240</height>
      </rect>
     </property>
-    <property name="rowCount">
-     <number>7</number>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
     </property>
-    <attribute name="horizontalHeaderVisible">
-     <bool>false</bool>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
     </attribute>
     <attribute name="verticalHeaderVisible">
      <bool>false</bool>
     </attribute>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
     <column>
      <property name="text">
-      <string>新建列</string>
+      <string>分类</string>
      </property>
     </column>
-    <item row="0" column="0">
-     <property name="text">
-      <string>类别1</string>
-     </property>
-    </item>
-    <item row="1" column="0">
-     <property name="text">
-      <string>类别2</string>
-     </property>
-    </item>
-    <item row="2" column="0">
-     <property name="text">
-      <string>类别3</string>
-     </property>
-    </item>
    </widget>
    <widget class="QPushButton" name="NextPage">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>490</y>
-      <width>90</width>
+      <x>330</x>
+      <y>510</y>
+      <width>100</width>
       <height>28</height>
      </rect>
     </property>
@@ -567,10 +363,10 @@
      <string>下一页</string>
     </property>
    </widget>
-   <widget class="QLabel" name="Label7">
+   <widget class="QLabel" name="OriginalNameLabel">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>20</x>
       <y>120</y>
       <width>70</width>
       <height>30</height>
@@ -579,7 +375,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -594,11 +390,14 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>OriginalName</cstring>
+    </property>
    </widget>
-   <widget class="QLabel" name="Label8">
+   <widget class="QLabel" name="MovieLengthLabel">
     <property name="geometry">
      <rect>
-      <x>400</x>
+      <x>460</x>
       <y>120</y>
       <width>70</width>
       <height>30</height>
@@ -607,7 +406,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -626,9 +425,9 @@
    <widget class="QLineEdit" name="OriginalName">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>100</x>
       <y>120</y>
-      <width>130</width>
+      <width>320</width>
       <height>30</height>
      </rect>
     </property>
@@ -640,32 +439,14 @@
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
-    <property name="text">
-     <string>疯狂动物城</string>
+    <property name="placeholderText">
+     <string>电影原始名称</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="MovieLength">
+   <widget class="QLabel" name="PictureLabel">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>120</y>
-      <width>130</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-     </font>
-    </property>
-    <property name="text">
-     <string>90分钟</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label9">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
+      <x>20</x>
       <y>160</y>
       <width>70</width>
       <height>30</height>
@@ -674,7 +455,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -689,13 +470,16 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>Picture</cstring>
+    </property>
    </widget>
    <widget class="QLineEdit" name="Picture">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>100</x>
       <y>160</y>
-      <width>130</width>
+      <width>320</width>
       <height>30</height>
      </rect>
     </property>
@@ -704,17 +488,52 @@
       <family>宋体</family>
      </font>
     </property>
+    <property name="placeholderText">
+     <string>海报图片链接</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="MovieLength">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>120</y>
+      <width>200</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="suffix">
+     <string> 分钟</string>
+    </property>
+    <property name="maximum">
+     <number>999</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ProductionCompanySearch">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>80</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>暂无</string>
+     <string>✏</string>
     </property>
    </widget>
   </widget>
   <widget class="QPushButton" name="Modify">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>515</y>
-     <width>90</width>
+     <x>150</x>
+     <y>530</y>
+     <width>100</width>
      <height>28</height>
     </rect>
    </property>
@@ -733,9 +552,9 @@
   <widget class="QPushButton" name="Cancel">
    <property name="geometry">
     <rect>
-     <x>565</x>
-     <y>515</y>
-     <width>90</width>
+     <x>550</x>
+     <y>530</y>
+     <width>100</width>
      <height>28</height>
     </rect>
    </property>
@@ -751,16 +570,18 @@
   <widget class="QLabel" name="Title">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>60</y>
-     <width>120</width>
+     <x>320</x>
+     <y>40</y>
+     <width>160</width>
      <height>30</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>等线</family>
-     <pointsize>12</pointsize>
+     <pointsize>18</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="layoutDirection">
@@ -779,10 +600,10 @@
   <widget class="QFrame" name="SecondPageFrame">
    <property name="geometry">
     <rect>
-     <x>25</x>
-     <y>25</y>
-     <width>741</width>
-     <height>541</height>
+     <x>20</x>
+     <y>20</y>
+     <width>760</width>
+     <height>560</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -794,9 +615,9 @@
    <widget class="QPushButton" name="PreviousPage">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>490</y>
-      <width>90</width>
+      <x>330</x>
+      <y>510</y>
+      <width>100</width>
       <height>28</height>
      </rect>
     </property>
@@ -812,18 +633,21 @@
    <widget class="QPlainTextEdit" name="Storyline">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>90</y>
-      <width>671</width>
-      <height>131</height>
+      <x>20</x>
+      <y>110</y>
+      <width>720</width>
+      <height>110</height>
      </rect>
     </property>
+    <property name="placeholderText">
+     <string>电影简介内容</string>
+    </property>
    </widget>
-   <widget class="QLabel" name="Label11">
+   <widget class="QLabel" name="StorylineLabel">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>60</y>
+      <x>20</x>
+      <y>80</y>
       <width>70</width>
       <height>30</height>
      </rect>
@@ -831,7 +655,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -846,12 +670,15 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>Storyline</cstring>
+    </property>
    </widget>
-   <widget class="QLabel" name="Label12">
+   <widget class="QLabel" name="PrizeHistoryLabel">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>240</y>
+      <x>20</x>
+      <y>230</y>
       <width>70</width>
       <height>30</height>
      </rect>
@@ -859,7 +686,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -874,22 +701,28 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>PrizeHistory</cstring>
+    </property>
    </widget>
    <widget class="QPlainTextEdit" name="PrizeHistory">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>270</y>
-      <width>671</width>
-      <height>111</height>
+      <x>20</x>
+      <y>260</y>
+      <width>720</width>
+      <height>110</height>
      </rect>
     </property>
+    <property name="placeholderText">
+     <string>电影获奖信息</string>
+    </property>
    </widget>
-   <widget class="QLabel" name="Label13">
+   <widget class="QLabel" name="RemarkLabel">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>390</y>
+      <x>20</x>
+      <y>380</y>
       <width>70</width>
       <height>30</height>
      </rect>
@@ -897,7 +730,7 @@
     <property name="font">
      <font>
       <family>等线</family>
-      <pointsize>10</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="layoutDirection">
@@ -912,18 +745,29 @@
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>Remark</cstring>
+    </property>
    </widget>
    <widget class="QPlainTextEdit" name="Remark">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>420</y>
-      <width>671</width>
-      <height>61</height>
+      <x>20</x>
+      <y>410</y>
+      <width>720</width>
+      <height>70</height>
      </rect>
+    </property>
+    <property name="placeholderText">
+     <string>备注信息</string>
     </property>
    </widget>
   </widget>
+  <zorder>Title</zorder>
+  <zorder>SecondPageFrame</zorder>
+  <zorder>FirstPageFrame</zorder>
+  <zorder>Modify</zorder>
+  <zorder>Cancel</zorder>
  </widget>
  <tabstops>
   <tabstop>ProductionCompany</tabstop>
@@ -953,8 +797,8 @@
    <slot>toPreviousPage()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>419</x>
-     <y>528</y>
+     <x>394</x>
+     <y>543</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -969,8 +813,8 @@
    <slot>modifyMovie()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>204</x>
-     <y>528</y>
+     <x>194</x>
+     <y>543</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -985,8 +829,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>609</x>
-     <y>528</y>
+     <x>594</x>
+     <y>543</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
