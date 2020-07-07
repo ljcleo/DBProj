@@ -9,6 +9,7 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
     def __init__(self, parent=None, flags=Qt.WindowFlags()):
         super().__init__(parent=parent, flags=flags)
         self.setupUi(self)
+        self.SecondPageFrame.hide()
 
     def modifyMovie(self):
         newMovieName = self.MovieName.text()
@@ -18,3 +19,11 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
         dialog = Hint("修改成功", parent=self.parent(), flags=Qt.WindowTitleHint)
         dialog.open()
         self.accept()
+
+    def toNextPage(self):
+        self.FirstPageFrame.hide()
+        self.SecondPageFrame.show()
+
+    def toPreviousPage(self):
+        self.FirstPageFrame.show()
+        self.SecondPageFrame.hide()

@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>修改电影信息</string>
   </property>
-  <widget class="QFrame" name="frame">
+  <widget class="QFrame" name="FirstPageFrame">
    <property name="geometry">
     <rect>
      <x>25</x>
@@ -28,78 +28,11 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QPushButton" name="Modify">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>490</y>
-      <width>90</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-     </font>
-    </property>
-    <property name="text">
-     <string>修改</string>
-    </property>
-    <property name="default">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Cancel">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>490</y>
-      <width>90</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-     </font>
-    </property>
-    <property name="text">
-     <string>取消</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Title">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>20</y>
-      <width>120</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>等线</family>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="text">
-     <string>修改电影信息</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::AutoText</enum>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="ProductionCompany">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>160</y>
+      <x>490</x>
+      <y>80</y>
       <width>130</width>
       <height>30</height>
      </rect>
@@ -116,7 +49,7 @@
    <widget class="QLineEdit" name="MovieName">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>200</x>
       <y>80</y>
       <width>130</width>
       <height>30</height>
@@ -137,7 +70,7 @@
    <widget class="QLabel" name="Label1">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>120</x>
       <y>80</y>
       <width>70</width>
       <height>30</height>
@@ -165,8 +98,8 @@
    <widget class="QLabel" name="Label2">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>120</y>
+      <x>120</x>
+      <y>160</y>
       <width>70</width>
       <height>30</height>
      </rect>
@@ -193,8 +126,8 @@
    <widget class="QLabel" name="Label3">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>160</y>
+      <x>400</x>
+      <y>80</y>
       <width>70</width>
       <height>30</height>
      </rect>
@@ -221,8 +154,8 @@
    <widget class="QDateEdit" name="ReleaseDate">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>120</y>
+      <x>200</x>
+      <y>160</y>
       <width>130</width>
       <height>30</height>
      </rect>
@@ -458,7 +391,7 @@
      </property>
     </item>
    </widget>
-   <widget class="QLabel" name="Labe4">
+   <widget class="QLabel" name="Label4">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -486,7 +419,7 @@
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="Labe5">
+   <widget class="QLabel" name="Label5">
     <property name="geometry">
      <rect>
       <x>370</x>
@@ -514,7 +447,7 @@
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="Label7">
+   <widget class="QLabel" name="Label6">
     <property name="geometry">
      <rect>
       <x>610</x>
@@ -616,28 +549,416 @@
      </property>
     </item>
    </widget>
+   <widget class="QPushButton" name="NextPage">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>490</y>
+      <width>90</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>宋体</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>下一页</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label7">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>120</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>电影原名</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label8">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>120</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>电影长度</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="OriginalName">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>120</y>
+      <width>130</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>宋体</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>疯狂动物城</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="MovieLength">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>120</y>
+      <width>130</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>宋体</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>90分钟</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label9">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>160</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>海报链接</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Picture">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>160</y>
+      <width>130</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>宋体</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>暂无</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="Modify">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>515</y>
+     <width>90</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>修改</string>
+   </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Cancel">
+   <property name="geometry">
+    <rect>
+     <x>565</x>
+     <y>515</y>
+     <width>90</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>取消</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Title">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>60</y>
+     <width>120</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="text">
+    <string>修改电影信息</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QFrame" name="SecondPageFrame">
+   <property name="geometry">
+    <rect>
+     <x>25</x>
+     <y>25</y>
+     <width>741</width>
+     <height>541</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="PreviousPage">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>490</y>
+      <width>90</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>宋体</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>上一页</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="Storyline">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>671</width>
+      <height>131</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label11">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>60</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>电影简介</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label12">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>240</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>获奖信息</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="PrizeHistory">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>270</y>
+      <width>671</width>
+      <height>111</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label13">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>390</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>等线</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>备注</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="Remark">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>420</y>
+      <width>671</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
  </widget>
  <tabstops>
   <tabstop>ProductionCompany</tabstop>
-  <tabstop>Modify</tabstop>
-  <tabstop>Cancel</tabstop>
  </tabstops>
  <resources/>
  <connections>
   <connection>
-   <sender>Cancel</sender>
+   <sender>NextPage</sender>
    <signal>clicked()</signal>
    <receiver>ModifyMovieDialog</receiver>
-   <slot>reject()</slot>
+   <slot>toNextPage()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>175</x>
-     <y>268</y>
+     <x>418</x>
+     <y>540</y>
     </hint>
     <hint type="destinationlabel">
-     <x>228</x>
-     <y>385</y>
+     <x>415</x>
+     <y>587</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>PreviousPage</sender>
+   <signal>clicked()</signal>
+   <receiver>ModifyMovieDialog</receiver>
+   <slot>toPreviousPage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>419</x>
+     <y>528</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
     </hint>
    </hints>
   </connection>
@@ -648,18 +969,35 @@
    <slot>modifyMovie()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>80</x>
-     <y>269</y>
+     <x>204</x>
+     <y>528</y>
     </hint>
     <hint type="destinationlabel">
-     <x>64</x>
-     <y>386</y>
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>ModifyMovieDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>609</x>
+     <y>528</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
   <slot>modifyMovie()</slot>
-  <slot>modifyMore()</slot>
+  <slot>toNextPage()</slot>
+  <slot>toPreviousPage()</slot>
  </slots>
 </ui>
