@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QMessageBox
 
 from ..DBInterface import FILM_VIEW, FilmInterface, getColumn
 from .SearchResultButton import SearchResultButtonWidget
@@ -27,7 +28,7 @@ class SearchResultPart(Ui_SearchResultPart):
 
         searchEngine = FilmInterface(False)
         searchEngine.searchFilm(self.search)
-        result = searchEngine.fetchResult()
+        result = searchEngine.fetchResult(100)
         self.tableWidget.setRowCount(len(result))
 
         for index, row in enumerate(result):
@@ -76,6 +77,25 @@ class SearchResultPart(Ui_SearchResultPart):
 
     def generateDeleteMovie(self, filmID):
         def deleteMovie():
-            pass
+            if not self.loginAdmin:
+                QMessageBox.critical(self, '删除电影', '您没有删除电影的权限！')
+                return
+
+            result = QMessageBox.warning(self, '删除电影', '删除操作不可恢复，是否继续？',
+                                         QMessageBox.Yes | QMessageBox.No)
+
+            if result == QMessageBox.Yes:
+                filmDeleter = FilmInterface(True)
+                filmDeleter.deleteFilm(filmID)
+
+                filmDeleter.selectFilm(filmID)
+                result = filmDeleter.fetchResult()
+
+                if len(result) == 0:
+                    QMessageBox.information(self, '删除电影', '电影删除成功！')
+                else:
+                    QMessageBox.information(self, '删除电影', '电影删除失败？！')
+
+                self.showSearchResult(self.search)
 
         return deleteMovie
