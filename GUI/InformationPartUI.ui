@@ -68,7 +68,7 @@
      <rect>
       <x>250</x>
       <y>80</y>
-      <width>320</width>
+      <width>240</width>
       <height>30</height>
      </rect>
     </property>
@@ -111,7 +111,7 @@
      <rect>
       <x>250</x>
       <y>40</y>
-      <width>320</width>
+      <width>240</width>
       <height>30</height>
      </rect>
     </property>
@@ -176,9 +176,9 @@
    <widget class="QLabel" name="Rating">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>579</x>
       <y>80</y>
-      <width>80</width>
+      <width>91</width>
       <height>30</height>
      </rect>
     </property>
@@ -197,15 +197,6 @@
        <colorrole role="Text">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
           <red>0</red>
           <green>0</green>
           <blue>0</blue>
@@ -232,15 +223,6 @@
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
       </inactive>
       <disabled>
        <colorrole role="WindowText">
@@ -258,15 +240,6 @@
           <red>120</red>
           <green>120</green>
           <blue>120</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
          </color>
         </brush>
        </colorrole>
@@ -532,27 +505,18 @@
       <height>254</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>等线</family>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
     <property name="scaledContents">
      <bool>true</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
   <widget class="QFrame" name="CommentFrame">
    <property name="geometry">
     <rect>
-     <x>279</x>
-     <y>379</y>
-     <width>661</width>
-     <height>231</height>
+     <x>280</x>
+     <y>380</y>
+     <width>660</width>
+     <height>230</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -561,118 +525,6 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QLabel" name="Rate1">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>50</y>
-      <width>80</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>评分：5</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="UserName2">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>140</y>
-      <width>80</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>李铁柱</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="UserName1">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>50</y>
-      <width>80</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>张翠花</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Comment2">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>170</y>
-      <width>600</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>舒服了舒服了舒服了舒服了舒服了舒服了舒服了舒服了舒服了舒服了</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Rate2">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>140</y>
-      <width>80</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>评分：5</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="CommentLabel">
     <property name="geometry">
      <rect>
@@ -692,28 +544,6 @@
     </property>
     <property name="text">
      <string>评论</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Comment1">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>80</y>
-      <width>600</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>宋体</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>不会真有人不喜欢这部电影吧不会吧不会吧不会吧不会吧不会吧不会吧</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
     </property>
    </widget>
    <widget class="QPushButton" name="AddComment">
@@ -754,14 +584,60 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QTableWidget" name="CommentTable">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>50</y>
+      <width>630</width>
+      <height>130</height>
+     </rect>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>新建行</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>新建行</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>新建行</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>新建行</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>新建行</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>新建列</string>
+     </property>
+    </column>
+   </widget>
   </widget>
   <widget class="QFrame" name="MoreInformationFrame">
    <property name="geometry">
     <rect>
-     <x>279</x>
-     <y>379</y>
-     <width>661</width>
-     <height>231</height>
+     <x>280</x>
+     <y>380</y>
+     <width>660</width>
+     <height>230</height>
     </rect>
    </property>
    <property name="frameShape">

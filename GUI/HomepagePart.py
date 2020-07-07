@@ -1,10 +1,7 @@
-from random import randint
-
+import requests
 from PyQt5.QtGui import QImage, QPixmap
-from requests import get as getURL
-from requests.exceptions import RequestException
+from PyQt5.QtWidgets import QLabel
 
-from ..DBInterface import FILM_TABLE, FilmInterface, getColumn
 from .HomepagePartUI import Ui_HomepagePart
 
 
@@ -12,10 +9,12 @@ class HomepagePart(Ui_HomepagePart):
     def setupHomepage(self, HomepagePart):
         self.retranslateUi = super().retranslateUi
         super().setupUi(HomepagePart)
-        self.makeRecommendationInfo()
+        url1 = 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg'
+        url2 = 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg'
+        url3 = 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg'
+        self.showRecommendationImage(url1, url2, url3)
 
     def showHomepage(self):
-        self.makeRecommendationInfo()  # Is this necessary? Maybe a refresh button is needed?
         self.SearchFrame.show()
         self.RecommendationFrame.show()
         self.HLineSearch.show()
@@ -48,52 +47,40 @@ class HomepagePart(Ui_HomepagePart):
         self.RecommendationFrame.show()
 
     def movie1(self):
-        self.showInformation(self.recommendations[0])
+        self.showInformation(1)
         self.hideHomepage()
 
     def movie2(self):
-        self.showInformation(self.recommendations[1])
+        self.showInformation(2)
         self.hideHomepage()
 
     def movie3(self):
-        self.showInformation(self.recommendations[2])
+        self.showInformation(3)
         self.hideHomepage()
 
     def search(self):
         self.hideRecommendation()
         self.showSearchResult(self.SearchInput.text())
 
-    def makeRecommendationInfo(self):
-        self.recommendations = self.__generateRecommendation()
+    def showRecommendationImage(self, url1, url2, url3):
+        # Get the pictures from the Internet then show them in GUI
+        res = requests.get(url1)
+        image = QImage.fromData(res.content)
+        picture = QLabel(self.RecommendationFrame)
+        picture.setPixmap(QPixmap.fromImage(image))
+        picture.setGeometry(20, 80, 180, 254)
+        picture.setScaledContents(True)
 
-        pictures = (self.RecommendationPicture1, self.RecommendationPicture2,
-                    self.RecommendationPicture3)
-        titles = (self.RecommendationTitle1, self.RecommendationTitle2, self.RecommendationTitle3)
+        res = requests.get(url2)
+        image = QImage.fromData(res.content)
+        picture = QLabel(self.RecommendationFrame)
+        picture.setPixmap(QPixmap.fromImage(image))
+        picture.setGeometry(250, 80, 180, 254)
+        picture.setScaledContents(True)
 
-        posterFetcher = FilmInterface(False)
-
-        for i in range(3):
-            posterFetcher.selectFilm(self.recommendations[i])
-            result = posterFetcher.fetchResult()
-
-            if len(result) == 0:
-                raise RuntimeError('the recommendation algorithm has suggested a ghost film')
-
-            name = getColumn(result[0], FILM_TABLE.chineseName)
-            url = getColumn(result[0], FILM_TABLE.picture)
-            titles[i].setText(name)
-            pictures[i].clear()
-
-            if url is not None:
-                try:
-                    res = getURL(url)
-                    image = QImage.fromData(res.content)
-                    pictures[i].setPixmap(QPixmap.fromImage(image))
-                except RequestException:
-                    pictures[i].setText('海报加载失败')
-            else:
-                pictures[i].setText('暂无海报')
-
-    def __generateRecommendation(self):
-        # This is not a good recommendation algorithm. Expecting a better one from Julao.
-        return (randint(1, 10000), randint(1, 10000), randint(1, 10000))
+        res = requests.get(url3)
+        image = QImage.fromData(res.content)
+        picture = QLabel(self.RecommendationFrame)
+        picture.setPixmap(QPixmap.fromImage(image))
+        picture.setGeometry(480, 80, 180, 254)
+        picture.setScaledContents(True)

@@ -11,21 +11,9 @@ class CommentDialog(QDialog, Ui_CommentDialog):
         self.setupUi(self)
 
     def comment(self):
-        if self.Rate5.isChecked():
-            print(5)
-        elif self.Rate4.isChecked():
-            print(4)
-        elif self.Rate3.isChecked():
-            print(3)
-        elif self.Rate2.isChecked():
-            print(2)
-        else:
-            print(1)
-
         text = self.CommentText.toPlainText()
         print(text)
 
-        dialog = Hint("评论成功！", parent=self, flags=Qt.WindowTitleHint)
-        dialog.open()
+        Hint("评论成功！", parent=self.parent(), flags=Qt.WindowTitleHint).open()
 
         self.close()

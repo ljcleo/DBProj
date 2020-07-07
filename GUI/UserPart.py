@@ -11,9 +11,6 @@ class UserPart(Ui_UserPart):
         self.retranslateUi = super().retranslateUi
         super().setupUi(UserPart)
 
-        self.login = None
-        self.loginAdmin = None
-
     def changePassword(self):
         dialog = ChangePasswordDialog(parent=self, flags=Qt.WindowTitleHint)
         dialog.open()

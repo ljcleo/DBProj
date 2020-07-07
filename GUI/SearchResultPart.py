@@ -1,9 +1,10 @@
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QTableWidgetItem
-from PyQt5.QtWidgets import QMessageBox
 
 from ..DBInterface import FILM_VIEW, FilmInterface, getColumn
 from .SearchResultButton import SearchResultButtonWidget
 from .SearchResultPartUI import Ui_SearchResultPart
+from .Hint import Hint
 
 
 class SearchResultPart(Ui_SearchResultPart):
@@ -25,10 +26,9 @@ class SearchResultPart(Ui_SearchResultPart):
     def showSearchResult(self, searchText):
         self.tableWidget.clearContents()
         self.search = searchText
-
         searchEngine = FilmInterface(False)
         searchEngine.searchFilm(self.search)
-        result = searchEngine.fetchResult(100)
+        result = searchEngine.fetchResult(20)
         self.tableWidget.setRowCount(len(result))
 
         for index, row in enumerate(result):
@@ -44,7 +44,8 @@ class SearchResultPart(Ui_SearchResultPart):
             self.tableWidget.setItem(
                 index, 1, QTableWidgetItem('--' if nationality is None else nationality))
             self.tableWidget.setItem(
-                index, 2, QTableWidgetItem('--' if releaseDate is None else f'{releaseDate}'))
+                index, 2, QTableWidgetItem('--' if releaseDate is None else
+                                           releaseDate))
             self.tableWidget.setItem(
                 index, 3, QTableWidgetItem('--' if genres is None else genres))
             self.tableWidget.setItem(
@@ -71,31 +72,13 @@ class SearchResultPart(Ui_SearchResultPart):
 
     def generateModifyMovie(self, filmID):
         def modifyMovie():
-            pass
+            if self.login is None:
+                Hint("您还未登录 无法修改", parent=self, flags=Qt.WindowTitleHint).open()
 
         return modifyMovie
 
     def generateDeleteMovie(self, filmID):
         def deleteMovie():
-            if not self.loginAdmin:
-                QMessageBox.critical(self, '删除电影', '您没有删除电影的权限！')
-                return
-
-            result = QMessageBox.warning(self, '删除电影', '删除操作不可恢复，是否继续？',
-                                         QMessageBox.Yes | QMessageBox.No)
-
-            if result == QMessageBox.Yes:
-                filmDeleter = FilmInterface(True)
-                filmDeleter.deleteFilm(filmID)
-
-                filmDeleter.selectFilm(filmID)
-                result = filmDeleter.fetchResult()
-
-                if len(result) == 0:
-                    QMessageBox.information(self, '删除电影', '电影删除成功！')
-                else:
-                    QMessageBox.information(self, '删除电影', '电影删除失败？！')
-
-                self.showSearchResult(self.search)
+            Hint("您还未登录 无法删除", parent=self, flags=Qt.WindowTitleHint).open()
 
         return deleteMovie
