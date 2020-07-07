@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'DBProj\GUI\UserPartUI.ui'
+# Form implementation generated from reading ui file 'UserPartUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -57,12 +57,18 @@ class Ui_UserPart(object):
         self.ChangePassword.setAutoDefault(False)
         self.ChangePassword.setDefault(False)
         self.ChangePassword.setObjectName("ChangePassword")
+        self.ModifyInformation_2 = QtWidgets.QPushButton(self.UserFrame)
+        self.ModifyInformation_2.setGeometry(QtCore.QRect(0, 100, 120, 30))
+        self.ModifyInformation_2.setAutoDefault(False)
+        self.ModifyInformation_2.setDefault(False)
+        self.ModifyInformation_2.setObjectName("ModifyInformation_2")
 
         self.retranslateUi(UserPart)
         self.ChangePassword.clicked.connect(UserPart.changePassword)
         self.Logout.clicked.connect(UserPart.logout)
         self.ModifyInformation.clicked.connect(UserPart.modifyInformation)
         self.UserQuit.clicked.connect(UserPart.close)
+        self.ModifyInformation_2.clicked.connect(UserPart.showMyComments)
         QtCore.QMetaObject.connectSlotsByName(UserPart)
 
     def retranslateUi(self, UserPart):
@@ -74,3 +80,4 @@ class Ui_UserPart(object):
         self.UserWelcomeLabel.setText(_translate("UserPart", "你好，"))
         self.UserNameLabel.setText(_translate("UserPart", "XXX"))
         self.ChangePassword.setText(_translate("UserPart", "修改密码"))
+        self.ModifyInformation_2.setText(_translate("UserPart", "查看我的评论"))

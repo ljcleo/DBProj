@@ -37,7 +37,6 @@ class SearchResultPart(Ui_SearchResultPart):
 
     def showSearchResult(self, searchText, genreID=None, releaseDate=None, rating=None,
                          releaseDateOrder=None, ratingOrder=None):
-
         genreID = self.genreID if genreID is None else genreID
         releaseDate = self.releaseDate if releaseDate is None else releaseDate
         rating = self.rating if rating is None else rating

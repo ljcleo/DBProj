@@ -150,6 +150,25 @@
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="ModifyInformation_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>100</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>查看我的评论</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
@@ -218,11 +237,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>ModifyInformation_2</sender>
+   <signal>clicked()</signal>
+   <receiver>UserPart</receiver>
+   <slot>showMyComments()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>36</x>
+     <y>260</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>loginOrRegister()</slot>
   <slot>modifyInformation()</slot>
   <slot>changePassword()</slot>
   <slot>logout()</slot>
+  <slot>showMyComments()</slot>
  </slots>
 </ui>

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\DBProj\GUI\CommentWidgetUI.ui'
+# Form implementation generated from reading ui file 'CommentWidgetUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -24,7 +24,7 @@ class Ui_CommentWidget(object):
         self.NameLabel.setFont(font)
         self.NameLabel.setObjectName("NameLabel")
         self.RateLabel = QtWidgets.QLabel(CommentWidget)
-        self.RateLabel.setGeometry(QtCore.QRect(500, 10, 80, 30))
+        self.RateLabel.setGeometry(QtCore.QRect(450, 10, 141, 30))
         font = QtGui.QFont()
         font.setFamily("等线")
         font.setPointSize(12)
