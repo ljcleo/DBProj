@@ -3,6 +3,7 @@ from PyQt5.QtCore import Qt
 from ..DBInterface import USER_TABLE, UserInterface, getColumn
 from .ChangeInformationDialog import ChangeInformationDialog
 from .ChangePasswordDialog import ChangePasswordDialog
+from .AllCommentsDialog import AllComments
 from .UserPartUI import Ui_UserPart
 
 
@@ -10,6 +11,8 @@ class UserPart(Ui_UserPart):
     def setupUser(self, UserPart):
         self.retranslateUi = super().retranslateUi
         super().setupUi(UserPart)
+        self.login = None
+        self.loginAdmin = False
 
     def changePassword(self):
         dialog = ChangePasswordDialog(parent=self, flags=Qt.WindowTitleHint)
@@ -49,3 +52,7 @@ class UserPart(Ui_UserPart):
             if self.loginAdmin:
                 userName = '管理员 ' + userName
             self.UserNameLabel.setText(userName)
+
+    def showMyComments(self):
+        dialog = AllComments(self.login, parent=self, flags=Qt.WindowTitleHint)
+        dialog.open()
