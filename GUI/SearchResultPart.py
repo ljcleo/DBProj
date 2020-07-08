@@ -47,7 +47,7 @@ class SearchResultPart(Ui_SearchResultPart):
         searchEngine.searchFilm(self.search, genreID=genreID, releaseDate=releaseDate,
                                 rating=rating, releaseDateOrder=releaseDateOrder,
                                 ratingOrder=ratingOrder)
-        result = searchEngine.fetchResult(20)
+        result = searchEngine.fetchResult(100)
         self.tableWidget.setRowCount(len(result))
 
         for index, row in enumerate(result):

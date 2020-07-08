@@ -1,0 +1,1359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SubInfoDialog</class>
+ <widget class="QDialog" name="SubInfoDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QTabWidget" name="MainTabs">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>80</y>
+     <width>600</width>
+     <height>320</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="CompanyTab">
+    <attribute name="title">
+     <string>公司信息</string>
+    </attribute>
+    <widget class="QLineEdit" name="CompanySearchText">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入公司名称</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="CompanySearchResult">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>220</width>
+       <height>180</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>公司名称</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>国家/地区</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLabel" name="CompanySearchLabel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>搜索公司名称：</string>
+     </property>
+     <property name="buddy">
+      <cstring>CompanySearchText</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="CompanyName">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>100</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入公司名称</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="CompanyNameLabel">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>100</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>公司名称</string>
+     </property>
+     <property name="buddy">
+      <cstring>CompanyName</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="CompanyNationality">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>150</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入公司国家/地区</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="CompanyNationalityLabel">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>150</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>国家/地区</string>
+     </property>
+     <property name="buddy">
+      <cstring>CompanyNationality</cstring>
+     </property>
+    </widget>
+    <widget class="QLabel" name="CompanyTitle">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>30</y>
+       <width>300</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>18</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>公司信息</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="CompanyAddButton">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>210</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>添加</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="CompanyModifyButton">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>210</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>修改</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="CompanyDeleteButton">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>250</y>
+       <width>300</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>删除</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="GenreTab">
+    <attribute name="title">
+     <string>分类信息</string>
+    </attribute>
+    <widget class="QPushButton" name="GenreModifyButton">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>210</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>修改</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="GenreDeleteButton">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>250</y>
+       <width>300</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>删除</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="GenreAddButton">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>210</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>添加</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="GenreSearchResult">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>220</width>
+       <height>180</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>分类</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLabel" name="GenreSearchLabel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>搜索分类：</string>
+     </property>
+     <property name="buddy">
+      <cstring>GenreSearchText</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="GenreSearchText">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入分类名称</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="GenreName">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>120</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入分类名称</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="GenreTitle">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>30</y>
+       <width>300</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>18</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>分类信息</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="GenreNameLabel">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>120</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>分类名称</string>
+     </property>
+     <property name="buddy">
+      <cstring>GenreName</cstring>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="DirectorTab">
+    <attribute name="title">
+     <string>导演信息</string>
+    </attribute>
+    <widget class="QPushButton" name="DirectorModifyButton">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>210</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>修改</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="DirectorDeleteButton">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>250</y>
+       <width>300</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>删除</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="DirectorAddButton">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>210</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>添加</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="DirectorSearchResult">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>220</width>
+       <height>180</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>导演姓名</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>豆瓣链接</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLabel" name="DirectorSearchLabel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>搜索导演姓名：</string>
+     </property>
+     <property name="buddy">
+      <cstring>DirectorSearchText</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="DirectorSearchText">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入导演姓名</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="DirectorAvatarLabel">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>120</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>海报链接</string>
+     </property>
+     <property name="buddy">
+      <cstring>DirectorAvatar</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="DirectorName">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>80</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入导演名称</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="DirectorTitle">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>30</y>
+       <width>300</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>18</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>导演信息</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="DirectorAvatar">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>120</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入导演海报链接</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="DirectorNameLabel">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>80</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>导演名称</string>
+     </property>
+     <property name="buddy">
+      <cstring>DirectorName</cstring>
+     </property>
+    </widget>
+    <widget class="QLabel" name="DirectorAltLabel">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>160</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>豆瓣链接</string>
+     </property>
+     <property name="buddy">
+      <cstring>DirectorAlt</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="DirectorAlt">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>160</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入导演豆瓣链接</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="CastTab">
+    <attribute name="title">
+     <string>演员信息</string>
+    </attribute>
+    <widget class="QPushButton" name="CastModifyButton">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>210</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>修改</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="CastDeleteButton">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>250</y>
+       <width>300</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>删除</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="CastAddButton">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>210</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>添加</string>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="CastSearchResult">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>220</width>
+       <height>180</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>演员姓名</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>豆瓣链接</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLabel" name="CastSearchLabel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>搜索演员姓名：</string>
+     </property>
+     <property name="buddy">
+      <cstring>CastSearchText</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="CastSearchText">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入演员姓名</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="CastAvatarLabel">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>120</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>海报链接</string>
+     </property>
+     <property name="buddy">
+      <cstring>CastAvatar</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="CastAvatar">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>120</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入演员海报链接</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="CastAlt">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>160</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入演员豆瓣链接</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="CastTitle">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>30</y>
+       <width>300</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>18</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>演员信息</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="CastNameLabel">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>80</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>演员名称</string>
+     </property>
+     <property name="buddy">
+      <cstring>CastName</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="CastName">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>80</y>
+       <width>220</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>请输入演员名称</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="CastAltLabel">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>160</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>等线</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>豆瓣链接</string>
+     </property>
+     <property name="buddy">
+      <cstring>CastAlt</cstring>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="Title">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>160</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>18</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>附属信息管理</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="OKButton">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>20</y>
+     <width>90</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>确定</string>
+   </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>OKButton</tabstop>
+  <tabstop>MainTabs</tabstop>
+  <tabstop>CompanySearchText</tabstop>
+  <tabstop>CompanySearchResult</tabstop>
+  <tabstop>CompanyName</tabstop>
+  <tabstop>CompanyNationality</tabstop>
+  <tabstop>CompanyAddButton</tabstop>
+  <tabstop>CompanyModifyButton</tabstop>
+  <tabstop>CompanyDeleteButton</tabstop>
+  <tabstop>GenreSearchText</tabstop>
+  <tabstop>GenreSearchResult</tabstop>
+  <tabstop>GenreName</tabstop>
+  <tabstop>GenreAddButton</tabstop>
+  <tabstop>GenreModifyButton</tabstop>
+  <tabstop>GenreDeleteButton</tabstop>
+  <tabstop>DirectorSearchText</tabstop>
+  <tabstop>DirectorSearchResult</tabstop>
+  <tabstop>DirectorName</tabstop>
+  <tabstop>DirectorAvatar</tabstop>
+  <tabstop>DirectorAlt</tabstop>
+  <tabstop>DirectorAddButton</tabstop>
+  <tabstop>DirectorModifyButton</tabstop>
+  <tabstop>DirectorDeleteButton</tabstop>
+  <tabstop>CastSearchText</tabstop>
+  <tabstop>CastSearchResult</tabstop>
+  <tabstop>CastName</tabstop>
+  <tabstop>CastAvatar</tabstop>
+  <tabstop>CastAlt</tabstop>
+  <tabstop>CastAddButton</tabstop>
+  <tabstop>CastModifyButton</tabstop>
+  <tabstop>CastDeleteButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>OKButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>551</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>426</x>
+     <y>34</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CompanySearchText</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>searchCompany()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>157</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>283</x>
+     <y>24</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CompanySearchResult</sender>
+   <signal>cellDoubleClicked(int,int)</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>loadCompany(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>127</x>
+     <y>304</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>230</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CompanyAddButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>addCompany()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>363</x>
+     <y>317</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>373</x>
+     <y>49</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CompanyModifyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>modifyCompany()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>488</x>
+     <y>325</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>470</x>
+     <y>56</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CompanyDeleteButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>deleteCompany()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>441</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>443</x>
+     <y>12</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>GenreSearchText</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>searchGenre()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>57</x>
+     <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>236</x>
+     <y>33</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>GenreSearchResult</sender>
+   <signal>cellDoubleClicked(int,int)</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>loadGenre(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>163</x>
+     <y>280</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>40</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>GenreAddButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>addGenre()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>373</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>356</x>
+     <y>9</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>GenreModifyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>modifyGenre()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>509</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>446</x>
+     <y>69</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>GenreDeleteButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>deleteGenre()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>441</x>
+     <y>364</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>205</x>
+     <y>8</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DirectorSearchText</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>searchDirector()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>178</x>
+     <y>159</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>242</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DirectorSearchResult</sender>
+   <signal>cellDoubleClicked(int,int)</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>loadDirector(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>106</x>
+     <y>309</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>357</x>
+     <y>64</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DirectorAddButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>addDirector()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>343</x>
+     <y>328</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>514</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DirectorModifyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>modifyDirector()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>499</x>
+     <y>325</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>322</x>
+     <y>33</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DirectorDeleteButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>deleteDirector()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>432</x>
+     <y>370</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>453</x>
+     <y>47</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CastSearchText</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>searchCast()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>91</x>
+     <y>159</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>391</x>
+     <y>18</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CastSearchResult</sender>
+   <signal>cellDoubleClicked(int,int)</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>loadCast(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>321</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>458</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CastAddButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>addCast()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>373</x>
+     <y>321</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>597</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CastModifyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>modifyCast()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>565</x>
+     <y>325</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>544</x>
+     <y>8</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CastDeleteButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SubInfoDialog</receiver>
+   <slot>deleteCast()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>465</x>
+     <y>370</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>267</x>
+     <y>-2</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>searchCompany()</slot>
+  <slot>loadCompany(int,int)</slot>
+  <slot>addCompany()</slot>
+  <slot>modifyCompany()</slot>
+  <slot>deleteCompany()</slot>
+  <slot>searchGenre()</slot>
+  <slot>loadGenre(int,int)</slot>
+  <slot>addGenre()</slot>
+  <slot>modifyGenre()</slot>
+  <slot>deleteGenre()</slot>
+  <slot>searchDirector()</slot>
+  <slot>loadDirector(int,int)</slot>
+  <slot>addDirector()</slot>
+  <slot>modifyDirector()</slot>
+  <slot>deleteDirector()</slot>
+  <slot>searchCast()</slot>
+  <slot>loadCast(int,int)</slot>
+  <slot>addCast()</slot>
+  <slot>modifyCast()</slot>
+  <slot>deleteCast()</slot>
+ </slots>
+</ui>

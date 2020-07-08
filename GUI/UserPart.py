@@ -1,9 +1,11 @@
 from PyQt5.QtCore import Qt
 
 from ..DBInterface import USER_TABLE, UserInterface, getColumn
+from .AllCommentsDialog import AllCommentsDialog
 from .ChangeInformationDialog import ChangeInformationDialog
 from .ChangePasswordDialog import ChangePasswordDialog
-from .AllCommentsDialog import AllCommentsDialog
+from .Hint import Hint
+from .SubInfoDialog import SubInfoDialog
 from .UserPartUI import Ui_UserPart
 
 
@@ -55,4 +57,12 @@ class UserPart(Ui_UserPart):
 
     def showMyComments(self):
         dialog = AllCommentsDialog(self.login, parent=self, flags=Qt.WindowTitleHint)
+        dialog.open()
+
+    def manageSubInfo(self):
+        if not self.loginAdmin:
+            Hint('您没有管理附属信息的权限！', parent=self, flags=Qt.WindowTitleHint).open()
+            return
+
+        dialog = SubInfoDialog(parent=self, flags=Qt.WindowTitleHint)
         dialog.open()

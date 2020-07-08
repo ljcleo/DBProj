@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'UserPartUI.ui'
+# Form implementation generated from reading ui file '.\DBProj\GUI\UserPartUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -15,21 +15,21 @@ class Ui_UserPart(object):
         UserPart.setObjectName("UserPart")
         UserPart.resize(960, 640)
         self.UserFrame = QtWidgets.QFrame(UserPart)
-        self.UserFrame.setGeometry(QtCore.QRect(65, 150, 120, 330))
+        self.UserFrame.setGeometry(QtCore.QRect(65, 150, 120, 380))
         self.UserFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.UserFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.UserFrame.setObjectName("UserFrame")
         self.Logout = QtWidgets.QPushButton(self.UserFrame)
-        self.Logout.setGeometry(QtCore.QRect(0, 250, 120, 30))
+        self.Logout.setGeometry(QtCore.QRect(0, 300, 120, 30))
         self.Logout.setAutoDefault(False)
         self.Logout.setDefault(False)
         self.Logout.setObjectName("Logout")
         self.UserQuit = QtWidgets.QPushButton(self.UserFrame)
-        self.UserQuit.setGeometry(QtCore.QRect(0, 300, 120, 30))
+        self.UserQuit.setGeometry(QtCore.QRect(0, 350, 120, 30))
         self.UserQuit.setAutoDefault(False)
         self.UserQuit.setObjectName("UserQuit")
         self.ModifyInformation = QtWidgets.QPushButton(self.UserFrame)
-        self.ModifyInformation.setGeometry(QtCore.QRect(0, 150, 120, 30))
+        self.ModifyInformation.setGeometry(QtCore.QRect(0, 200, 120, 30))
         self.ModifyInformation.setAutoDefault(False)
         self.ModifyInformation.setDefault(False)
         self.ModifyInformation.setObjectName("ModifyInformation")
@@ -53,23 +53,34 @@ class Ui_UserPart(object):
         self.UserNameLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.UserNameLabel.setObjectName("UserNameLabel")
         self.ChangePassword = QtWidgets.QPushButton(self.UserFrame)
-        self.ChangePassword.setGeometry(QtCore.QRect(0, 200, 120, 30))
+        self.ChangePassword.setGeometry(QtCore.QRect(0, 250, 120, 30))
         self.ChangePassword.setAutoDefault(False)
         self.ChangePassword.setDefault(False)
         self.ChangePassword.setObjectName("ChangePassword")
-        self.ModifyInformation_2 = QtWidgets.QPushButton(self.UserFrame)
-        self.ModifyInformation_2.setGeometry(QtCore.QRect(0, 100, 120, 30))
-        self.ModifyInformation_2.setAutoDefault(False)
-        self.ModifyInformation_2.setDefault(False)
-        self.ModifyInformation_2.setObjectName("ModifyInformation_2")
+        self.ManageSubInfo = QtWidgets.QPushButton(self.UserFrame)
+        self.ManageSubInfo.setGeometry(QtCore.QRect(0, 150, 120, 30))
+        self.ManageSubInfo.setAutoDefault(False)
+        self.ManageSubInfo.setDefault(False)
+        self.ManageSubInfo.setObjectName("ManageSubInfo")
+        self.ShowComment = QtWidgets.QPushButton(self.UserFrame)
+        self.ShowComment.setGeometry(QtCore.QRect(0, 100, 120, 30))
+        self.ShowComment.setAutoDefault(False)
+        self.ShowComment.setDefault(False)
+        self.ShowComment.setObjectName("ShowComment")
 
         self.retranslateUi(UserPart)
         self.ChangePassword.clicked.connect(UserPart.changePassword)
         self.Logout.clicked.connect(UserPart.logout)
         self.ModifyInformation.clicked.connect(UserPart.modifyInformation)
         self.UserQuit.clicked.connect(UserPart.close)
-        self.ModifyInformation_2.clicked.connect(UserPart.showMyComments)
+        self.ShowComment.clicked.connect(UserPart.showMyComments)
+        self.ManageSubInfo.clicked.connect(UserPart.manageSubInfo)
         QtCore.QMetaObject.connectSlotsByName(UserPart)
+        UserPart.setTabOrder(self.ShowComment, self.ManageSubInfo)
+        UserPart.setTabOrder(self.ManageSubInfo, self.ModifyInformation)
+        UserPart.setTabOrder(self.ModifyInformation, self.ChangePassword)
+        UserPart.setTabOrder(self.ChangePassword, self.Logout)
+        UserPart.setTabOrder(self.Logout, self.UserQuit)
 
     def retranslateUi(self, UserPart):
         _translate = QtCore.QCoreApplication.translate
@@ -80,4 +91,5 @@ class Ui_UserPart(object):
         self.UserWelcomeLabel.setText(_translate("UserPart", "你好，"))
         self.UserNameLabel.setText(_translate("UserPart", "XXX"))
         self.ChangePassword.setText(_translate("UserPart", "修改密码"))
-        self.ModifyInformation_2.setText(_translate("UserPart", "查看我的评论"))
+        self.ManageSubInfo.setText(_translate("UserPart", "附属信息管理"))
+        self.ShowComment.setText(_translate("UserPart", "查看我的评论"))

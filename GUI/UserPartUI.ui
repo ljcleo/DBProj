@@ -19,7 +19,7 @@
      <x>65</x>
      <y>150</y>
      <width>120</width>
-     <height>330</height>
+     <height>380</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -32,7 +32,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>250</y>
+      <y>300</y>
       <width>120</width>
       <height>30</height>
      </rect>
@@ -51,7 +51,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>300</y>
+      <y>350</y>
       <width>120</width>
       <height>30</height>
      </rect>
@@ -67,7 +67,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>150</y>
+      <y>200</y>
       <width>120</width>
       <height>30</height>
      </rect>
@@ -135,7 +135,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>200</y>
+      <y>250</y>
       <width>120</width>
       <height>30</height>
      </rect>
@@ -150,7 +150,26 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="ModifyInformation_2">
+   <widget class="QPushButton" name="ManageSubInfo">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>150</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>附属信息管理</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ShowComment">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -171,6 +190,14 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>ShowComment</tabstop>
+  <tabstop>ManageSubInfo</tabstop>
+  <tabstop>ModifyInformation</tabstop>
+  <tabstop>ChangePassword</tabstop>
+  <tabstop>Logout</tabstop>
+  <tabstop>UserQuit</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -181,7 +208,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>124</x>
-     <y>364</y>
+     <y>414</y>
     </hint>
     <hint type="destinationlabel">
      <x>479</x>
@@ -197,7 +224,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>124</x>
-     <y>414</y>
+     <y>464</y>
     </hint>
     <hint type="destinationlabel">
      <x>479</x>
@@ -213,7 +240,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>124</x>
-     <y>314</y>
+     <y>364</y>
     </hint>
     <hint type="destinationlabel">
      <x>479</x>
@@ -229,7 +256,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>124</x>
-     <y>464</y>
+     <y>514</y>
     </hint>
     <hint type="destinationlabel">
      <x>479</x>
@@ -238,18 +265,34 @@
    </hints>
   </connection>
   <connection>
-   <sender>ModifyInformation_2</sender>
+   <sender>ShowComment</sender>
    <signal>clicked()</signal>
    <receiver>UserPart</receiver>
    <slot>showMyComments()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>88</x>
-     <y>260</y>
+     <x>124</x>
+     <y>264</y>
     </hint>
     <hint type="destinationlabel">
      <x>36</x>
      <y>260</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ManageSubInfo</sender>
+   <signal>clicked()</signal>
+   <receiver>UserPart</receiver>
+   <slot>manageSubInfo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>99</x>
+     <y>311</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>433</x>
+     <y>288</y>
     </hint>
    </hints>
   </connection>
@@ -260,5 +303,6 @@
   <slot>changePassword()</slot>
   <slot>logout()</slot>
   <slot>showMyComments()</slot>
+  <slot>manageSubInfo()</slot>
  </slots>
 </ui>
