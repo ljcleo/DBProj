@@ -130,6 +130,8 @@ class SearchResultPart(Ui_SearchResultPart):
         dialog.open()
 
     def sortDefault(self):
+        self.releaseDateOrder = None
+        self.ratingOrder = None
         self.showSearchResult(self.SearchInput.text())
 
     def sortByDateAsc(self):
