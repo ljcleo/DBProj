@@ -28,7 +28,7 @@
     </font>
    </property>
    <property name="text">
-    <string>修改</string>
+    <string>添加/修改</string>
    </property>
    <property name="default">
     <bool>true</bool>

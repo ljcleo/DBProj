@@ -137,29 +137,52 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
         length = self.MovieLength.value()
         releaseDate = self.ReleaseDate.date().toString('yyyy-MM-dd')
 
-        self.modifier.updateFilmBasic(self.filmID,
-                                      filmChineseName=chineseName,
-                                      filmOriginalName=originalName,
-                                      releaseDate=releaseDate,
-                                      length=length,
-                                      companyID=self.companyID,
-                                      picture=picture)
-
         storyline = self.Storyline.toPlainText()
-        self.modifier.updateFilmStoryline(self.filmID, None if storyline == '' else storyline)
+        if storyline == '':
+            storyline = None
 
         prizeHistory = self.PrizeHistory.toPlainText()
-        self.modifier.updateFilmPrizeHistory(self.filmID,
-                                             None if prizeHistory == '' else prizeHistory)
+        if prizeHistory == '':
+            prizeHistory = None
 
         remark = self.Remark.toPlainText()
-        self.modifier.updateFilmRemark(self.filmID, None if remark == '' else remark)
+        if remark == '':
+            remark = None
+
+        if self.filmID is not None:
+            self.modifier.updateFilmBasic(self.filmID,
+                                          filmChineseName=chineseName,
+                                          filmOriginalName=originalName,
+                                          releaseDate=releaseDate,
+                                          length=length,
+                                          companyID=self.companyID,
+                                          picture=picture)
+
+            self.modifier.updateFilmStoryline(self.filmID, storyline)
+            self.modifier.updateFilmPrizeHistory(self.filmID, prizeHistory)
+            self.modifier.updateFilmRemark(self.filmID, remark)
+        else:
+            self.modifier.insertFilm(filmChineseName=chineseName,
+                                     filmOriginalName=originalName,
+                                     releaseDate=releaseDate,
+                                     length=length,
+                                     companyID=self.companyID,
+                                     picture=picture,
+                                     storyline=storyline,
+                                     prizeHistory=prizeHistory,
+                                     remark=remark)
+
+            result = self.modifier.fetchResult(1)
+            if len(result) == 0:
+                raise RuntimeError('film inserted into void')
+
+            self.filmID = result[0][0]
 
         self.modifyGenres()
         self.modifyDirectors()
         self.modifyCasts()
 
-        dialog = Hint("修改成功", parent=self.parent(), flags=Qt.WindowTitleHint)
+        dialog = Hint("添加/修改成功", parent=self.parent(), flags=Qt.WindowTitleHint)
         dialog.open()
         self.accept()
 

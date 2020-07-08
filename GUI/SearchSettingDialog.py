@@ -1,4 +1,4 @@
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QDate
 from PyQt5.QtWidgets import QDialog
 
 from ..DBInterface import GENRE_TABLE, GenreInterface, getColumn
@@ -23,22 +23,41 @@ class SearchSettingDialog(QDialog, Ui_SearchSettingDialog):
             if name is not None:
                 self.Genre.addItem(name, genreID)
 
-    def setSearch(self):
-        ratingLow = self.RatingLow.text()
-        ratingHigh = self.RatingHigh.text()
+        curRating = self.parent().rating
+        curDate = self.parent().releaseDate
+        curGenre = self.parent().genreID
 
-        if ratingLow == '0.0' and ratingHigh == '10.0':
+        if curRating is not None:
+            curRatingLow, curRatingHigh = curRating
+            self.RatingLow.setValue(curRatingLow)
+            self.RatingHigh.setValue(curRatingHigh)
+
+        if curDate is not None:
+            curDateLow, curDateHigh = curDate
+            self.DateLow.setDate(QDate.fromString(curDateLow, 'yyyy-MM-dd'))
+            self.DateHigh.setDate(QDate.fromString(curDateHigh, 'yyyy-MM-dd'))
+
+        if curGenre is None:
+            self.Genre.setCurrentIndex(0)
+        else:
+            index = self.Genre.findData(curGenre)
+            self.Genre.setCurrentIndex(index)
+
+    def setSearch(self):
+        ratingLow = self.RatingLow.value()
+        ratingHigh = self.RatingHigh.value()
+
+        if ratingLow == 0 and ratingHigh == 10:
             self.parent().rating = None
         else:
             self.parent().rating = (ratingLow, ratingHigh)
 
-        dateLow = self.DateLow.text()
-        dateHigh = self.DateHigh.text()
+        dateLow = self.DateLow.date().toString('yyyy-MM-dd')
+        dateHigh = self.DateHigh.date().toString('yyyy-MM-dd')
         self.parent().releaseDate = (dateLow, dateHigh)
 
         genre = self.Genre.currentData()
-        if genre != -1:
-            self.parent().genreID = genre
+        self.parent().genreID = None if genre == -1 else genre
 
         Hint("设置成功！", parent=self.parent(), flags=Qt.WindowTitleHint).open()
         self.parent().showSearchResult(self.parent().search)

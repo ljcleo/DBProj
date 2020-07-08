@@ -400,7 +400,7 @@ class Ui_ModifyMovieDialog(object):
     def retranslateUi(self, ModifyMovieDialog):
         _translate = QtCore.QCoreApplication.translate
         ModifyMovieDialog.setWindowTitle(_translate("ModifyMovieDialog", "修改电影信息"))
-        self.Modify.setText(_translate("ModifyMovieDialog", "修改"))
+        self.Modify.setText(_translate("ModifyMovieDialog", "添加/修改"))
         self.Cancel.setText(_translate("ModifyMovieDialog", "取消"))
         self.Title.setText(_translate("ModifyMovieDialog", "添加/修改电影信息"))
         self.PreviousPage.setText(_translate("ModifyMovieDialog", "上一页"))

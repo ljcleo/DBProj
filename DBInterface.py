@@ -159,6 +159,8 @@ class DBInterface:
         sql = f'INSERT INTO {table} ({columnStr}) VALUES ({placeholder})'
         self._cursor.execute(sql, value)
 
+        self._cursor.execute('SELECT @@IDENTITY')
+
     def _insertMany(self, table, columns, values):
         """Insert multiple records to table"""
         columnLen = len(columns)
@@ -169,6 +171,8 @@ class DBInterface:
         placeholder = ', '.join(['?'] * len(columns))
         sql = f'INSERT INTO {table} ({columnStr}) VALUES ({placeholder})'
         self._cursor.executemany(sql, values)
+
+        self._cursor.execute('SELECT @@IDENTITY')
 
     def _select(self, table, columns, conditionExpression=None,
                 conditionArgument=None, orderCondition=None):
