@@ -128,7 +128,6 @@ class SearchResultPart(Ui_SearchResultPart):
     def setSearch(self):
         dialog = SearchSettingDialog(parent=self, flags=Qt.WindowTitleHint)
         dialog.open()
-        # print(self.searchSetting)
 
     def sortDefault(self):
         self.showSearchResult(self.SearchInput.text())
