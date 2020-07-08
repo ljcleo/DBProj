@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 from ..DBInterface import USER_TABLE, UserInterface, getColumn
 from .ChangeInformationDialog import ChangeInformationDialog
 from .ChangePasswordDialog import ChangePasswordDialog
-from .AllCommentsDialog import AllComments
+from .AllCommentsDialog import AllCommentsDialog
 from .UserPartUI import Ui_UserPart
 
 
@@ -54,5 +54,5 @@ class UserPart(Ui_UserPart):
             self.UserNameLabel.setText(userName)
 
     def showMyComments(self):
-        dialog = AllComments(self.login, parent=self, flags=Qt.WindowTitleHint)
+        dialog = AllCommentsDialog(self.login, parent=self, flags=Qt.WindowTitleHint)
         dialog.open()

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AllComments</class>
- <widget class="QDialog" name="AllComments">
+ <class>AllCommentsDialog</class>
+ <widget class="QDialog" name="AllCommentsDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>480</height>
+    <height>520</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>评论信息</string>
   </property>
-  <widget class="QTableWidget" name="tableWidget">
+  <widget class="QTableWidget" name="CommentTable">
    <property name="geometry">
     <rect>
-     <x>5</x>
-     <y>40</y>
-     <width>630</width>
-     <height>390</height>
+     <x>20</x>
+     <y>140</y>
+     <width>600</width>
+     <height>360</height>
     </rect>
    </property>
    <attribute name="horizontalHeaderVisible">
@@ -37,10 +37,10 @@
   <widget class="QPushButton" name="Return">
    <property name="geometry">
     <rect>
-     <x>275</x>
-     <y>440</y>
-     <width>90</width>
-     <height>28</height>
+     <x>520</x>
+     <y>40</y>
+     <width>100</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="text">
@@ -50,12 +50,12 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="Label">
+  <widget class="QLabel" name="CommentLabel">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>5</y>
-     <width>140</width>
+     <x>20</x>
+     <y>100</y>
+     <width>600</width>
      <height>30</height>
     </rect>
    </property>
@@ -68,10 +68,73 @@
     </font>
    </property>
    <property name="text">
-    <string>我的评论</string>
+    <string>管理员 某某的评论</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="UserName">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>480</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>18</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>管理员 某某</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Sex">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>性别：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Age">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>60</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>等线</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>年龄：</string>
    </property>
   </widget>
  </widget>
@@ -80,12 +143,12 @@
   <connection>
    <sender>Return</sender>
    <signal>clicked()</signal>
-   <receiver>AllComments</receiver>
+   <receiver>AllCommentsDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>322</x>
-     <y>456</y>
+     <x>567</x>
+     <y>56</y>
     </hint>
     <hint type="destinationlabel">
      <x>407</x>
@@ -93,5 +156,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>CommentTable</sender>
+   <signal>cellClicked(int,int)</signal>
+   <receiver>AllCommentsDialog</receiver>
+   <slot>showMovieInfo(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>345</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>631</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>showMovieInfo(int,int)</slot>
+ </slots>
 </ui>

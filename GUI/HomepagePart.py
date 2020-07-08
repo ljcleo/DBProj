@@ -15,7 +15,7 @@ class HomepagePart(Ui_HomepagePart):
         self.makeRecommendationInfo()
 
     def showHomepage(self):
-        self.makeRecommendationInfo()  # Is this necessary? Maybe a refresh button is needed?
+        self.makeRecommendationInfo()
         self.SearchFrame.show()
         self.RecommendationFrame.show()
         self.HLineSearch.show()

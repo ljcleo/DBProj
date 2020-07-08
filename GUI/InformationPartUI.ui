@@ -629,40 +629,21 @@
       <height>130</height>
      </rect>
     </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::SingleSelection</enum>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
     <attribute name="horizontalHeaderVisible">
      <bool>false</bool>
     </attribute>
     <attribute name="verticalHeaderVisible">
      <bool>false</bool>
     </attribute>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>新建行</string>
-     </property>
-    </row>
     <column>
      <property name="text">
-      <string>新建列</string>
+      <string/>
      </property>
     </column>
    </widget>
@@ -916,6 +897,22 @@ p, li { white-space: pre-wrap; }
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>CommentTable</sender>
+   <signal>cellClicked(int,int)</signal>
+   <receiver>InformationPart</receiver>
+   <slot>showUserComment(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>523</x>
+     <y>499</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>520</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addComment()</slot>
@@ -925,5 +922,6 @@ p, li { white-space: pre-wrap; }
   <slot>showAllDirector()</slot>
   <slot>toComment()</slot>
   <slot>toStoryline()</slot>
+  <slot>showUserComment(int,int)</slot>
  </slots>
 </ui>

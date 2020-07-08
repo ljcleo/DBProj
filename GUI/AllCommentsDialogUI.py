@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'AllCommentsDialogUI.ui'
+# Form implementation generated from reading ui file '.\DBProj\GUI\AllCommentsDialogUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -10,42 +10,73 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_AllComments(object):
-    def setupUi(self, AllComments):
-        AllComments.setObjectName("AllComments")
-        AllComments.resize(640, 480)
-        self.tableWidget = QtWidgets.QTableWidget(AllComments)
-        self.tableWidget.setGeometry(QtCore.QRect(5, 40, 630, 390))
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(1)
-        self.tableWidget.setRowCount(0)
+class Ui_AllCommentsDialog(object):
+    def setupUi(self, AllCommentsDialog):
+        AllCommentsDialog.setObjectName("AllCommentsDialog")
+        AllCommentsDialog.resize(640, 520)
+        self.CommentTable = QtWidgets.QTableWidget(AllCommentsDialog)
+        self.CommentTable.setGeometry(QtCore.QRect(20, 140, 600, 360))
+        self.CommentTable.setObjectName("CommentTable")
+        self.CommentTable.setColumnCount(1)
+        self.CommentTable.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, item)
-        self.tableWidget.horizontalHeader().setVisible(False)
-        self.tableWidget.horizontalHeader().setHighlightSections(False)
-        self.Return = QtWidgets.QPushButton(AllComments)
-        self.Return.setGeometry(QtCore.QRect(275, 440, 90, 28))
+        self.CommentTable.setHorizontalHeaderItem(0, item)
+        self.CommentTable.horizontalHeader().setVisible(False)
+        self.CommentTable.horizontalHeader().setHighlightSections(False)
+        self.Return = QtWidgets.QPushButton(AllCommentsDialog)
+        self.Return.setGeometry(QtCore.QRect(520, 40, 100, 30))
         self.Return.setAutoDefault(False)
         self.Return.setObjectName("Return")
-        self.Label = QtWidgets.QLabel(AllComments)
-        self.Label.setGeometry(QtCore.QRect(250, 5, 140, 30))
+        self.CommentLabel = QtWidgets.QLabel(AllCommentsDialog)
+        self.CommentLabel.setGeometry(QtCore.QRect(20, 100, 600, 30))
         font = QtGui.QFont()
         font.setFamily("等线")
         font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
-        self.Label.setFont(font)
-        self.Label.setAlignment(QtCore.Qt.AlignCenter)
-        self.Label.setObjectName("Label")
+        self.CommentLabel.setFont(font)
+        self.CommentLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.CommentLabel.setObjectName("CommentLabel")
+        self.UserName = QtWidgets.QLabel(AllCommentsDialog)
+        self.UserName.setGeometry(QtCore.QRect(20, 20, 480, 30))
+        font = QtGui.QFont()
+        font.setFamily("等线")
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.UserName.setFont(font)
+        self.UserName.setObjectName("UserName")
+        self.Sex = QtWidgets.QLabel(AllCommentsDialog)
+        self.Sex.setGeometry(QtCore.QRect(20, 60, 100, 30))
+        font = QtGui.QFont()
+        font.setFamily("等线")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
+        self.Sex.setFont(font)
+        self.Sex.setObjectName("Sex")
+        self.Age = QtWidgets.QLabel(AllCommentsDialog)
+        self.Age.setGeometry(QtCore.QRect(250, 60, 100, 30))
+        font = QtGui.QFont()
+        font.setFamily("等线")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
+        self.Age.setFont(font)
+        self.Age.setObjectName("Age")
 
-        self.retranslateUi(AllComments)
-        self.Return.clicked.connect(AllComments.accept)
-        QtCore.QMetaObject.connectSlotsByName(AllComments)
+        self.retranslateUi(AllCommentsDialog)
+        self.Return.clicked.connect(AllCommentsDialog.accept)
+        self.CommentTable.cellClicked['int','int'].connect(AllCommentsDialog.showMovieInfo)
+        QtCore.QMetaObject.connectSlotsByName(AllCommentsDialog)
 
-    def retranslateUi(self, AllComments):
+    def retranslateUi(self, AllCommentsDialog):
         _translate = QtCore.QCoreApplication.translate
-        AllComments.setWindowTitle(_translate("AllComments", "评论信息"))
-        item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("AllComments", "新建列"))
-        self.Return.setText(_translate("AllComments", "返回"))
-        self.Label.setText(_translate("AllComments", "我的评论"))
+        AllCommentsDialog.setWindowTitle(_translate("AllCommentsDialog", "评论信息"))
+        item = self.CommentTable.horizontalHeaderItem(0)
+        item.setText(_translate("AllCommentsDialog", "新建列"))
+        self.Return.setText(_translate("AllCommentsDialog", "返回"))
+        self.CommentLabel.setText(_translate("AllCommentsDialog", "管理员 某某的评论"))
+        self.UserName.setText(_translate("AllCommentsDialog", "管理员 某某"))
+        self.Sex.setText(_translate("AllCommentsDialog", "性别："))
+        self.Age.setText(_translate("AllCommentsDialog", "年龄："))

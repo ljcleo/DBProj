@@ -6,6 +6,7 @@ from requests.exceptions import RequestException
 
 from ..DBInterface import COMMENT_VIEW, FILM_VIEW, CommentInterface, FilmInterface, getColumn
 from .AllCastDialog import AllCastDialog
+from .AllCommentsDialog import AllCommentsDialog
 from .AllDirectorDialog import AllDirectorDialog
 from .CommentDialog import CommentDialog
 from .CommentWidget import CommentWidget
@@ -21,6 +22,7 @@ class InformationPart(Ui_InformationPart):
 
         self.CommentFrame.hide()
         self.CommentTable.setColumnWidth(0, 630)
+        self.commentUsers = []
 
     def addComment(self):
         if self.login is None:
@@ -84,10 +86,19 @@ class InformationPart(Ui_InformationPart):
         self.CommentFrame.hide()
         self.MoreInformationFrame.show()
 
+    def showUserComment(self, row, _):
+        if len(self.commentUsers) != 0:
+            dialog = AllCommentsDialog(self.commentUsers[row], parent=self,
+                                       flags=Qt.WindowTitleHint)
+            dialog.open()
+
     def makeComments(self):
         self.CommentTable.clearContents()
+        self.commentUsers = []
+
         if self.filmID is None:
             raise RuntimeError('cannot display comment for nothing')
+
         self.CommentTable.clear()
         commentFetcher = CommentInterface(False)
         commentFetcher.selectCommentByFilmID(self.filmID)
@@ -100,12 +111,13 @@ class InformationPart(Ui_InformationPart):
             self.CommentTable.setRowCount(len(result))
 
             for index, row in enumerate(result):
-                # userID = getColumn(row, COMMENT_VIEW.userID)
+                userID = getColumn(row, COMMENT_VIEW.userID)
                 userName = getColumn(row, COMMENT_VIEW.userName)
                 userIsAdmin = getColumn(row, COMMENT_VIEW.userIsAdmin)
                 rating = getColumn(row, COMMENT_VIEW.rating)
                 comment = getColumn(row, COMMENT_VIEW.comment)
 
+                self.commentUsers.append(userID)
                 if userIsAdmin:
                     userName = '管理员 ' + userName
 
