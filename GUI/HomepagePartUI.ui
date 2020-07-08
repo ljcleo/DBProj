@@ -10,9 +10,6 @@
     <height>640</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Homepage</string>
-  </property>
   <widget class="Line" name="HLineSearch">
    <property name="geometry">
     <rect>

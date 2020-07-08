@@ -23,6 +23,7 @@ class MainWindow(QDialog, Ui_MainWindow, HomepagePart, InformationPart, SearchRe
         self.hideSearchResult()
         self.hideInformation()
         self.setupUi(self)
+        self.setWindowTitle('豆豉电影')
 
     def refresh(self):
         if self.login is None:

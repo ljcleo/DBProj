@@ -24,8 +24,10 @@
    </property>
    <property name="font">
     <font>
-     <family>宋体</family>
-     <pointsize>12</pointsize>
+     <family>等线</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">

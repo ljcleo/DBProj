@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'DBProj\GUI\RegisterDialogUI.ui'
+# Form implementation generated from reading ui file '.\DBProj\GUI\RegisterDialogUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.14.2
 #
@@ -65,6 +65,7 @@ class Ui_RegisterDialog(object):
         font.setFamily("宋体")
         self.UserID.setFont(font)
         self.UserID.setAutoFillBackground(False)
+        self.UserID.setMaxLength(16)
         self.UserID.setObjectName("UserID")
         self.UserIDLabel = QtWidgets.QLabel(self.frame)
         self.UserIDLabel.setGeometry(QtCore.QRect(20, 80, 70, 30))
@@ -95,6 +96,7 @@ class Ui_RegisterDialog(object):
         font = QtGui.QFont()
         font.setFamily("宋体")
         self.UserName.setFont(font)
+        self.UserName.setMaxLength(32)
         self.UserName.setObjectName("UserName")
         self.UserNameLabel = QtWidgets.QLabel(self.frame)
         self.UserNameLabel.setGeometry(QtCore.QRect(20, 230, 70, 30))
@@ -157,7 +159,7 @@ class Ui_RegisterDialog(object):
 
     def retranslateUi(self, RegisterDialog):
         _translate = QtCore.QCoreApplication.translate
-        RegisterDialog.setWindowTitle(_translate("RegisterDialog", "Register"))
+        RegisterDialog.setWindowTitle(_translate("RegisterDialog", "新用户注册"))
         self.Register.setText(_translate("RegisterDialog", "注册"))
         self.Cancel.setText(_translate("RegisterDialog", "取消"))
         self.Title.setText(_translate("RegisterDialog", "新用户注册"))

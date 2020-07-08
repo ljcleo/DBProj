@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'HintUI.ui'
+# Form implementation generated from reading ui file '.\DBProj\GUI\HintUI.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,8 +17,10 @@ class Ui_Hint(object):
         self.label = QtWidgets.QLabel(Hint)
         self.label.setGeometry(QtCore.QRect(0, 35, 250, 30))
         font = QtGui.QFont()
-        font.setFamily("宋体")
-        font.setPointSize(12)
+        font.setFamily("等线")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
         self.label.setFont(font)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")

@@ -84,7 +84,6 @@ class Ui_UserPart(object):
 
     def retranslateUi(self, UserPart):
         _translate = QtCore.QCoreApplication.translate
-        UserPart.setWindowTitle(_translate("UserPart", "User"))
         self.Logout.setText(_translate("UserPart", "退出登录"))
         self.UserQuit.setText(_translate("UserPart", "退出系统"))
         self.ModifyInformation.setText(_translate("UserPart", "修改个人信息"))

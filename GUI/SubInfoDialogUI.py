@@ -385,7 +385,7 @@ class Ui_SubInfoDialog(object):
 
     def retranslateUi(self, SubInfoDialog):
         _translate = QtCore.QCoreApplication.translate
-        SubInfoDialog.setWindowTitle(_translate("SubInfoDialog", "Dialog"))
+        SubInfoDialog.setWindowTitle(_translate("SubInfoDialog", "附属信息管理"))
         self.CompanySearchText.setPlaceholderText(_translate("SubInfoDialog", "请输入公司名称"))
         item = self.CompanySearchResult.horizontalHeaderItem(0)
         item.setText(_translate("SubInfoDialog", "公司名称"))
@@ -447,4 +447,4 @@ class Ui_SubInfoDialog(object):
         self.CastAltLabel.setText(_translate("SubInfoDialog", "豆瓣链接"))
         self.MainTabs.setTabText(self.MainTabs.indexOf(self.CastTab), _translate("SubInfoDialog", "演员信息"))
         self.Title.setText(_translate("SubInfoDialog", "附属信息管理"))
-        self.OKButton.setText(_translate("SubInfoDialog", "确定"))
+        self.OKButton.setText(_translate("SubInfoDialog", "返回"))

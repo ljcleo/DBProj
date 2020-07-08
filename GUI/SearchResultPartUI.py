@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'DBProj\GUI\SearchResultPartUI.ui'
+# Form implementation generated from reading ui file '.\DBProj\GUI\SearchResultPartUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.14.2
 #
@@ -99,7 +99,6 @@ class Ui_SearchResultPart(object):
 
     def retranslateUi(self, SearchResultPart):
         _translate = QtCore.QCoreApplication.translate
-        SearchResultPart.setWindowTitle(_translate("SearchResultPart", "搜索结果"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("SearchResultPart", "片名"))
         item = self.tableWidget.horizontalHeaderItem(1)

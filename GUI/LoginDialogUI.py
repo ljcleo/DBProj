@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'LoginDialogUI.ui'
+# Form implementation generated from reading ui file '.\DBProj\GUI\LoginDialogUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.14.2
 #
@@ -48,6 +48,7 @@ class Ui_LoginDialog(object):
         font.setFamily("宋体")
         self.UserName.setFont(font)
         self.UserName.setAutoFillBackground(False)
+        self.UserName.setMaxLength(16)
         self.UserName.setObjectName("UserName")
         self.Password = QtWidgets.QLineEdit(self.frame)
         self.Password.setGeometry(QtCore.QRect(100, 130, 160, 30))
@@ -88,7 +89,7 @@ class Ui_LoginDialog(object):
 
     def retranslateUi(self, LoginDialog):
         _translate = QtCore.QCoreApplication.translate
-        LoginDialog.setWindowTitle(_translate("LoginDialog", "Login"))
+        LoginDialog.setWindowTitle(_translate("LoginDialog", "用户登录"))
         self.Login.setText(_translate("LoginDialog", "登录"))
         self.Register.setText(_translate("LoginDialog", "注册"))
         self.Cancel.setText(_translate("LoginDialog", "取消"))

@@ -10,9 +10,6 @@
     <height>640</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>XXX数据库</string>
-  </property>
   <widget class="Line" name="VLine">
    <property name="geometry">
     <rect>

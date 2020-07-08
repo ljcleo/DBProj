@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>附属信息管理</string>
   </property>
   <widget class="QTabWidget" name="MainTabs">
    <property name="geometry">
@@ -955,7 +955,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>确定</string>
+    <string>返回</string>
    </property>
    <property name="default">
     <bool>true</bool>

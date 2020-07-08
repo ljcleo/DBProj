@@ -8,7 +8,6 @@ from .FilmCastDialog import FilmCastDialog
 from .FilmCompanyDialog import FilmCompanyDialog
 from .FilmDirectorDialog import FilmDirectorDialog
 from .FilmGenreDialog import FilmGenreDialog
-from .Hint import Hint
 from .ModifyMovieDialogUI import Ui_ModifyMovieDialog
 
 
@@ -119,7 +118,7 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
 
     def modifyMovie(self):
         if self.companyID is None:
-            Hint('制作公司不能为空！', parent=self.parent(), flags=Qt.WindowTitleHint)
+            QMessageBox.critical(self, '添加/修改电影', '制作公司不能为空！')
             return
 
         chineseName = self.MovieName.text()
@@ -182,7 +181,7 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
         self.modifyDirectors()
         self.modifyCasts()
 
-        dialog = Hint("添加/修改成功", parent=self.parent(), flags=Qt.WindowTitleHint)
+        dialog = QMessageBox.information(self.parent(), '添加/修改电影', '添加/修改成功')
         dialog.open()
         self.accept()
 

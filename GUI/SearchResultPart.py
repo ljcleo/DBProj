@@ -163,5 +163,9 @@ class SearchResultPart(Ui_SearchResultPart):
         self.RateSortDesc.hide()
 
     def addMovie(self):
+        if not self.loginAdmin:
+            QMessageBox.critical(self, '添加电影', '您没有添加电影的权限！')
+            return
+
         dialog = ModifyMovieDialog(parent=self, flags=Qt.WindowTitleHint)
         dialog.open()

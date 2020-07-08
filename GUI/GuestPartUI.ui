@@ -10,9 +10,6 @@
     <height>640</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Login</string>
-  </property>
   <widget class="QFrame" name="GuestFrame">
    <property name="geometry">
     <rect>

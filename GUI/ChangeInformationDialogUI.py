@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'DBProj\GUI\ChangeInformationDialogUI.ui'
+# Form implementation generated from reading ui file '.\DBProj\GUI\ChangeInformationDialogUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.14.2
 #
@@ -112,7 +112,7 @@ class Ui_ChangeInformationDialog(object):
 
     def retranslateUi(self, ChangeInformationDialog):
         _translate = QtCore.QCoreApplication.translate
-        ChangeInformationDialog.setWindowTitle(_translate("ChangeInformationDialog", "ChangePassword"))
+        ChangeInformationDialog.setWindowTitle(_translate("ChangeInformationDialog", "修改个人信息"))
         self.Modify.setText(_translate("ChangeInformationDialog", "修改"))
         self.Cancel.setText(_translate("ChangeInformationDialog", "取消"))
         self.Title.setText(_translate("ChangeInformationDialog", "修改个人信息"))

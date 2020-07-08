@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'DBProj\GUI\GuestPartUI.ui'
+# Form implementation generated from reading ui file '.\DBProj\GUI\GuestPartUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.14.2
 #
@@ -45,7 +45,6 @@ class Ui_GuestPart(object):
 
     def retranslateUi(self, GuestPart):
         _translate = QtCore.QCoreApplication.translate
-        GuestPart.setWindowTitle(_translate("GuestPart", "Login"))
         self.GuestLabel.setText(_translate("GuestPart", "当前未登录"))
         self.GuestQuit.setText(_translate("GuestPart", "退出系统"))
         self.LoginOrRegister.setText(_translate("GuestPart", "登录/注册"))

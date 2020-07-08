@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'DBProj\GUI\ChangePasswordDialogUI.ui'
+# Form implementation generated from reading ui file '.\DBProj\GUI\ChangePasswordDialogUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.14.2
 #
@@ -106,7 +106,7 @@ class Ui_ChangePasswordDialog(object):
 
     def retranslateUi(self, ChangePasswordDialog):
         _translate = QtCore.QCoreApplication.translate
-        ChangePasswordDialog.setWindowTitle(_translate("ChangePasswordDialog", "ChangePassword"))
+        ChangePasswordDialog.setWindowTitle(_translate("ChangePasswordDialog", "修改密码"))
         self.Modify.setText(_translate("ChangePasswordDialog", "修改"))
         self.Cancel.setText(_translate("ChangePasswordDialog", "取消"))
         self.Title.setText(_translate("ChangePasswordDialog", "修改密码"))

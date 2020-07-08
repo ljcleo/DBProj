@@ -10,9 +10,6 @@
     <height>640</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Information</string>
-  </property>
   <widget class="Line" name="HLineMovie">
    <property name="geometry">
     <rect>

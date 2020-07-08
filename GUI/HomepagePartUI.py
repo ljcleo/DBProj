@@ -124,7 +124,6 @@ class Ui_HomepagePart(object):
 
     def retranslateUi(self, HomepagePart):
         _translate = QtCore.QCoreApplication.translate
-        HomepagePart.setWindowTitle(_translate("HomepagePart", "Homepage"))
         self.RecommendationTitle1.setText(_translate("HomepagePart", "疯狂动物城"))
         self.RecommendationTitle2.setText(_translate("HomepagePart", "疯狂动物城"))
         self.RecommendationTitle3.setText(_translate("HomepagePart", "疯狂动物城"))

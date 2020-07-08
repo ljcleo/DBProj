@@ -297,7 +297,6 @@ class Ui_InformationPart(object):
 
     def retranslateUi(self, InformationPart):
         _translate = QtCore.QCoreApplication.translate
-        InformationPart.setWindowTitle(_translate("InformationPart", "Information"))
         self.CompanyLabel.setText(_translate("InformationPart", "发行公司："))
         self.OriginalName.setText(_translate("InformationPart", "Zootopia"))
         self.DirectorLabel.setText(_translate("InformationPart", "导演："))
