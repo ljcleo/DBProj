@@ -1,5 +1,3 @@
-from random import randint
-
 from PyQt5.QtGui import QImage, QPixmap
 from requests import get as getURL
 from requests.exceptions import RequestException
@@ -99,7 +97,11 @@ class HomepagePart(Ui_HomepagePart):
 
     def __generateRecommendation(self):
         # if self.login is None:
-        return (randint(1, 10000), randint(1, 10000), randint(1, 10000))
+        randomFetcher = FilmInterface(False)
+        randomFetcher._custom(
+            f'SELECT TOP 3 {FILM_TABLE.id} from {FILM_TABLE.table} ORDER BY NEWID()', ())
+        result = randomFetcher.fetchResult(3)
+        return tuple(getColumn(row, FILM_TABLE.id) for row in result)
         # else:
         #     file_path = 'recommendation.txt'
         #     with open(file_path, 'r') as f:
