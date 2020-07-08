@@ -28,8 +28,9 @@ class MainWindow(QDialog, Ui_MainWindow, HomepagePart, InformationPart, SearchRe
         if self.login is None:
             self.hideUser()
             self.showGuest()
-            self.makeRecommendationInfo()
         else:
             self.hideGuest()
             self.showUser()
-            self.makeRecommendationInfo()
+
+        self.recommendationSystem.customizeRatio(self.login)
+        self.makeRecommendationInfo()

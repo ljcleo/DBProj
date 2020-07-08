@@ -3,6 +3,7 @@ from requests import get as getURL
 from requests.exceptions import RequestException
 
 from ..DBInterface import FILM_TABLE, FilmInterface, getColumn
+from ..RecommendationSystem import RecommendationSystem
 from .HomepagePartUI import Ui_HomepagePart
 
 
@@ -10,6 +11,8 @@ class HomepagePart(Ui_HomepagePart):
     def setupHomepage(self, HomepagePart):
         self.retranslateUi = super().retranslateUi
         super().setupUi(HomepagePart)
+
+        self.recommendationSystem = RecommendationSystem(self.login)
         self.makeRecommendationInfo()
 
     def showHomepage(self):
@@ -96,15 +99,4 @@ class HomepagePart(Ui_HomepagePart):
                 pictures[i].setText('暂无海报')
 
     def __generateRecommendation(self):
-        # if self.login is None:
-        randomFetcher = FilmInterface(False)
-        randomFetcher._custom(
-            f'SELECT TOP 3 {FILM_TABLE.id} from {FILM_TABLE.table} ORDER BY NEWID()', ())
-        result = randomFetcher.fetchResult(3)
-        return tuple(getColumn(row, FILM_TABLE.id) for row in result)
-        # else:
-        #     file_path = 'recommendation.txt'
-        #     with open(file_path, 'r') as f:
-        #         for i in f.readlines():
-        #             if self.login == i.split(',')[0]:
-        #                 return i.strip().split(',')[1:]
+        return self.recommendationSystem.makeRecommendation(3)
