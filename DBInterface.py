@@ -125,8 +125,8 @@ class DBInterface:
 
         try:
             connStr = 'Driver={ODBC Driver 17 for SQL Server};' + \
-                f'Database={config["database"]["database"]};' + \
-                f'Server={config["database"]["server"]};' + \
+                f'Database={getenv("database")};' + \
+                f'Server={config["server"]};' + \
                 f'UID={role};PWD={password}'
 
             self._conn = connect(connStr, autocommit=True)
