@@ -54,7 +54,7 @@ class RecommendationSystem():
 
         filmIndex = {film: index for index, film in enumerate(filmList)}
         userIndex = {user: index for index, user in enumerate(userList)}
-        ratings = np.zeros((len(filmList), len(userList)))
+        ratings = np.zeros((len(userList), len(filmList)))
 
         for row in commentList:
             film = getColumn(row, COMMENT_TABLE.filmID)
