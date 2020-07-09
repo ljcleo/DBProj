@@ -94,6 +94,12 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>Rating</tabstop>
+  <tabstop>CommentText</tabstop>
+  <tabstop>OKButton</tabstop>
+  <tabstop>CancelButton</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

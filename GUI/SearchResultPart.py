@@ -16,12 +16,12 @@ class SearchResultPart(Ui_SearchResultPart):
         self.DateSortAsc.hide()
 
         # set the width of columns
-        self.tableWidget.setColumnWidth(0, 150)  # title
-        self.tableWidget.setColumnWidth(1, 80)  # country
-        self.tableWidget.setColumnWidth(2, 100)  # release date
-        self.tableWidget.setColumnWidth(3, 140)  # genre
-        self.tableWidget.setColumnWidth(4, 50)  # rate
-        self.tableWidget.setColumnWidth(5, 120)  # operations
+        self.SearchResult.setColumnWidth(0, 150)  # title
+        self.SearchResult.setColumnWidth(1, 80)  # country
+        self.SearchResult.setColumnWidth(2, 100)  # release date
+        self.SearchResult.setColumnWidth(3, 140)  # genre
+        self.SearchResult.setColumnWidth(4, 50)  # rate
+        self.SearchResult.setColumnWidth(5, 120)  # operations
 
         # initialize search settings
         self.genreID = None
@@ -41,14 +41,14 @@ class SearchResultPart(Ui_SearchResultPart):
         releaseDateOrder = self.releaseDateOrder if releaseDateOrder is None else releaseDate
         ratingOrder = self.ratingOrder if ratingOrder is None else ratingOrder
 
-        self.tableWidget.clearContents()
+        self.SearchResult.clearContents()
         self.search = searchText
         searchEngine = FilmInterface(False)
         searchEngine.searchFilm(self.search, genreID=genreID, releaseDate=releaseDate,
                                 rating=rating, releaseDateOrder=releaseDateOrder,
                                 ratingOrder=ratingOrder)
         result = searchEngine.fetchResult(100)
-        self.tableWidget.setRowCount(len(result))
+        self.SearchResult.setRowCount(len(result))
 
         for index, row in enumerate(result):
             filmID = getColumn(row, FILM_VIEW.id)
@@ -58,20 +58,21 @@ class SearchResultPart(Ui_SearchResultPart):
             genres = getColumn(row, FILM_VIEW.genres)
             rating = getColumn(row, FILM_VIEW.rating)
 
-            self.tableWidget.setItem(
+            self.SearchResult.setItem(
                 index, 0, QTableWidgetItem('--' if name is None else name))
-            self.tableWidget.setItem(
+            self.SearchResult.setItem(
                 index, 1, QTableWidgetItem('--' if nationality is None else nationality))
-            self.tableWidget.setItem(
+            self.SearchResult.setItem(
                 index, 2, QTableWidgetItem('--' if releaseDate is None else f'{releaseDate}'))
-            self.tableWidget.setItem(
+            self.SearchResult.setItem(
                 index, 3, QTableWidgetItem('--' if genres is None else genres))
-            self.tableWidget.setItem(
+            self.SearchResult.setItem(
                 index, 4, QTableWidgetItem('--' if rating is None else f'{rating:.1f}'))
 
-            self.tableWidget.setCellWidget(
+            self.SearchResult.setCellWidget(
                 index, 5, SearchResultButtonWidget(self.generateToMovie(filmID),
-                                                   self.generateModifyMovie(filmID),
+                                                   self.generateModifyMovie(
+                                                       filmID),
                                                    self.generateDeleteMovie(filmID)))
 
         self.SearchResultFrame.show()

@@ -87,6 +87,10 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>LoginOrRegister</tabstop>
+  <tabstop>GuestQuit</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

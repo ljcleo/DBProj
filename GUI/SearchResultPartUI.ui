@@ -25,7 +25,7 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableWidget" name="SearchResult">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -213,6 +213,17 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>SetSearch</tabstop>
+  <tabstop>DefaultSort</tabstop>
+  <tabstop>DateSortDesc</tabstop>
+  <tabstop>DateSortAsc</tabstop>
+  <tabstop>RateSortDesc</tabstop>
+  <tabstop>RateSortAsc</tabstop>
+  <tabstop>ReturnRecommendation</tabstop>
+  <tabstop>AddMovie</tabstop>
+  <tabstop>SearchResult</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

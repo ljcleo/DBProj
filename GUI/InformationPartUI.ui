@@ -777,6 +777,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>Storyline</tabstop>
   <tabstop>PrizeHistory</tabstop>
   <tabstop>ToComment</tabstop>
+  <tabstop>CommentTable</tabstop>
   <tabstop>AddComment</tabstop>
   <tabstop>ToStoryLine</tabstop>
  </tabstops>

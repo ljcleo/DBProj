@@ -284,6 +284,13 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>SearchInput</tabstop>
+  <tabstop>Search</tabstop>
+  <tabstop>RecommendationTitle1</tabstop>
+  <tabstop>RecommendationTitle2</tabstop>
+  <tabstop>RecommendationTitle3</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
