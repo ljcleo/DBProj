@@ -1,8 +1,7 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QDialog, QMessageBox
 
 from ..DBInterface import UserInterface
-from .Hint import Hint
 from .RegisterDialogUI import Ui_RegisterDialog
 
 
@@ -18,12 +17,11 @@ class RegisterDialog(QDialog, Ui_RegisterDialog):
         userName = self.UserName.text()
 
         if userID == '' or password == '' or passwordAgain == '' or userName == '':
-            Hint('存在未填的必填项！', parent=self, flags=Qt.WindowTitleHint).open()
+            QMessageBox.critical(self, '新用户注册', '存在未填的必填项！')
             return
 
         if passwordAgain != password:
-            dialog = Hint("两次输入的密码不一致！", parent=self, flags=Qt.WindowTitleHint)
-            dialog.open()
+            QMessageBox.critical(self, '新用户注册', '两次输入的密码不一致！')
             return
 
         age = self.Age.value()
@@ -33,16 +31,14 @@ class RegisterDialog(QDialog, Ui_RegisterDialog):
         registerer.selectUserInfo(userID)
 
         if len(registerer.fetchResult()) != 0:
-            Hint("用户名已被注册！", parent=self, flags=Qt.WindowTitleHint).open()
+            QMessageBox.critical(self, '新用户注册', '用户名已被注册！')
             return
 
         registerer.createUser(userID, password, userName, userAge=age, userSex=sex)
         registerer.selectUserInfo(userID)
 
         if len(registerer.fetchResult()) == 0:
-            Hint("注册失败？！", parent=self, flags=Qt.WindowTitleHint).open()
-            return
+            raise RuntimeError('a ghost user has just registered')
 
-        dialog = Hint("注册成功！", parent=self.parent(), flags=Qt.WindowTitleHint)
-        dialog.open()
+        QMessageBox.information(self.parent(), '新用户注册', '注册成功，欢迎加入！')
         self.accept()

@@ -1,16 +1,16 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QImage, QPixmap
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
 from requests import get as getURL
 from requests.exceptions import RequestException
 
-from ..DBInterface import COMMENT_VIEW, FILM_VIEW, CommentInterface, FilmInterface, getColumn
+from ..DBInterface import (COMMENT_VIEW, FILM_VIEW, CommentInterface,
+                           FilmInterface, getColumn)
 from .AllCastDialog import AllCastDialog
 from .AllCommentsDialog import AllCommentsDialog
 from .AllDirectorDialog import AllDirectorDialog
 from .CommentDialog import CommentDialog
 from .CommentWidget import CommentWidget
-from .Hint import Hint
 from .InformationPartUI import Ui_InformationPart
 from .ModifyMovieDialog import ModifyMovieDialog
 
@@ -26,11 +26,9 @@ class InformationPart(Ui_InformationPart):
 
     def addComment(self):
         if self.login is None:
-            dialog = Hint("您还未登录，无法评论！", parent=self, flags=Qt.WindowTitleHint)
-            dialog.open()
+            QMessageBox.critical(self, '评论', '请登录后再添加/修改评论！')
         else:
-            dialog = CommentDialog(self.filmID, self.login, parent=self, flags=Qt.WindowTitleHint)
-            dialog.open()
+            CommentDialog(self.filmID, self.login, parent=self, flags=Qt.WindowTitleHint).open()
 
     def hideInformation(self):
         self.InformationFrame.hide()
@@ -56,26 +54,23 @@ class InformationPart(Ui_InformationPart):
 
     def showAllDirector(self):
         if self.Director.text() == '--':
-            Hint('暂无导演信息！', parent=self, flags=Qt.WindowTitleHint).open()
+            QMessageBox.information(self, '导演信息', '暂无导演信息！')
         else:
-            dialog = AllDirectorDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint)
-            dialog.open()
+            AllDirectorDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint).open()
 
     def showAllCast(self):
         if self.Cast.text() == '--':
-            Hint('暂无演员信息！', parent=self, flags=Qt.WindowTitleHint).open()
+            QMessageBox.information(self, '演员信息', '暂无演员信息！')
         else:
-            dialog = AllCastDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint)
-            dialog.open()
+            AllCastDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint).open()
 
     def modifyMovie(self):
         if not self.loginAdmin:
-            Hint("您没有修改电影信息的权限！", parent=self, flags=Qt.WindowTitleHint).open()
+            QMessageBox.critical(self, '修改电影', '您没有修改电影的权限！')
             return
 
-        dialog = ModifyMovieDialog(self.filmID, self.makeContents, parent=self,
-                                   flags=Qt.WindowTitleHint)
-        dialog.open()
+        ModifyMovieDialog(self.filmID, self.makeContents, parent=self,
+                          flags=Qt.WindowTitleHint).open()
 
     def toComment(self):
         self.makeComments()
@@ -88,9 +83,7 @@ class InformationPart(Ui_InformationPart):
 
     def showUserComment(self, row, _):
         if len(self.commentUsers) != 0:
-            dialog = AllCommentsDialog(self.commentUsers[row], parent=self,
-                                       flags=Qt.WindowTitleHint)
-            dialog.open()
+            AllCommentsDialog(self.commentUsers[row], parent=self, flags=Qt.WindowTitleHint).open()
 
     def makeComments(self):
         self.CommentTable.clearContents()

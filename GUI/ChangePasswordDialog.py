@@ -1,9 +1,8 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QDialog, QMessageBox
 
 from ..DBInterface import UserInterface
 from .ChangePasswordDialogUI import Ui_ChangePasswordDialog
-from .Hint import Hint
 
 
 class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
@@ -21,26 +20,23 @@ class ChangePasswordDialog(QDialog, Ui_ChangePasswordDialog):
         newPasswordAgain = self.NewPasswordAgain.text()
 
         if oldPassword == '' or newPassword == '':
-            Hint('密码不能为空！', parent=self, flags=Qt.WindowTitleHint).open()
+            QMessageBox.critical(self, '修改密码', '密码不能为空！')
             return
 
         if newPasswordAgain != newPassword:
-            dialog = Hint("两次输入的密码不一致！", parent=self, flags=Qt.WindowTitleHint)
-            dialog.open()
+            QMessageBox.critical(self, '修改密码', '两次输入的密码不一致！')
             return
 
         passwordVerifier = UserInterface(UserInterface.ROLE_LOGIN)
         if not passwordVerifier.verifyLogin(login, oldPassword):
-            Hint('旧密码错误！', parent=self, flags=Qt.WindowTitleHint).open()
+            QMessageBox.critical(self, '修改密码', '旧密码错误！')
             return
 
         passwordChanger = UserInterface(UserInterface.ROLE_MEMBER)
         passwordChanger.updateUserPassword(login, newPassword)
 
         if not passwordVerifier.verifyLogin(login, newPassword):
-            Hint('密码修改失败？！', parent=self, flags=Qt.WindowTitleHint).open()
-            return
+            raise RuntimeError('something abnormal happened on the new password')
 
-        dialog = Hint("密码修改成功！", parent=self.parent(), flags=Qt.WindowTitleHint)
-        dialog.open()
+        QMessageBox.information(self.parent(), '修改密码', '密码修改成功！')
         self.accept()

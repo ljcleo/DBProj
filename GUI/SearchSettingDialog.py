@@ -2,7 +2,6 @@ from PyQt5.QtCore import Qt, QDate
 from PyQt5.QtWidgets import QDialog
 
 from ..DBInterface import GENRE_TABLE, GenreInterface, getColumn
-from .Hint import Hint
 from .SearchSettingDialogUI import Ui_SearchSettingDialog
 
 
@@ -59,6 +58,5 @@ class SearchSettingDialog(QDialog, Ui_SearchSettingDialog):
         genre = self.Genre.currentData()
         self.parent().genreID = None if genre == -1 else genre
 
-        Hint("设置成功！", parent=self.parent(), flags=Qt.WindowTitleHint).open()
         self.parent().showSearchResult(self.parent().search)
         self.accept()

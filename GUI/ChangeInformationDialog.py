@@ -1,9 +1,8 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QDialog, QMessageBox
 
 from ..DBInterface import USER_TABLE, UserInterface, getColumn
 from .ChangeInformationDialogUI import Ui_ChangeInformationDialog
-from .Hint import Hint
 
 
 class ChangeInformationDialog(QDialog, Ui_ChangeInformationDialog):
@@ -38,12 +37,11 @@ class ChangeInformationDialog(QDialog, Ui_ChangeInformationDialog):
         newSex = None if self.Sex.currentIndex() == 0 else self.Sex.currentText()
 
         if newUserName == '':
-            Hint('昵称不能为空！', parent=self, flags=Qt.WindowTitleHint).open()
+            QMessageBox.critical(self, '修改个人信息', '昵称不能为空！')
             return
 
         self.infoChanger.updateUserInfo(self.login, newUserName, newAge, newSex)
         self.parent().updateUserName()
 
-        dialog = Hint("修改成功！", parent=self.parent(), flags=Qt.WindowTitleHint)
-        dialog.open()
+        QMessageBox.information(self.parent(), '修改个人信息', '修改成功！')
         self.accept()

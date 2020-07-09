@@ -1,10 +1,10 @@
 from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QMessageBox
 
 from ..DBInterface import USER_TABLE, UserInterface, getColumn
 from .AllCommentsDialog import AllCommentsDialog
 from .ChangeInformationDialog import ChangeInformationDialog
 from .ChangePasswordDialog import ChangePasswordDialog
-from .Hint import Hint
 from .SubInfoDialog import SubInfoDialog
 from .UserPartUI import Ui_UserPart
 
@@ -17,12 +17,10 @@ class UserPart(Ui_UserPart):
         self.loginAdmin = False
 
     def changePassword(self):
-        dialog = ChangePasswordDialog(parent=self, flags=Qt.WindowTitleHint)
-        dialog.open()
+        ChangePasswordDialog(parent=self, flags=Qt.WindowTitleHint).open()
 
     def modifyInformation(self):
-        dialog = ChangeInformationDialog(parent=self, flags=Qt.WindowTitleHint)
-        dialog.open()
+        ChangeInformationDialog(parent=self, flags=Qt.WindowTitleHint).open()
 
     def logout(self):
         self.login = None
@@ -56,13 +54,11 @@ class UserPart(Ui_UserPart):
             self.UserNameLabel.setText(userName)
 
     def showMyComments(self):
-        dialog = AllCommentsDialog(self.login, parent=self, flags=Qt.WindowTitleHint)
-        dialog.open()
+        AllCommentsDialog(self.login, parent=self, flags=Qt.WindowTitleHint).open()
 
     def manageSubInfo(self):
         if not self.loginAdmin:
-            Hint('您没有管理附属信息的权限！', parent=self, flags=Qt.WindowTitleHint).open()
+            QMessageBox.critical(self, '附属信息管理', '您没有管理附属信息的权限！')
             return
 
-        dialog = SubInfoDialog(parent=self, flags=Qt.WindowTitleHint)
-        dialog.open()
+        SubInfoDialog(parent=self, flags=Qt.WindowTitleHint).open()

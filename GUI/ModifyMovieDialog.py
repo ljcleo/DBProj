@@ -181,8 +181,7 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
         self.modifyDirectors()
         self.modifyCasts()
 
-        dialog = QMessageBox.information(self.parent(), '添加/修改电影', '添加/修改成功')
-        dialog.open()
+        QMessageBox.information(self.parent(), '添加/修改电影', '添加/修改成功')
         self.accept()
 
     def modifyGenres(self):

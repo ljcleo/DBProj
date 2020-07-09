@@ -1,9 +1,8 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QDialog, QMessageBox
 
 from ..DBInterface import COMMENT_TABLE, CommentInterface, getColumn
 from .CommentDialogUI import Ui_CommentDialog
-from .Hint import Hint
 
 
 class CommentDialog(QDialog, Ui_CommentDialog):
@@ -35,5 +34,5 @@ class CommentDialog(QDialog, Ui_CommentDialog):
             comment = None
 
         self.commenter.upsertComment(self.filmID, self.userID, rating=rating, userComment=comment)
-        Hint("评论成功！", parent=self.parent(), flags=Qt.WindowTitleHint).open()
+        QMessageBox.information(self.parent(), '评论', '评论成功！')
         self.accept()
