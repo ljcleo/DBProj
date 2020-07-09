@@ -96,7 +96,7 @@ class SearchResultPart(Ui_SearchResultPart):
                 return
 
             ModifyMovieDialog(filmID, lambda: self.showSearchResult(self.search), parent=self,
-                              flags=Qt.WindowTitleHint).open()
+                              flags=Qt.Drawer).open()
 
         return modifyMovie
 
@@ -126,7 +126,7 @@ class SearchResultPart(Ui_SearchResultPart):
         return deleteMovie
 
     def setSearch(self):
-        SearchSettingDialog(parent=self, flags=Qt.WindowTitleHint).open()
+        SearchSettingDialog(parent=self, flags=Qt.Drawer).open()
 
     def sortDefault(self):
         self.releaseDateOrder = None
@@ -166,4 +166,4 @@ class SearchResultPart(Ui_SearchResultPart):
             QMessageBox.critical(self, '添加电影', '您没有添加电影的权限！')
             return
 
-        ModifyMovieDialog(parent=self, flags=Qt.WindowTitleHint).open()
+        ModifyMovieDialog(parent=self, flags=Qt.Drawer).open()

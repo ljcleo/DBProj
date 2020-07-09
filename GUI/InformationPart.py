@@ -28,7 +28,7 @@ class InformationPart(Ui_InformationPart):
         if self.login is None:
             QMessageBox.critical(self, '评论', '请登录后再添加/修改评论！')
         else:
-            CommentDialog(self.filmID, self.login, parent=self, flags=Qt.WindowTitleHint).open()
+            CommentDialog(self.filmID, self.login, parent=self, flags=Qt.Drawer).open()
 
     def hideInformation(self):
         self.InformationFrame.hide()
@@ -56,21 +56,20 @@ class InformationPart(Ui_InformationPart):
         if self.Director.text() == '--':
             QMessageBox.information(self, '导演信息', '暂无导演信息！')
         else:
-            AllDirectorDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint).open()
+            AllDirectorDialog(self.filmID, parent=self, flags=Qt.Drawer).open()
 
     def showAllCast(self):
         if self.Cast.text() == '--':
             QMessageBox.information(self, '演员信息', '暂无演员信息！')
         else:
-            AllCastDialog(self.filmID, parent=self, flags=Qt.WindowTitleHint).open()
+            AllCastDialog(self.filmID, parent=self, flags=Qt.Drawer).open()
 
     def modifyMovie(self):
         if not self.loginAdmin:
             QMessageBox.critical(self, '修改电影', '您没有修改电影的权限！')
             return
 
-        ModifyMovieDialog(self.filmID, self.makeContents, parent=self,
-                          flags=Qt.WindowTitleHint).open()
+        ModifyMovieDialog(self.filmID, self.makeContents, parent=self, flags=Qt.Drawer).open()
 
     def toComment(self):
         self.makeComments()
@@ -83,7 +82,7 @@ class InformationPart(Ui_InformationPart):
 
     def showUserComment(self, row, _):
         if len(self.commentUsers) != 0:
-            AllCommentsDialog(self.commentUsers[row], parent=self, flags=Qt.WindowTitleHint).open()
+            AllCommentsDialog(self.commentUsers[row], parent=self, flags=Qt.Drawer).open()
 
     def makeComments(self):
         self.CommentTable.clearContents()

@@ -17,10 +17,10 @@ class UserPart(Ui_UserPart):
         self.loginAdmin = False
 
     def changePassword(self):
-        ChangePasswordDialog(parent=self, flags=Qt.WindowTitleHint).open()
+        ChangePasswordDialog(parent=self, flags=Qt.Drawer).open()
 
     def modifyInformation(self):
-        ChangeInformationDialog(parent=self, flags=Qt.WindowTitleHint).open()
+        ChangeInformationDialog(parent=self, flags=Qt.Drawer).open()
 
     def logout(self):
         self.login = None
@@ -54,11 +54,11 @@ class UserPart(Ui_UserPart):
             self.UserNameLabel.setText(userName)
 
     def showMyComments(self):
-        AllCommentsDialog(self.login, parent=self, flags=Qt.WindowTitleHint).open()
+        AllCommentsDialog(self.login, parent=self, flags=Qt.Drawer).open()
 
     def manageSubInfo(self):
         if not self.loginAdmin:
             QMessageBox.critical(self, '附属信息管理', '您没有管理附属信息的权限！')
             return
 
-        SubInfoDialog(parent=self, flags=Qt.WindowTitleHint).open()
+        SubInfoDialog(parent=self, flags=Qt.Drawer).open()

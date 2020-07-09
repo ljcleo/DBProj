@@ -31,4 +31,4 @@ class LoginDialog(QDialog, Ui_LoginDialog):
         self.accept()
 
     def register(self):
-        RegisterDialog(parent=self, flags=Qt.WindowTitleHint).open()
+        RegisterDialog(parent=self, flags=Qt.Drawer).open()

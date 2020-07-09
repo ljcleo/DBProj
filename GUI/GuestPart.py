@@ -10,7 +10,7 @@ class GuestPart(Ui_GuestPart):
         super().setupUi(GuestPart)
 
     def loginOrRegister(self):
-        LoginDialog(parent=self, flags=Qt.WindowTitleHint).open()
+        LoginDialog(parent=self, flags=Qt.Drawer).open()
 
     def hideGuest(self):
         self.GuestFrame.hide()

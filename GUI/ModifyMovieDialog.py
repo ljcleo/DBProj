@@ -211,7 +211,7 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
             self.companyID = companyID
             self.ProductionCompany.setText(name)
 
-        FilmCompanyDialog(action, self.companyID, parent=self, flags=Qt.WindowTitleHint).open()
+        FilmCompanyDialog(action, self.companyID, parent=self, flags=Qt.Drawer).open()
 
     def addGenre(self):
         def action(genreID, name):
@@ -222,8 +222,7 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
             self.GenreTable.setRowCount(len(self.genres))
             self.GenreTable.setItem(len(self.genres) - 1, 0, QTableWidgetItem(name))
 
-        FilmGenreDialog(action, others=tuple(self.genres), parent=self,
-                        flags=Qt.WindowTitleHint).open()
+        FilmGenreDialog(action, others=tuple(self.genres), parent=self, flags=Qt.Drawer).open()
 
     def modifyGenre(self):
         selected = self.GenreTable.selectedItems()
@@ -245,7 +244,7 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
         del others[row]
 
         FilmGenreDialog(action, genreID=self.genres[row], others=tuple(others), parent=self,
-                        flags=Qt.WindowTitleHint).open()
+                        flags=Qt.Drawer).open()
 
     def deleteGenre(self):
         selected = self.GenreTable.selectedItems()
@@ -273,7 +272,7 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
             self.DirectorTable.setItem(len(self.directors) - 1, 1, QTableWidgetItem(role))
 
         FilmDirectorDialog(action, others=tuple(self.directors), parent=self,
-                           flags=Qt.WindowTitleHint).open()
+                           flags=Qt.Drawer).open()
 
     def modifyDirector(self):
         selected = self.DirectorTable.selectedItems()
@@ -300,7 +299,7 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
         del others[row]
 
         FilmDirectorDialog(action, directorID=self.directors[row], role=role, others=tuple(others),
-                           parent=self, flags=Qt.WindowTitleHint).open()
+                           parent=self, flags=Qt.Drawer).open()
 
     def deleteDirector(self):
         selected = self.DirectorTable.selectedItems()
@@ -327,8 +326,7 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
             self.CastTable.setItem(len(self.casts) - 1, 0, QTableWidgetItem(name))
             self.CastTable.setItem(len(self.casts) - 1, 1, QTableWidgetItem(role))
 
-        FilmCastDialog(action, others=tuple(self.casts), parent=self,
-                       flags=Qt.WindowTitleHint).open()
+        FilmCastDialog(action, others=tuple(self.casts), parent=self, flags=Qt.Drawer).open()
 
     def modifyCast(self):
         selected = self.CastTable.selectedItems()
@@ -355,7 +353,7 @@ class ModifyMovieDialog(QDialog, Ui_ModifyMovieDialog):
         del others[row]
 
         FilmCastDialog(action, castID=self.casts[row], role=role, others=tuple(others), parent=self,
-                       flags=Qt.WindowTitleHint).open()
+                       flags=Qt.Drawer).open()
 
     def deleteCast(self):
         selected = self.CastTable.selectedItems()
