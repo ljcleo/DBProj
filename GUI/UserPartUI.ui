@@ -95,7 +95,7 @@
      </font>
     </property>
     <property name="text">
-     <string>你好，</string>
+     <string>欢迎，</string>
     </property>
     <property name="scaledContents">
      <bool>false</bool>

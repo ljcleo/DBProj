@@ -125,7 +125,7 @@
      </rect>
     </property>
     <property name="placeholderText">
-     <string>电影简介内容</string>
+     <string>请输入电影简介</string>
     </property>
    </widget>
    <widget class="QLabel" name="StorylineLabel">
@@ -200,7 +200,7 @@
      </rect>
     </property>
     <property name="placeholderText">
-     <string>电影获奖信息</string>
+     <string>请输入电影获奖信息</string>
     </property>
    </widget>
    <widget class="QLabel" name="RemarkLabel">
@@ -244,7 +244,7 @@
      </rect>
     </property>
     <property name="placeholderText">
-     <string>备注信息</string>
+     <string>请输入备注信息</string>
     </property>
    </widget>
   </widget>
@@ -281,7 +281,7 @@
      <bool>true</bool>
     </property>
     <property name="placeholderText">
-     <string>电影制作公司</string>
+     <string>请选择电影制作公司</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="MovieName">
@@ -302,7 +302,7 @@
      <bool>false</bool>
     </property>
     <property name="placeholderText">
-     <string>电影中文名称</string>
+     <string>请输入电影中文名称</string>
     </property>
    </widget>
    <widget class="QLabel" name="MovieNameLabel">
@@ -386,7 +386,7 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text">
-     <string>制作公司</string>
+     <string>制作公司*</string>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -699,7 +699,7 @@
      <bool>false</bool>
     </property>
     <property name="placeholderText">
-     <string>电影原始名称</string>
+     <string>请输入电影原名</string>
     </property>
    </widget>
    <widget class="QLabel" name="PictureLabel">
@@ -748,7 +748,7 @@
      </font>
     </property>
     <property name="placeholderText">
-     <string>海报图片链接</string>
+     <string>请输入海报图片链接</string>
     </property>
    </widget>
    <widget class="QSpinBox" name="MovieLength">

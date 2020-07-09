@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'HomepagePartUI.ui'
+# Form implementation generated from reading ui file 'DBProj\GUI\HomepagePartUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.0
 #
@@ -21,58 +21,19 @@ class Ui_HomepagePart(object):
         self.HLineSearch.setFrameShape(QtWidgets.QFrame.HLine)
         self.HLineSearch.setObjectName("HLineSearch")
         self.RecommendationFrame = QtWidgets.QFrame(HomepagePart)
-        self.RecommendationFrame.setGeometry(QtCore.QRect(260, 210, 691, 411))
+        self.RecommendationFrame.setGeometry(QtCore.QRect(260, 210, 680, 410))
         self.RecommendationFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.RecommendationFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.RecommendationFrame.setObjectName("RecommendationFrame")
-        self.RecommendationTitle1 = QtWidgets.QPushButton(self.RecommendationFrame)
-        self.RecommendationTitle1.setGeometry(QtCore.QRect(20, 350, 180, 30))
-        font = QtGui.QFont()
-        font.setFamily("等线")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.RecommendationTitle1.setFont(font)
-        self.RecommendationTitle1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.RecommendationTitle1.setStyleSheet("background: transparent")
-        self.RecommendationTitle1.setDefault(False)
-        self.RecommendationTitle1.setFlat(True)
-        self.RecommendationTitle1.setObjectName("RecommendationTitle1")
-        self.RecommendationTitle2 = QtWidgets.QPushButton(self.RecommendationFrame)
-        self.RecommendationTitle2.setGeometry(QtCore.QRect(250, 350, 180, 30))
-        font = QtGui.QFont()
-        font.setFamily("等线")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.RecommendationTitle2.setFont(font)
-        self.RecommendationTitle2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.RecommendationTitle2.setStyleSheet("background: transparent")
-        self.RecommendationTitle2.setDefault(False)
-        self.RecommendationTitle2.setFlat(True)
-        self.RecommendationTitle2.setObjectName("RecommendationTitle2")
-        self.RecommendationTitle3 = QtWidgets.QPushButton(self.RecommendationFrame)
-        self.RecommendationTitle3.setGeometry(QtCore.QRect(480, 350, 180, 30))
-        font = QtGui.QFont()
-        font.setFamily("等线")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.RecommendationTitle3.setFont(font)
-        self.RecommendationTitle3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.RecommendationTitle3.setStyleSheet("background: transparent")
-        self.RecommendationTitle3.setDefault(False)
-        self.RecommendationTitle3.setFlat(True)
-        self.RecommendationTitle3.setObjectName("RecommendationTitle3")
         self.RecommendationLabel = QtWidgets.QLabel(self.RecommendationFrame)
-        self.RecommendationLabel.setGeometry(QtCore.QRect(20, 20, 120, 30))
+        self.RecommendationLabel.setGeometry(QtCore.QRect(30, 20, 120, 30))
         font = QtGui.QFont()
         font.setFamily("等线")
         font.setPointSize(18)
         self.RecommendationLabel.setFont(font)
         self.RecommendationLabel.setObjectName("RecommendationLabel")
         self.RecommendationPicture1 = QtWidgets.QLabel(self.RecommendationFrame)
-        self.RecommendationPicture1.setGeometry(QtCore.QRect(20, 80, 180, 254))
+        self.RecommendationPicture1.setGeometry(QtCore.QRect(10, 80, 180, 254))
         font = QtGui.QFont()
         font.setFamily("等线")
         font.setPointSize(12)
@@ -90,7 +51,7 @@ class Ui_HomepagePart(object):
         self.RecommendationPicture2.setAlignment(QtCore.Qt.AlignCenter)
         self.RecommendationPicture2.setObjectName("RecommendationPicture2")
         self.RecommendationPicture3 = QtWidgets.QLabel(self.RecommendationFrame)
-        self.RecommendationPicture3.setGeometry(QtCore.QRect(480, 80, 180, 254))
+        self.RecommendationPicture3.setGeometry(QtCore.QRect(490, 80, 180, 254))
         font = QtGui.QFont()
         font.setFamily("等线")
         font.setPointSize(12)
@@ -98,6 +59,88 @@ class Ui_HomepagePart(object):
         self.RecommendationPicture3.setScaledContents(True)
         self.RecommendationPicture3.setAlignment(QtCore.Qt.AlignCenter)
         self.RecommendationPicture3.setObjectName("RecommendationPicture3")
+        self.Recommendation1 = QtWidgets.QPushButton(self.RecommendationFrame)
+        self.Recommendation1.setGeometry(QtCore.QRect(0, 70, 200, 320))
+        self.Recommendation1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.Recommendation1.setStyleSheet("QPushButton#Recommendation1\n"
+"{\n"
+"    border: none;\n"
+"    background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"QPushButton#Recommendation1:hover\n"
+"{\n"
+"    border: none;\n"
+"    background-color: rgba(255, 255, 255, 64);\n"
+"}")
+        self.Recommendation1.setObjectName("Recommendation1")
+        self.Recommendation2 = QtWidgets.QPushButton(self.RecommendationFrame)
+        self.Recommendation2.setGeometry(QtCore.QRect(240, 70, 200, 320))
+        self.Recommendation2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.Recommendation2.setStyleSheet("QPushButton#Recommendation2\n"
+"{\n"
+"    border: none;\n"
+"    background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"QPushButton#Recommendation2:hover\n"
+"{\n"
+"    border: none;\n"
+"    background-color: rgba(255, 255, 255, 64);\n"
+"}")
+        self.Recommendation2.setObjectName("Recommendation2")
+        self.Recommendation3 = QtWidgets.QPushButton(self.RecommendationFrame)
+        self.Recommendation3.setGeometry(QtCore.QRect(480, 70, 200, 320))
+        self.Recommendation3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.Recommendation3.setStyleSheet("QPushButton#Recommendation3\n"
+"{\n"
+"    border: none;\n"
+"    background-color: rgba(255, 255, 255, 0);\n"
+"}\n"
+"QPushButton#Recommendation3:hover\n"
+"{\n"
+"    border: none;\n"
+"    background-color: rgba(255, 255, 255, 64);\n"
+"}")
+        self.Recommendation3.setObjectName("Recommendation3")
+        self.RecommendationTitle1 = QtWidgets.QLabel(self.RecommendationFrame)
+        self.RecommendationTitle1.setGeometry(QtCore.QRect(10, 350, 180, 30))
+        font = QtGui.QFont()
+        font.setFamily("等线")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.RecommendationTitle1.setFont(font)
+        self.RecommendationTitle1.setAlignment(QtCore.Qt.AlignCenter)
+        self.RecommendationTitle1.setObjectName("RecommendationTitle1")
+        self.RecommendationTitle2 = QtWidgets.QLabel(self.RecommendationFrame)
+        self.RecommendationTitle2.setGeometry(QtCore.QRect(250, 350, 180, 30))
+        font = QtGui.QFont()
+        font.setFamily("等线")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.RecommendationTitle2.setFont(font)
+        self.RecommendationTitle2.setAlignment(QtCore.Qt.AlignCenter)
+        self.RecommendationTitle2.setObjectName("RecommendationTitle2")
+        self.RecommendationTitle3 = QtWidgets.QLabel(self.RecommendationFrame)
+        self.RecommendationTitle3.setGeometry(QtCore.QRect(490, 350, 180, 30))
+        font = QtGui.QFont()
+        font.setFamily("等线")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.RecommendationTitle3.setFont(font)
+        self.RecommendationTitle3.setAlignment(QtCore.Qt.AlignCenter)
+        self.RecommendationTitle3.setObjectName("RecommendationTitle3")
+        self.RecommendationLabel.raise_()
+        self.RecommendationPicture1.raise_()
+        self.RecommendationPicture2.raise_()
+        self.RecommendationPicture3.raise_()
+        self.RecommendationTitle1.raise_()
+        self.RecommendationTitle2.raise_()
+        self.RecommendationTitle3.raise_()
+        self.Recommendation1.raise_()
+        self.Recommendation2.raise_()
+        self.Recommendation3.raise_()
         self.SearchFrame = QtWidgets.QFrame(HomepagePart)
         self.SearchFrame.setGeometry(QtCore.QRect(320, 60, 570, 80))
         self.SearchFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -117,22 +160,22 @@ class Ui_HomepagePart(object):
         self.Search.setObjectName("Search")
 
         self.retranslateUi(HomepagePart)
-        self.RecommendationTitle2.clicked.connect(HomepagePart.movie2)
-        self.RecommendationTitle1.clicked.connect(HomepagePart.movie1)
-        self.RecommendationTitle3.clicked.connect(HomepagePart.movie3)
+        self.Recommendation2.clicked.connect(HomepagePart.movie2)
+        self.Recommendation1.clicked.connect(HomepagePart.movie1)
+        self.Recommendation3.clicked.connect(HomepagePart.movie3)
         self.Search.clicked.connect(HomepagePart.search)
         QtCore.QMetaObject.connectSlotsByName(HomepagePart)
         HomepagePart.setTabOrder(self.SearchInput, self.Search)
-        HomepagePart.setTabOrder(self.Search, self.RecommendationTitle1)
-        HomepagePart.setTabOrder(self.RecommendationTitle1, self.RecommendationTitle2)
-        HomepagePart.setTabOrder(self.RecommendationTitle2, self.RecommendationTitle3)
 
     def retranslateUi(self, HomepagePart):
         _translate = QtCore.QCoreApplication.translate
+        self.RecommendationLabel.setText(_translate("HomepagePart", "今日推荐"))
+        self.RecommendationPicture1.setText(_translate("HomepagePart", "海报"))
+        self.RecommendationPicture2.setText(_translate("HomepagePart", "海报"))
+        self.RecommendationPicture3.setText(_translate("HomepagePart", "海报"))
         self.RecommendationTitle1.setText(_translate("HomepagePart", "疯狂动物城"))
         self.RecommendationTitle2.setText(_translate("HomepagePart", "疯狂动物城"))
         self.RecommendationTitle3.setText(_translate("HomepagePart", "疯狂动物城"))
-        self.RecommendationLabel.setText(_translate("HomepagePart", "今日推荐"))
         self.SearchInput.setPlaceholderText(_translate("HomepagePart", "请输入您想搜索的影片"))
         self.Search.setText(_translate("HomepagePart", "搜索"))
         self.Search.setShortcut(_translate("HomepagePart", "Return"))

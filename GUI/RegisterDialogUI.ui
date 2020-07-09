@@ -114,6 +114,9 @@
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>
     </property>
+    <property name="placeholderText">
+     <string>请再次输入登录密码</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="Password">
     <property name="geometry">
@@ -135,6 +138,9 @@
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>
     </property>
+    <property name="placeholderText">
+     <string>请输入登录密码</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="UserID">
     <property name="geometry">
@@ -155,6 +161,9 @@
     </property>
     <property name="maxLength">
      <number>16</number>
+    </property>
+    <property name="placeholderText">
+     <string>请输入用户登录名</string>
     </property>
    </widget>
    <widget class="QLabel" name="UserIDLabel">
@@ -257,6 +266,9 @@
     </property>
     <property name="maxLength">
      <number>32</number>
+    </property>
+    <property name="placeholderText">
+     <string>请输入用户昵称</string>
     </property>
    </widget>
    <widget class="QLabel" name="UserNameLabel">
