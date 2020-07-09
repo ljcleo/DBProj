@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QAbstractItemView, QDialog, QTableWidgetItem
 
 from ..DBInterface import (COMMENT_VIEW, USER_TABLE, CommentInterface,
                            UserInterface, getColumn)
@@ -28,10 +28,11 @@ class AllCommentsDialog(QDialog, Ui_AllCommentsDialog):
         if userIsAdmin:
             name = '管理员 ' + name
 
+        self.setWindowTitle(name + ' 的个人主页')
         self.UserName.setText(name)
         self.Sex.setText(f'性别：{"保密" if sex is None else sex}')
         self.Age.setText(f'年龄：{0 if age is None else age:d}')
-        self.CommentLabel.setText(f'{name} 的评论')
+        self.CommentLabel.setText(f'{name} 的电影评论')
 
         self.CommentTable.clearContents()
         self.films = []
@@ -39,23 +40,35 @@ class AllCommentsDialog(QDialog, Ui_AllCommentsDialog):
         searchEngine = CommentInterface(False)
         searchEngine.selectCommentByUserID(userID=userID)
         result = searchEngine.fetchResult()
-        self.CommentTable.setRowCount(len(result))
 
-        for index, row in enumerate(result):
-            filmID = getColumn(row, COMMENT_VIEW.filmID)
-            filmName = getColumn(row, COMMENT_VIEW.filmName)
-            rating = getColumn(row, COMMENT_VIEW.rating)
-            comment = getColumn(row, COMMENT_VIEW.comment)
+        if len(result) == 0:
+            self.CommentTable.setSelectionMode(QAbstractItemView.NoSelection)
+            self.CommentTable.verticalHeader().setVisible(False)
+            self.CommentTable.setRowCount(1)
 
-            self.films.append(filmID)
+            item = QTableWidgetItem('该用户很懒，还没有留下评论！')
+            item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+            self.CommentTable.setItem(0, 0, item)
+        else:
+            self.CommentTable.setSelectionMode(QAbstractItemView.SingleSelection)
+            self.CommentTable.verticalHeader().setVisible(True)
+            self.CommentTable.setRowCount(len(result))
 
-            widget = CommentWidget()
-            widget.NameLabel.setText(filmName)
-            widget.RateLabel.setText(f'评分：{rating:.1f}')
-            widget.CommentText.setText(comment if comment is not None else '（该用户未评论）')
+            for index, row in enumerate(result):
+                filmID = getColumn(row, COMMENT_VIEW.filmID)
+                filmName = getColumn(row, COMMENT_VIEW.filmName)
+                rating = getColumn(row, COMMENT_VIEW.rating)
+                comment = getColumn(row, COMMENT_VIEW.comment)
 
-            self.CommentTable.setCellWidget(index, 0, widget)
-            self.CommentTable.setRowHeight(index, 130)
+                self.films.append(filmID)
+
+                widget = CommentWidget()
+                widget.NameLabel.setText(filmName)
+                widget.RateLabel.setText(f'评分：{rating:.1f}')
+                widget.CommentText.setText(comment if comment is not None else '（该用户未评论）')
+
+                self.CommentTable.setCellWidget(index, 0, widget)
+                self.CommentTable.setRowHeight(index, 130)
 
     def showMovieInfo(self, row, _):
         if len(self.films) != 0:

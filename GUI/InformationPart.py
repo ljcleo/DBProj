@@ -1,6 +1,6 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QImage, QPixmap
-from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
+from PyQt5.QtWidgets import QAbstractItemView, QMessageBox, QTableWidgetItem
 from requests import get as getURL
 from requests.exceptions import RequestException
 
@@ -98,9 +98,14 @@ class InformationPart(Ui_InformationPart):
         result = commentFetcher.fetchResult()
 
         if len(result) == 0:
+            self.CommentTable.setSelectionMode(QAbstractItemView.NoSelection)
             self.CommentTable.setRowCount(1)
-            self.CommentTable.setItem(0, 0, QTableWidgetItem('还没有评论，快来抢沙发吧！'))
+
+            item = QTableWidgetItem('还没有评论，快来抢沙发吧！')
+            item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+            self.CommentTable.setItem(0, 0, item)
         else:
+            self.CommentTable.setSelectionMode(QAbstractItemView.SingleSelection)
             self.CommentTable.setRowCount(len(result))
 
             for index, row in enumerate(result):

@@ -176,7 +176,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>查看我的评论</string>
+     <string>查看我的主页</string>
     </property>
     <property name="autoDefault">
      <bool>false</bool>
