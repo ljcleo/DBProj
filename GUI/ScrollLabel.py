@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt, QRect, QTimer
-from PyQt5.QtGui import QColor, QPainter
+from PyQt5.QtGui import QFontMetrics, QPainter
 from PyQt5.QtWidgets import QLabel
 
 
@@ -31,26 +31,40 @@ class ScrollLabel(QLabel):
         self.reverse = reverse
         self.update()
 
+    def makeShort(self):
+        self.short = self.long
+        metrics = QFontMetrics(self.font())
+        width = metrics.width(self.short)
+
+        if width >= self.width():
+            while width >= self.width():
+                self.short = self.short[:-1]
+                width = metrics.width(self.short + '...')
+
+            self.short = self.short + '...'
+
     def setText(self, a0):
-        self.txt = a0
+        self.long = a0
+        self.makeShort()
+
+        self.txt = self.short
         self.refresh()
 
     def enterEvent(self, event):
+        self.txt = self.long
+        self.refresh()
         self.timer.start(50)
 
     def leaveEvent(self, event):
         self.timer.stop()
+        self.txt = self.short
         self.refresh()
 
     def paintEvent(self, a0):
+        self.textWidth = QFontMetrics(self.font()).width(self.txt)
+
         painter = QPainter(self)
         painter.setFont(self.font())
-        painter.setPen(QColor('transparent'))
-        painter.setBrush(QColor('transparent'))
-
-        self.textWidth = painter.drawText(QRect(0, 0, self.width(), self.height()), Qt.AlignHCenter,
-                                          self.txt).width()
-
         painter.setPen(self.palette().windowText().color())
         painter.setBrush(self.palette().windowText())
 
