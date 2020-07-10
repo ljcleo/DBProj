@@ -228,7 +228,7 @@ QPushButton#Recommendation3:hover
      </font>
     </property>
     <property name="text">
-     <string>疯狂动物城</string>
+     <string>电影名称</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -252,7 +252,7 @@ QPushButton#Recommendation3:hover
      </font>
     </property>
     <property name="text">
-     <string>疯狂动物城</string>
+     <string>电影名称</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -276,7 +276,7 @@ QPushButton#Recommendation3:hover
      </font>
     </property>
     <property name="text">
-     <string>疯狂动物城</string>
+     <string>电影名称</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

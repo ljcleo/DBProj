@@ -68,7 +68,7 @@
     </font>
    </property>
    <property name="text">
-    <string>管理员 某某的评论</string>
+    <string>用户昵称 的评论</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -92,7 +92,7 @@
     </font>
    </property>
    <property name="text">
-    <string>管理员 某某</string>
+    <string>用户昵称</string>
    </property>
   </widget>
   <widget class="QLabel" name="Sex">

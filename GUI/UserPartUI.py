@@ -89,7 +89,7 @@ class Ui_UserPart(object):
         self.UserQuit.setText(_translate("UserPart", "退出系统"))
         self.ModifyInformation.setText(_translate("UserPart", "修改个人信息"))
         self.UserWelcomeLabel.setText(_translate("UserPart", "欢迎，"))
-        self.UserNameLabel.setText(_translate("UserPart", "XXX"))
+        self.UserNameLabel.setText(_translate("UserPart", "用户昵称"))
         self.ChangePassword.setText(_translate("UserPart", "修改密码"))
         self.ManageSubInfo.setText(_translate("UserPart", "附属信息管理"))
         self.ShowComment.setText(_translate("UserPart", "查看我的主页"))
