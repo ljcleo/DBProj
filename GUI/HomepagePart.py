@@ -12,6 +12,13 @@ class HomepagePart(Ui_HomepagePart):
         self.retranslateUi = super().retranslateUi
         super().setupUi(HomepagePart)
 
+        self.Recommendation1.enterEvent = self.RecommendationTitle1.enterEvent
+        self.Recommendation1.leaveEvent = self.RecommendationTitle1.leaveEvent
+        self.Recommendation2.enterEvent = self.RecommendationTitle2.enterEvent
+        self.Recommendation2.leaveEvent = self.RecommendationTitle2.leaveEvent
+        self.Recommendation3.enterEvent = self.RecommendationTitle3.enterEvent
+        self.Recommendation3.leaveEvent = self.RecommendationTitle3.leaveEvent
+
         self.recommendationSystem = RecommendationSystem(self.login)
         self.makeRecommendationInfo()
 

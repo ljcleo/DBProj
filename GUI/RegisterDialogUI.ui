@@ -265,7 +265,7 @@
      </font>
     </property>
     <property name="maxLength">
-     <number>32</number>
+     <number>16</number>
     </property>
     <property name="placeholderText">
      <string>请输入用户昵称</string>

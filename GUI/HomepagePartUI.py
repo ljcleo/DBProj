@@ -101,7 +101,7 @@ class Ui_HomepagePart(object):
 "    background-color: rgba(255, 255, 255, 64);\n"
 "}")
         self.Recommendation3.setObjectName("Recommendation3")
-        self.RecommendationTitle1 = QtWidgets.QLabel(self.RecommendationFrame)
+        self.RecommendationTitle1 = ScrollLabel(self.RecommendationFrame)
         self.RecommendationTitle1.setGeometry(QtCore.QRect(10, 350, 180, 30))
         font = QtGui.QFont()
         font.setFamily("等线")
@@ -111,7 +111,7 @@ class Ui_HomepagePart(object):
         self.RecommendationTitle1.setFont(font)
         self.RecommendationTitle1.setAlignment(QtCore.Qt.AlignCenter)
         self.RecommendationTitle1.setObjectName("RecommendationTitle1")
-        self.RecommendationTitle2 = QtWidgets.QLabel(self.RecommendationFrame)
+        self.RecommendationTitle2 = ScrollLabel(self.RecommendationFrame)
         self.RecommendationTitle2.setGeometry(QtCore.QRect(250, 350, 180, 30))
         font = QtGui.QFont()
         font.setFamily("等线")
@@ -121,7 +121,7 @@ class Ui_HomepagePart(object):
         self.RecommendationTitle2.setFont(font)
         self.RecommendationTitle2.setAlignment(QtCore.Qt.AlignCenter)
         self.RecommendationTitle2.setObjectName("RecommendationTitle2")
-        self.RecommendationTitle3 = QtWidgets.QLabel(self.RecommendationFrame)
+        self.RecommendationTitle3 = ScrollLabel(self.RecommendationFrame)
         self.RecommendationTitle3.setGeometry(QtCore.QRect(490, 350, 180, 30))
         font = QtGui.QFont()
         font.setFamily("等线")
@@ -179,3 +179,4 @@ class Ui_HomepagePart(object):
         self.SearchInput.setPlaceholderText(_translate("HomepagePart", "请输入您想搜索的影片"))
         self.Search.setText(_translate("HomepagePart", "搜索"))
         self.Search.setShortcut(_translate("HomepagePart", "Return"))
+from DBProj.GUI.ScrollLabel import ScrollLabel

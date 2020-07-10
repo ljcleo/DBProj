@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'CommentDialogUI.ui'
+# Form implementation generated from reading ui file 'DBProj\GUI\CommentDialogUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.0
 #
@@ -42,6 +42,7 @@ class Ui_CommentDialog(object):
         self.retranslateUi(CommentDialog)
         self.CancelButton.clicked.connect(CommentDialog.reject)
         self.OKButton.clicked.connect(CommentDialog.comment)
+        self.CommentText.textChanged.connect(CommentDialog.limitLength)
         QtCore.QMetaObject.connectSlotsByName(CommentDialog)
         CommentDialog.setTabOrder(self.Rating, self.CommentText)
         CommentDialog.setTabOrder(self.CommentText, self.OKButton)
@@ -53,4 +54,4 @@ class Ui_CommentDialog(object):
         self.RatingLabel.setText(_translate("CommentDialog", "请选择您对该电影的评分："))
         self.OKButton.setText(_translate("CommentDialog", "评论"))
         self.CancelButton.setText(_translate("CommentDialog", "取消"))
-        self.CommentText.setPlaceholderText(_translate("CommentDialog", "请输入您的评论"))
+        self.CommentText.setPlaceholderText(_translate("CommentDialog", "请输入您的评论（140 字以内）"))

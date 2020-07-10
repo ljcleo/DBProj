@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'InformationPartUI.ui'
+# Form implementation generated from reading ui file 'DBProj\GUI\InformationPartUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.0
 #
@@ -32,7 +32,7 @@ class Ui_InformationPart(object):
         font.setPointSize(12)
         self.CompanyLabel.setFont(font)
         self.CompanyLabel.setObjectName("CompanyLabel")
-        self.OriginalName = QtWidgets.QLabel(self.InformationFrame)
+        self.OriginalName = ScrollLabel(self.InformationFrame)
         self.OriginalName.setGeometry(QtCore.QRect(250, 80, 320, 30))
         font = QtGui.QFont()
         font.setFamily("等线")
@@ -48,7 +48,7 @@ class Ui_InformationPart(object):
         font.setPointSize(12)
         self.DirectorLabel.setFont(font)
         self.DirectorLabel.setObjectName("DirectorLabel")
-        self.ChineseName = QtWidgets.QLabel(self.InformationFrame)
+        self.ChineseName = ScrollLabel(self.InformationFrame)
         self.ChineseName.setGeometry(QtCore.QRect(250, 40, 320, 30))
         font = QtGui.QFont()
         font.setFamily("等线")
@@ -150,42 +150,42 @@ class Ui_InformationPart(object):
         self.AllDirector.setGeometry(QtCore.QRect(620, 236, 50, 28))
         self.AllDirector.setAutoDefault(False)
         self.AllDirector.setObjectName("AllDirector")
-        self.Genre = QtWidgets.QLabel(self.InformationFrame)
+        self.Genre = ScrollLabel(self.InformationFrame)
         self.Genre.setGeometry(QtCore.QRect(330, 120, 280, 20))
         font = QtGui.QFont()
         font.setFamily("等线")
         font.setPointSize(12)
         self.Genre.setFont(font)
         self.Genre.setObjectName("Genre")
-        self.ReleaseDate = QtWidgets.QLabel(self.InformationFrame)
+        self.ReleaseDate = ScrollLabel(self.InformationFrame)
         self.ReleaseDate.setGeometry(QtCore.QRect(330, 150, 280, 20))
         font = QtGui.QFont()
         font.setFamily("等线")
         font.setPointSize(12)
         self.ReleaseDate.setFont(font)
         self.ReleaseDate.setObjectName("ReleaseDate")
-        self.Length = QtWidgets.QLabel(self.InformationFrame)
+        self.Length = ScrollLabel(self.InformationFrame)
         self.Length.setGeometry(QtCore.QRect(330, 180, 280, 20))
         font = QtGui.QFont()
         font.setFamily("等线")
         font.setPointSize(12)
         self.Length.setFont(font)
         self.Length.setObjectName("Length")
-        self.Company = QtWidgets.QLabel(self.InformationFrame)
+        self.Company = ScrollLabel(self.InformationFrame)
         self.Company.setGeometry(QtCore.QRect(330, 210, 280, 20))
         font = QtGui.QFont()
         font.setFamily("等线")
         font.setPointSize(12)
         self.Company.setFont(font)
         self.Company.setObjectName("Company")
-        self.Director = QtWidgets.QLabel(self.InformationFrame)
+        self.Director = ScrollLabel(self.InformationFrame)
         self.Director.setGeometry(QtCore.QRect(330, 240, 280, 20))
         font = QtGui.QFont()
         font.setFamily("等线")
         font.setPointSize(12)
         self.Director.setFont(font)
         self.Director.setObjectName("Director")
-        self.Cast = QtWidgets.QLabel(self.InformationFrame)
+        self.Cast = ScrollLabel(self.InformationFrame)
         self.Cast.setGeometry(QtCore.QRect(330, 270, 280, 20))
         font = QtGui.QFont()
         font.setFamily("等线")
@@ -300,12 +300,12 @@ class Ui_InformationPart(object):
     def retranslateUi(self, InformationPart):
         _translate = QtCore.QCoreApplication.translate
         self.CompanyLabel.setText(_translate("InformationPart", "发行公司："))
-        self.OriginalName.setText(_translate("InformationPart", "Zootopia"))
+        self.OriginalName.setText(_translate("InformationPart", "电影原名"))
         self.DirectorLabel.setText(_translate("InformationPart", "导演："))
-        self.ChineseName.setText(_translate("InformationPart", "疯狂动物城"))
+        self.ChineseName.setText(_translate("InformationPart", "电影名称"))
         self.ScoreLabel.setText(_translate("InformationPart", "评分"))
         self.CastLabel.setText(_translate("InformationPart", "主演："))
-        self.Rating.setText(_translate("InformationPart", "9.8/10"))
+        self.Rating.setText(_translate("InformationPart", "--/10"))
         self.ReleaseDateLabel.setText(_translate("InformationPart", "上映日期："))
         self.LengthLabel.setText(_translate("InformationPart", "片长："))
         self.GenreLabel.setText(_translate("InformationPart", "类型："))
@@ -323,15 +323,6 @@ class Ui_InformationPart(object):
         self.AddComment.setText(_translate("InformationPart", "添加/修改评论"))
         self.ToStoryLine.setText(_translate("InformationPart", "查看简介"))
         self.StorylineLabel.setText(_translate("InformationPart", "简介"))
-        self.Storyline.setHtml(_translate("InformationPart", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介</p></body></html>"))
         self.PrizeHistoryLabel.setText(_translate("InformationPart", "获奖信息"))
-        self.PrizeHistory.setHtml(_translate("InformationPart", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">这是获奖信息这是获奖信息这是获奖信息这是获奖信息这是获奖信息这是获奖信息这是获奖信息这是获奖信息这是获奖信息这是获奖信息这是获奖信息这是获奖信息这是获奖信息这是获奖信息这是获奖信息</p></body></html>"))
         self.ToComment.setText(_translate("InformationPart", "查看评论"))
+from DBProj.GUI.ScrollLabel import ScrollLabel

@@ -97,7 +97,7 @@ class Ui_RegisterDialog(object):
         font = QtGui.QFont()
         font.setFamily("宋体")
         self.UserName.setFont(font)
-        self.UserName.setMaxLength(32)
+        self.UserName.setMaxLength(16)
         self.UserName.setObjectName("UserName")
         self.UserNameLabel = QtWidgets.QLabel(self.frame)
         self.UserNameLabel.setGeometry(QtCore.QRect(20, 230, 70, 30))

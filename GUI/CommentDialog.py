@@ -26,6 +26,11 @@ class CommentDialog(QDialog, Ui_CommentDialog):
             self.Rating.setValue(rating)
             self.CommentText.setPlainText(comment)
 
+    def limitLength(self):
+        newText = self.CommentText.toPlainText()
+        if len(newText) > 140:
+            self.CommentText.setPlainText(newText[:140])
+
     def comment(self):
         rating = self.Rating.value()
         comment = self.CommentText.toPlainText()

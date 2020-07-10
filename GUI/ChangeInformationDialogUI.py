@@ -51,6 +51,7 @@ class Ui_ChangeInformationDialog(object):
         font.setFamily("宋体")
         self.UserName.setFont(font)
         self.UserName.setAutoFillBackground(False)
+        self.UserName.setMaxLength(16)
         self.UserName.setObjectName("UserName")
         self.UserNameLabel = QtWidgets.QLabel(self.frame)
         self.UserNameLabel.setGeometry(QtCore.QRect(20, 80, 70, 30))

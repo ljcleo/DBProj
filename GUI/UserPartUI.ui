@@ -101,7 +101,7 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="UserNameLabel">
+   <widget class="ScrollLabel" name="UserNameLabel">
     <property name="geometry">
      <rect>
       <x>-1</x>
@@ -187,6 +187,13 @@
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ScrollLabel</class>
+   <extends>QLabel</extends>
+   <header>DBProj/GUI/ScrollLabel.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>ShowComment</tabstop>
   <tabstop>ManageSubInfo</tabstop>

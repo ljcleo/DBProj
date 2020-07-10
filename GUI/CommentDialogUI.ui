@@ -71,7 +71,7 @@
     </rect>
    </property>
    <property name="placeholderText">
-    <string>请输入您的评论</string>
+    <string>请输入您的评论（140 字以内）</string>
    </property>
   </widget>
   <widget class="QDoubleSpinBox" name="Rating">
@@ -134,8 +134,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>CommentText</sender>
+   <signal>textChanged()</signal>
+   <receiver>CommentDialog</receiver>
+   <slot>limitLength()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>172</x>
+     <y>146</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>316</x>
+     <y>254</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>comment()</slot>
+  <slot>limitLength()</slot>
  </slots>
 </ui>

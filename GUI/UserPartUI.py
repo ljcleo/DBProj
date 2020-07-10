@@ -42,7 +42,7 @@ class Ui_UserPart(object):
         self.UserWelcomeLabel.setFont(font)
         self.UserWelcomeLabel.setScaledContents(False)
         self.UserWelcomeLabel.setObjectName("UserWelcomeLabel")
-        self.UserNameLabel = QtWidgets.QLabel(self.UserFrame)
+        self.UserNameLabel = ScrollLabel(self.UserFrame)
         self.UserNameLabel.setGeometry(QtCore.QRect(-1, 40, 121, 40))
         font = QtGui.QFont()
         font.setFamily("等线")
@@ -93,3 +93,4 @@ class Ui_UserPart(object):
         self.ChangePassword.setText(_translate("UserPart", "修改密码"))
         self.ManageSubInfo.setText(_translate("UserPart", "附属信息管理"))
         self.ShowComment.setText(_translate("UserPart", "查看我的主页"))
+from DBProj.GUI.ScrollLabel import ScrollLabel
